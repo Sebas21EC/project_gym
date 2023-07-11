@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table -> integer('rol_id')->unsigned();
-            $table -> foreign('rol_id')->references('id')->on('roles');
+            $table -> integer('role_id')->unsigned();
+            $table -> foreign('role_id')->references('id')->on('roles');
         });
     }
 
@@ -29,8 +29,8 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-                $table -> dropForeign(['rol_id']);
-                $table -> dropColumn('rol_id');
+                $table -> dropForeign(['role_id']);
+                $table -> dropColumn('role_id');
         });
     }
 };
