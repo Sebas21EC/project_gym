@@ -27,14 +27,32 @@
                 @if (Gate::allows('has_role', [$module_security,$module_audit]))
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <li class="nav-item dropdown list-unstyled">
-                        <a href="#" class=" btn dropdown-toggle"  type="button" id="dropdownMenuButton" data-toggle="dropdown" >
+                        <a href="#" class=" btn " style="margin-top:15px" data-toggle="dropdown">
                             {{ __('Roles') }}
                         </a>
-                        
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <li><a class="dropdown-item" href="route('staff.occupation.index')">Roles</a></li>
-                            <li><a class="dropdown-item" href="#">Submenú 2</a></li>
-                            <li><a class="dropdown-item" href="#">Submenú 3</a></li>
+
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                    <x-nav-link :href="route('security.role.index')" :active="request()->routeIs('index')">
+                                        {{ __('Roles') }}
+                                    </x-nav-link>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                    <x-nav-link :href="route('staff.occupation.index')" :active="request()->routeIs('index')">
+                                        {{ __('Ocupaciones') }}
+                                    </x-nav-link>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                    <x-nav-link :href="route('staff.occupation.index')" :active="request()->routeIs('index')">
+                                        {{ __('Ocupaciones') }}
+                                    </x-nav-link>
+                                </div>
+                            </li>
                         </ul>
                     </li>
                 </div>
