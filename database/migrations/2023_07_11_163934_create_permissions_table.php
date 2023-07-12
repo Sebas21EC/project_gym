@@ -18,8 +18,9 @@ return new class extends Migration
                 $table->increments('id'); // This is the primary key
                 $table->string('name');
             //fk de role
-                $table->integer('role_id')->unsigned();
-                $table->foreign('role_id')->references('id')->on('roles');
+                $table->foreignId('role_id')->constrained('roles')
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
                 $table->timestamps();
     
         

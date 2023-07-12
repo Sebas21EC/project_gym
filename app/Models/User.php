@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -21,6 +22,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'employee_id',
+        'role_id',
+        'is_active',
+        // 'identification_type',
+        // 'identification',
     ];
 
     /**
@@ -40,6 +46,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        // 'password' => 'hashed',
     ];
 
     public function employee()
@@ -47,8 +54,14 @@ class User extends Authenticatable
         return $this->belongsTo(Employee::class);
     }
 
-    public function role()
+    public function roles():BelongsToMany
     {
-        return $this->belongsTo(Role::class);
+        return $this->belongsToMany(Role::class)->withTimestamps()->withPivot('is_active')->wherePivot('is_active', 1);
     }
+
+    public function hasRole(string $role_name):bool
+    {
+        return $this->roles()->where('role_name', $role_name)->first() ->exists();
+    }
+   
 }

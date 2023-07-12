@@ -11,13 +11,16 @@ class Role extends Model
 
     protected $table = "roles";
 
+    protected $fillable = [
+        'role_name',
+        'is_active',
+    ];
+
     public function permission()
     {
         return $this->belongsToMany(Permission::class);
     }
 
-    public function user()
-    {
-        return $this->hasMany(User::class);
-    }
+
+
 }
