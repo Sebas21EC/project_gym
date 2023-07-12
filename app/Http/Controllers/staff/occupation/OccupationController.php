@@ -6,12 +6,22 @@ use App\Http\Controllers\Controller;
 use App\Models\staff\employee\Employee;
 use App\Models\staff\occupation\Occupation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class OccupationController extends Controller
 {
     //
     public function index()
     {
+
+        $rol_names=array("auditor");
+
+        if(!Gate::allows('has_role', [$rol_names])){
+            $this->addAudit(Auth::user(),$this->typeAudit['not_access_index_role'],'');
+            return redirect()->route('dashboard')->with('error','You do not have permission to access!');
+        }
+
         $occupation = Occupation::all();
         return view('staff.occupation.index', ['occupations' => $occupation]);
     }
