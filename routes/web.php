@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\staff\occupation\Occupation;
+use App\Http\Controllers\staff\occupation\OccupationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,5 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('occupation', [OccupationController::class, 'index'])->name('staff.occupation.index')->middleware('auth');
 
 require __DIR__.'/auth.php';
