@@ -18,8 +18,10 @@ return new class extends Migration
             $table->timestamps();
             $table->string('type');
             $table->string('data');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreignId('user_id')->constrained('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            
         });
     }
 
