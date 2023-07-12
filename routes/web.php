@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\security\role\RoleController;
 use App\Http\Controllers\staff\occupation\OccupationController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\staff\employee\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,9 +32,12 @@ Route::middleware('auth')->group(function () {
 });
 Route::resource("occupation", OccupationController::class)->middleware('auth');
 
+//Ocupation
 Route::get('occupation', [OccupationController::class, 'index'])->name('staff.occupation.index')->middleware('auth');
 Route::get('occupation/edit/{id}', [OccupationController::class, 'edit'])->name('staff.occupation.edit');
-
+//Employee
+Route::resource('employee', EmployeeController::class)->middleware('auth');
+// Route::get('employee/edit/{id}', [EmployeeController::class, 'edit'])->name('staff.employee.edit');
 
 //Ruta al index de role
 Route::get('roles', [RoleController::class, 'index'])->name('security.role.index')->middleware('auth');

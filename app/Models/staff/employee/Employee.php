@@ -4,6 +4,7 @@ namespace App\Models\staff\employee;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\staff\occupation\Occupation;
 
 class Employee extends Model
 {

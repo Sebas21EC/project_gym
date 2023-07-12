@@ -30,8 +30,7 @@
                             <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Status</th>
+                                    <th scope="col">Nombre</th>
                                     <th scope="col">Created At</th>
                                     <th scope="col">Updated At</th>
                                     <th>Actions</th>
@@ -42,7 +41,6 @@
                                 <tr>
                                     <th scope="row">{{ $occupation->id }}</th>
                                     <td>{{ $occupation->name }}</td>
-                                    <td>{{ $occupation->status }}</td>
                                     <td>{{ $occupation->created_at }}</td>
                                     <td>{{ $occupation->updated_at }}</td>
 
