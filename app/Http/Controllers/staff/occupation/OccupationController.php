@@ -76,13 +76,16 @@ class OccupationController extends Controller
         if ($occupation->id == 1) {
             return redirect()->back()->with('error', 'No puedes eliminar la ocupacion principal');
         }else{
-            $occupation->status = 0;
-        }
-        $occupation->save();
-        
-        // Actualizar la categoría de los productos asociados
-        Employee::where('occupation_id', $id)->update(['occupation_id' => 1]);
+            Employee::where('occupation_id', $id)->delete();
+        $occupation->delete();
 
-        return redirect()->back()->with('success', 'Ocupacion eliminada con éxito'); // Ejemplo de redirección con mensaje de éxito
+        return redirect()->back()->with('success', 'Ocupación eliminada con éxito');
+        }
+        // $occupation->save();
+        
+        // // Actualizar la categoría de los productos asociados
+        // Employee::where('occupation_id', $id)->update(['occupation_id' => 1]);
+
+        // return redirect()->back()->with('success', 'Ocupacion eliminada con éxito'); // Ejemplo de redirección con mensaje de éxito
     }
 }
