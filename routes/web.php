@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\staff\occupation\Occupation;
+use App\Http\Controllers\security\role\RoleController;
 use App\Http\Controllers\staff\occupation\OccupationController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,5 +31,9 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('occupation', [OccupationController::class, 'index'])->name('staff.occupation.index')->middleware('auth');
+
+
+//Ruta al index de role
+Route::get('roles', [RoleController::class, 'index'])->name('security.role.index')->middleware('auth');
 
 require __DIR__.'/auth.php';
