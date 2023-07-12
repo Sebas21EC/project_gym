@@ -15,7 +15,7 @@ class OccupationController extends Controller
     public function index()
     {
 
-        $rol_names=array("administrator","user");
+        $rol_names=array("administrator","operator");
 
         if(!Gate::allows('has_role', [$rol_names])){
             $this->addAudit(Auth::user(),$this->typeAudit['not_access_index_role'],'');

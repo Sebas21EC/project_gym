@@ -16,7 +16,7 @@ class RoleController extends Controller
 
         if(!Gate::allows('has_role', [$rol_names])){
             $this->addAudit(Auth::user(),$this->typeAudit['not_access_index_role'],'');
-            return redirect()->route('dashboard')->with('error','You do not have permission to access!');
+            return redirect()->route('dashboard')->with('error','Usted no tiene permiso para acceder a la vista de \'ROLES\'!');
         }
 
         $this->addAudit(Auth::user(),$this->typeAudit['access_index_role'],'');
