@@ -10,6 +10,13 @@
                     </a>
                 </div>
 
+                @php
+                    $rolInventory = ['operator'];
+                    $rolSecurity = ['administrator'];
+                    $rolCustomer = ['user'];
+                    $rolAudit = ['auditor'];
+                @endphp
+
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
@@ -17,11 +24,13 @@
                     </x-nav-link>
                 </div>
 
+                @if (Gate::allows('has_role', [$rolSecurity]))
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('security.role.index')" :active="request()->routeIs('index')">
                         {{ __('Roles') }}
                     </x-nav-link>
                 </div>
+                @endif
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('staff.occupation.index')" :active="request()->routeIs('index')">

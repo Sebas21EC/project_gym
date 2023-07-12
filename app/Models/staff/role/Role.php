@@ -16,10 +16,10 @@ class Role extends Model
         'is_active',
     ];
 
-    public function permission()
-    {
-        return $this->belongsToMany(Permission::class);
-    }
+    // public function permission()
+    // {
+    //     return $this->belongsToMany(Permission::class);
+    // }
 
 
 

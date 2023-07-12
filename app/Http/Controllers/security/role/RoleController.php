@@ -12,13 +12,12 @@ class RoleController extends Controller
 {
     public function index()
     {
-        $role_name=array('administrator');
+        $rol_names=array("administrator");
 
-        // if(!Gate::any($role_name)){
-        //     echo "No tiene permiso";
-        //     $this->addAudit(Auth::user(),$this->typeAudit['not_access_index_role'],'');
-        //     return redirect()->route('dashboard')->with('error','You do not have permission to access!');
-        // }
+        if(!Gate::allows('has_role', [$rol_names])){
+            $this->addAudit(Auth::user(),$this->typeAudit['not_access_index_role'],'');
+            return redirect()->route('dashboard')->with('error','You do not have permission to access!');
+        }
 
         $this->addAudit(Auth::user(),$this->typeAudit['access_index_role'],'');
         return view('security.role.index',['roles'=>Role::all()]);
