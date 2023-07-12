@@ -28,17 +28,17 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        DB::table('employees')->insert(
-            array(
-                'identify' => '123456789',
-                'first_name' => 'Sebastian',
-                'last_name' => 'Carlosama',
-                // 'employee_email' => 'sebas@admin',
-                'phone' => '123456789',
-                'address' => 'Calle 123',
-                'occupation_id' => 1,
-            )
-        );
+        // DB::table('employees')->insert(
+        //     array(
+        //         'identify' => '123456789',
+        //         'first_name' => 'Sebastian',
+        //         'last_name' => 'Carlosama',
+        //         // 'employee_email' => 'sebas@admin',
+        //         'phone' => '123456789',
+        //         'address' => 'Calle 123',
+        //         'occupation_id' => 1,
+        //     )
+        // );
     }
 
     /**

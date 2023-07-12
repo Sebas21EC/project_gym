@@ -22,14 +22,14 @@ return new class extends Migration
 
 
 
-        DB::table('users')->insert(
-            array(
-                'name' => 'admin',
-                'email' => 'sebas@admin.com',
-                'password' => bcrypt('admin'),
-                'employee_id' => 1,
-            )
-        );
+        // DB::table('users')->insert(
+        //     array(
+        //         'name' => 'admin',
+        //         'email' => 'sebas@admin.com',
+        //         'password' => bcrypt('admin'),
+        //         'employee_id' => 1,
+        //     )
+        // );
     }
 
     /**

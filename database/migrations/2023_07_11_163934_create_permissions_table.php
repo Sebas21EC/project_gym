@@ -17,7 +17,11 @@ return new class extends Migration
         Schema::create('permissions', function (Blueprint $table) {
                 
                 $table->increments('id'); // This is the primary key
-                $table->string('name');
+                $table->boolean('create')->default(false);
+                $table->boolean('read')->default(false);
+                $table->boolean('update')->default(false);
+                $table->boolean('delete')->default(false);
+              
             //fk de role
                 $table->foreignId('role_id')->constrained('roles')
                     ->onUpdate('cascade')
@@ -28,25 +32,25 @@ return new class extends Migration
         });
 
 
-        DB::table('permissions')->insert([
-            [
-                'name' => 'create',
-                'role_id' => 1,
-            ],
-            [
-                'name' => 'read',
-                'role_id' => 1,
-            ],
-            [
-                'name' => 'update',
-                'role_id' => 1,
-            ],
-            [
-                'name' => 'delete',
-                'role_id' => 1,
-            ],
+        // DB::table('permissions')->insert([
+        //     [
+        //         'name' => 'create',
+        //         'role_id' => 1,
+        //     ],
+        //     [
+        //         'name' => 'read',
+        //         'role_id' => 1,
+        //     ],
+        //     [
+        //         'name' => 'update',
+        //         'role_id' => 1,
+        //     ],
+        //     [
+        //         'name' => 'delete',
+        //         'role_id' => 1,
+        //     ],
           
-        ]);
+        // ]);
     }
 
     /**

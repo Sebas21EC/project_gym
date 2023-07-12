@@ -14,7 +14,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('role_user', function (Blueprint $table) {
+        Schema::create('role_users', function (Blueprint $table) {
             $table->id();
             $table->foreignId('role_id')->constrained('roles')
                 ->onUpdate('cascade')
@@ -27,11 +27,11 @@ return new class extends Migration
         });
 
 
-        DB::table('role_user')->insert([
-            'role_id' => 1,
-            'user_id' => 1,
-            'is_active' => true,
-        ]);
+        // DB::table('role_user')->insert([
+        //     'role_id' => 1,
+        //     'user_id' => 1,
+        //     'is_active' => true,
+        // ]);
     }
 
     /**

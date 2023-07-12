@@ -23,24 +23,24 @@ return new class extends Migration
 
 
 
-        $roles = [
-            [
-                'role_name' => 'administrator',
-            ],
-            [
-                'role_name' => 'operator',
-            ],
-            [
-                'role_name' => 'auditor',
-            ],
-            [
-                'role_name' => 'user',
-            ],
+        // $roles = [
+        //     [
+        //         'role_name' => 'administrator',
+        //     ],
+        //     [
+        //         'role_name' => 'operator',
+        //     ],
+        //     [
+        //         'role_name' => 'auditor',
+        //     ],
+        //     [
+        //         'role_name' => 'user',
+        //     ],
             
-        ];
+        // ];
 
-        // Insert roles
-        DB::table('roles')->insert($roles);
+        // // Insert roles
+        // DB::table('roles')->insert($roles);
 
 
     }

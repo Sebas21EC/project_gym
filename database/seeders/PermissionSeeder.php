@@ -15,6 +15,43 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
-        Permission::factory()->count(10)->create();
+        // Permission::factory()->count(10)->create();
+
+
+        $permission_01 = new Permission;
+        $permission_01-> create = true;
+        $permission_01-> read = true;
+        $permission_01-> update = true;
+        $permission_01-> delete = true;
+        $permission_01->role_id = 1;
+        $permission_01->save();
+
+        $permission_02 = new Permission;
+        $permission_02-> create = true;
+        $permission_02-> read = true;
+        $permission_02-> update = true;
+        $permission_02-> delete = true;
+        $permission_02->role_id = 2;
+        $permission_02->save();
+        
+        $permission_03 = new Permission;
+        $permission_03-> create = true;
+        $permission_03-> read = true;
+        $permission_03-> update = true;
+        $permission_03-> delete = true;
+        $permission_03->role_id = 3;
+        $permission_03->save();
+
+        $permission_04 = new Permission;
+        $permission_04-> create = true;
+        $permission_04-> read = true;
+        $permission_04-> update = true;
+        $permission_04-> delete = true;
+        //role existente en la tabla Role
+        $permission_04->role_id = 4;
+        $permission_04->save();
+
+
+
     }
 }
