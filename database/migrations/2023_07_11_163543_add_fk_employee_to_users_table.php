@@ -20,16 +20,6 @@ return new class extends Migration
             $table -> foreign('employee_id')->references('id')->on('employees');
         });
 
-
-
-        // DB::table('users')->insert(
-        //     array(
-        //         'name' => 'admin',
-        //         'email' => 'sebas@admin.com',
-        //         'password' => bcrypt('admin'),
-        //         'employee_id' => 1,
-        //     )
-        // );
     }
 
     /**

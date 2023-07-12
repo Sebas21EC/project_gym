@@ -32,25 +32,7 @@ return new class extends Migration
         });
 
 
-        // DB::table('permissions')->insert([
-        //     [
-        //         'name' => 'create',
-        //         'role_id' => 1,
-        //     ],
-        //     [
-        //         'name' => 'read',
-        //         'role_id' => 1,
-        //     ],
-        //     [
-        //         'name' => 'update',
-        //         'role_id' => 1,
-        //     ],
-        //     [
-        //         'name' => 'delete',
-        //         'role_id' => 1,
-        //     ],
-          
-        // ]);
+        
     }
 
     /**
