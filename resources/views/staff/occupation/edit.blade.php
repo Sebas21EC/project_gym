@@ -21,7 +21,7 @@
                     required>
             </div>
             <!-- Add other fields as needed -->
-            <button type="submit" class="btn btn-primary">Actualizar</button>
+            <button type="submit" class="btn btn-success text-black">Actualizar</button>
         </form>
     </div>
     </x-app-layout>

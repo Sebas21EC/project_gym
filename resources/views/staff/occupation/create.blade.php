@@ -20,7 +20,7 @@
                 <input type="text" class="form-control" id="name" name="name" placeholder="Enter occupation name" required>
             </div>
             <!-- Add other fields as needed -->
-            <button type="submit" class="btn btn-primary">Crear</button>
+            <button type="submit" class="btn btn-success text-black">Crear</button>
         </form>
     </div>
 </x-app-layout>
