@@ -11,10 +11,10 @@
                 </div>
 
                 @php
-                    $module_operator = ['operator'];
-                    $module_security = ['administrator'];
-                    $module_customer = ['user'];
-                    $module_audit = ['auditor'];
+                $module_operator = ['operator'];
+                $module_security = ['administrator'];
+                $module_customer = ['user'];
+                $module_audit = ['auditor'];
                 @endphp
 
                 <!-- Navigation Links -->
@@ -26,10 +26,19 @@
 
                 @if (Gate::allows('has_role', [$module_security,$module_audit]))
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('security.role.index')" :active="request()->routeIs('index')">
-                        {{ __('Roles') }}
-                    </x-nav-link>
+                    <li class="nav-item dropdown list-unstyled">
+                        <a href="#" class=" btn dropdown-toggle"  type="button" id="dropdownMenuButton" data-toggle="dropdown" >
+                            {{ __('Roles') }}
+                        </a>
+                        
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="route('staff.occupation.index')">Roles</a></li>
+                            <li><a class="dropdown-item" href="#">Submenú 2</a></li>
+                            <li><a class="dropdown-item" href="#">Submenú 3</a></li>
+                        </ul>
+                    </li>
                 </div>
+
                 @endif
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
