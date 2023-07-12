@@ -29,7 +29,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+Route::resource("occupation", OccupationController::class)->middleware('auth');
 
 Route::get('occupation', [OccupationController::class, 'index'])->name('staff.occupation.index')->middleware('auth');
+Route::get('occupation/edit/{id}', [OccupationController::class, 'edit'])->name('staff.occupation.edit');
 
 require __DIR__.'/auth.php';
