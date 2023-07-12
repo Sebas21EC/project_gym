@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\staff\role_user\Role_user;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class Role_userSeeder extends Seeder
 {
@@ -15,30 +16,38 @@ class Role_userSeeder extends Seeder
      */
     public function run()
     {
-        $role_user_01 = new Role_user;
-        $role_user_01-> role_id = 1;
-        $role_user_01-> user_id = 1;
-        $role_user_01->is_active = true;
-        $role_user_01->save();
+      
+        DB::table('role_user')->insert([
+            'role_id' => 1,
+            'user_id' => 1,
+            'is_active' => true,
+            'created_at' => '2021-07-12 01:28:41',
+            'updated_at' => '2021-07-12 01:28:41',
+        ]);
 
-        $role_user_02 = new Role_user;
-        $role_user_02-> role_id = 2;
-        $role_user_02-> user_id = 2;
-        $role_user_02->is_active = true;
-        $role_user_02->save();
+        DB::table('role_user')->insert([
+            'role_id' => 2,
+            'user_id' => 2,
+            'is_active' => true,
+            'created_at' => '2021-07-12 01:28:41',
+            'updated_at' => '2021-07-12 01:28:41',
+        ]);
 
-        $role_user_03 = new Role_user;
-        $role_user_03-> role_id = 3;
-        $role_user_03-> user_id = 3;
-        $role_user_03->is_active = true;
-        $role_user_03->save();
+        DB::table('role_user')->insert([
+            'role_id' => 3,
+            'user_id' => 3,
+            'is_active' => true,
+            'created_at' => '2021-07-12 01:28:41',
+            'updated_at' => '2021-07-12 01:28:41',
+        ]);
 
-        $role_user_04 = new Role_user;
-        $role_user_04-> role_id = 4;
-        $role_user_04-> user_id = 4;
-        $role_user_04->is_active = true;
-        $role_user_04->save();
-        
+        DB::table('role_user')->insert([
+            'role_id' => 4,
+            'user_id' => 4,
+            'is_active' => true,
+            'created_at' => '2021-07-12 01:28:41',
+            'updated_at' => '2021-07-12 01:28:41',
+        ]);
 
     }
 }
