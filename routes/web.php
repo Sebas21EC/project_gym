@@ -40,6 +40,7 @@ Route::resource('employee', EmployeeController::class)->middleware('auth');
 // Route::get('employee', [EmployeeController::class,'index'])->name('staff.employee.index');
 
 //Ruta al index de role
-Route::get('roles', [RoleController::class, 'index'])->name('security.role.index')->middleware('auth');
+Route::resource('role',RoleController::class)->middleware('auth');
+
 
 require __DIR__.'/auth.php';
