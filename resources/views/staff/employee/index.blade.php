@@ -20,6 +20,9 @@
             @if (session('success'))
                 <h6 class="alert alert-success">{{ session('success') }}</h6>
             @endif
+            <form action="{{ route('employee.create') }}" method="GET">
+                <button type="submit" class="btn btn-primary">Crear</button>
+            </form>
          
             <thead class="thead-dark">
                 <tr>

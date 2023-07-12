@@ -37,7 +37,7 @@ Route::get('occupation', [OccupationController::class, 'index'])->name('staff.oc
 Route::get('occupation/edit/{id}', [OccupationController::class, 'edit'])->name('staff.occupation.edit');
 //Employee
 Route::resource('employee', EmployeeController::class)->middleware('auth');
-// Route::get('employee/edit/{id}', [EmployeeController::class, 'edit'])->name('staff.employee.edit');
+// Route::get('employee', [EmployeeController::class,'index'])->name('staff.employee.index');
 
 //Ruta al index de role
 Route::get('roles', [RoleController::class, 'index'])->name('security.role.index')->middleware('auth');

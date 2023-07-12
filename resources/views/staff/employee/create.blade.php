@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="container">
-        <h2>Editar empleado</h2>
+        <h2>Create employeeo</h2>
 
         @if ($errors->any())
         <div class="alert alert-danger">
@@ -11,27 +11,31 @@
             </ul>
         </div>
         @endif
-<!-- 
-        <form action="{{ route('employee.update', $employee->id) }}" method="POST">
-            @method('PUT')
+
+        <form action="{{ route('employee.store') }}" method="POST">
             @csrf
             <div class="form-group">
-            <label for="name">Identificacion:</label>
-                <input type="text" class="form-control" id="first_name" name="first_name" value="{{ $employee->first_name }}" required>
+                <label for="name">Identificacion:</label>
+                <input type="text" class="form-control" id="identify" name="identify" placeholder="Ingresar la identificacion del empleado" required>
                 <label for="name">Nombre:</label>
-                <input type="text" class="form-control" id="first_name" name="first_name" value="{{ $employee->first_name }}" required>
+                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Ingresar los nombres" required>
                 <label for="name">Apellido:</label>
-                <input type="text" class="form-control" id="last_name" name="last_name" value="{{ $employee->last_name }}" required>
-                <label for="occupation">Categoria:</label>
+                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Ingresar los apellidos" required>
+                <label for="occupation">Ocupacion:</label>
                 <select name="occupation" id="occupation" class="form-control" required>
-                    @foreach ($categories as $occupation)
-                    @if ($occupation->status == 1)
+                    @foreach ($occupations as $occupation)
+                    
                     <option value="{{ $occupation->id }}">{{ $occupation->name }}</option>
-                    @endif
+                    
                     @endforeach
                 </select>
+                <label for="name">Telefono:</label>
+                <input type="text" class="form-control" id="phone" name="phone" placeholder="Ingresar el numero de telefono" required>
+                <label for="name">Direccion:</label>
+                <input type="text" class="form-control" id="address" name="address" placeholder="Ingresar la direccion" required>
             </div>
-            <button type="submit" class="btn btn-primary">Actualizar</button>
-        </form> -->
+            <!-- Add other fields as needed -->
+            <button type="submit" class="btn btn-primary">Crear</button>
+        </form>
     </div>
 </x-app-layout>

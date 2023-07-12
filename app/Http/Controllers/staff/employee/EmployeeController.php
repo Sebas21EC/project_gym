@@ -32,16 +32,24 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'identify' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
             'occupation' => 'required|exists:occupations,id',
         ]);
 
         $employee = new Employee();
-        $employee->name = $request->name;
+        $employee->first_name = $request->first_name;
+        $employee->last_name = $request->last_name;
+        $employee->identify = $request->identify;
+        $employee->phone = $request->phone;
+        $employee->address = $request->address;
         $employee->occupation_id = $request->occupation;
         $employee->save();
 
-        return redirect()->route('staff.employee.index')->with('success', 'Empleado creado con éxito');
+        return redirect()->route('employee.index')->with('success', 'Empleado creado con éxito');
     }
 
     /**
@@ -69,16 +77,24 @@ class EmployeeController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'name' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'identify' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
             'occupation' => 'required|exists:occupations,id',
         ]);
 
         $employee = Employee::find($id);
-        $employee->name = $request->name;
-        $employee->category_id = $request->category;
+        $employee->first_name = $request->first_name;
+        $employee->last_name = $request->last_name;
+        $employee->identify = $request->identify;
+        $employee->phone = $request->phone;
+        $employee->address = $request->address;
+        $employee->occupation_id = $request->occupation;
         $employee->save();
 
-        return redirect()->route('staff.employee.index')->with('success', 'Empleado actualizado con éxito');
+        return redirect()->route('employee.index')->with('success', 'Empleado actualizado con éxito');
     }
 
     /**
@@ -87,14 +103,11 @@ class EmployeeController extends Controller
     public function destroy(string $id)
     {
         $employee = Employee::find($id);
-        $relatedemployees = User::where('employee_id', $employee->id)
-            ->where('status', 1)
-            ->count();
+        $relatedemployees = User::where('employee_id', $employee->id)->count();
         if ($relatedemployees > 0) {
             return redirect()->back()->with('error', 'No se puede eliminar el employeeo porque tiene employeeos relacionados en bodega');
         }
-        $employee->status = 0;
-        $employee->save();
+        $employee->delete();
         return redirect()->back()->with('success', 'employeeo eliminado con éxito');
     }
 }
