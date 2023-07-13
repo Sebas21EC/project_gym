@@ -22,8 +22,21 @@ class Controller extends BaseController
       //role
         'not_access_index_role' => 'SECURITY/ROLE/NOT-AUTHORIZED-INDEX',
         'access_index_role' => 'SECURITY/ROLE/AUTHORIZED-INDEX',
-        // 'not_access_status_role' => 'SECURITY/ROLE/NOT-AUTHORIZED-CHANGE-STATUS',
-        // 'access_status_role' => 'SECURITY/ROLE/CHANGE-STATUS',
+        'not_access_create_role' => 'SECURITY/ROLE/NOT-AUTHORIZED-CREATE-VIEW',
+        'access_create_role' => 'SECURITY/ROLE/AUTHORIZED-CREATE-VIEW',
+        'not_access_store_role' => 'SECURITY/ROLE/NOT-AUTHORIZED-STORE',
+        'access_store_role' => 'SECURITY/ROLE/AUTHORIZED-STORE',
+        'not_access_edit_role' => 'SECURITY/ROLE/NOT-AUTHORIZED-EDIT-VIEW',
+        'access_edit_role' => 'SECURITY/ROLE/AUTHORIZED-EDIT-VIEW',
+        'not_access_update_role' => 'SECURITY/ROLE/NOT-AUTHORIZED-UPDATE',
+        'access_update_role' => 'SECURITY/ROLE/AUTHORIZED-UPDATE',
+        'not_access_destroy_role' => 'SECURITY/ROLE/NOT-AUTHORIZED-DESTROY',
+        'access_destroy_role' => 'SECURITY/ROLE/AUTHORIZED-DESTROY',
+        'not_access_show_role' => 'SECURITY/ROLE/NOT-AUTHORIZED-SHOW',
+        'access_show_role' => 'SECURITY/ROLE/AUTHORIZED-SHOW',
+        'not_access_status_role' => 'SECURITY/ROLE/NOT-AUTHORIZED-CHANGE-STATUS',
+        'access_status_role' => 'SECURITY/ROLE/CHANGE-STATUS',
+              
 
         // ---------------Audit Trail-----------------
         'not_access_index_audit' => 'AUDIT/AUDIT-TRAIL/NOT-AUTHORIZED-INDEX',
