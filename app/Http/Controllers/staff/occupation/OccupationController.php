@@ -15,11 +15,11 @@ class OccupationController extends Controller
     public function index()
     {
 
-        $rol_names=array("administrator","operator");
+        $rol_names = array("administrator","operator");
 
-        if(!Gate::allows('has_role', [$rol_names])){
-            $this->addAudit(Auth::user(),$this->typeAudit['not_access_index_role'],'');
-            return redirect()->route('dashboard')->with('error','You do not have permission to access!');
+        if (!Gate::allows('has_role', [$rol_names])) {
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_index_occupation'], '');
+            return redirect()->route('dashboard')->with('error', 'Usted no tiene permiso para ver ocupaciones!');
         }
 
         $occupation = Occupation::all();
@@ -27,6 +27,12 @@ class OccupationController extends Controller
     }
     public function create()
     {
+        $rol_names = array("administrator");
+
+        if (!Gate::allows('has_role', [$rol_names])) {
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_index_occupation'], '');
+            return redirect()->route('occupation.index')->with('error', 'Usted no tiene permiso para crear ocupaciones!');
+        }
         return view('staff.occupation.create');
     }
 
@@ -42,7 +48,7 @@ class OccupationController extends Controller
         $occupation->name = $request->name;
         $occupation->save();
 
-        return redirect()->route('staff.occupation.index')->with('success', 'Ocupacion creada con éxito');
+        return redirect()->route('occupation.index')->with('success', 'Ocupacion creada con éxito');
     }
 
     /**
@@ -58,6 +64,12 @@ class OccupationController extends Controller
      */
     public function edit(string $id)
     {
+        $rol_names = array("administrator","operator");
+
+        if (!Gate::allows('has_role', [$rol_names])) {
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_index_occupation'], '');
+            return redirect()->route('occupation.index')->with('error', 'Usted no tiene permiso para editar ocupaciones!');
+        }
         $occupation = Occupation::find($id);
         return view('staff.occupation.edit', ['occupation' => $occupation]);
     }
@@ -74,7 +86,7 @@ class OccupationController extends Controller
         $occupation->name = $request->name;
         $occupation->save();
 
-        return redirect()->route('staff.occupation.index')->with('success', 'Ocupacion actualizada con éxito');
+        return redirect()->route('occupation.index')->with('success', 'Ocupacion actualizada con éxito');
     }
 
     /**
@@ -82,6 +94,14 @@ class OccupationController extends Controller
      */
     public function destroy(string $id)
     {
+
+        $rol_names = array("administrator");
+
+        if (!Gate::allows('has_role', [$rol_names])) {
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_index_occupation'], '');
+            return redirect()->route('occupation.index')->with('error', 'Usted no tiene permiso para eliminar ocupaciones!');
+        }
+
         $occupation = Occupation::find($id);
         if ($occupation->id == 1) {
             return redirect()->back()->with('error', 'No puedes eliminar la ocupacion principal');

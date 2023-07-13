@@ -17,7 +17,7 @@ class RoleController extends Controller
 
         if (!Gate::allows('has_role', [$rol_names])) {
             $this->addAudit(Auth::user(), $this->typeAudit['not_access_index_role'], '');
-            return redirect()->route('dashboard')->with('error', 'Usted no tiene permiso para acceder a la vista de \'ROLES\'!');
+            return redirect()->route('dashboard')->with('error', 'Usted no tiene permiso para ver roles!');
         }
 
         $this->addAudit(Auth::user(), $this->typeAudit['access_index_role'], '');
@@ -27,6 +27,12 @@ class RoleController extends Controller
 
     public function create()
     {
+        $rol_names = array("administrator");
+
+        if (!Gate::allows('has_role', [$rol_names])) {
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_index_role'], '');
+            return redirect()->route('role.index')->with('error', 'Usted no tiene permiso para crear roles!');
+        }
         return view('security.role.create');
     }
 
@@ -61,6 +67,12 @@ class RoleController extends Controller
      */
     public function edit(string $id)
     {
+        $rol_names = array("administrator");
+
+        if (!Gate::allows('has_role', [$rol_names])) {
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_index_role'], '');
+            return redirect()->route('role.index')->with('error', 'Usted no tiene permiso para editar roles!');
+        }
         $role = Role::find($id);
         return view('security.role.edit', ['role' => $role]);
     }
@@ -86,6 +98,13 @@ class RoleController extends Controller
      */
     public function destroy(string $id)
     {
+        $rol_names = array("administrator");
+
+        if (!Gate::allows('has_role', [$rol_names])) {
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_index_role'], '');
+            return redirect()->route('role.index')->with('error', 'Usted no tiene permiso para desactivar roles!');
+        }
+
         $role = Role::find($id);
         if ($role->id == 1) {
             return redirect()->back()->with('error', 'No puedes eliminar el rol principal');

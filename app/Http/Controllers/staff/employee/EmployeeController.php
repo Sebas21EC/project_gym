@@ -7,12 +7,21 @@ use App\Models\staff\employee\Employee;
 use App\Models\staff\occupation\Occupation;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class EmployeeController extends Controller
 {
     //
     public function index()
     {
+        $rol_names = array("administrator","operator","user");
+
+        if (!Gate::allows('has_role', [$rol_names])) {
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_index_employee'], '');
+            return redirect()->route('dashboard')->with('error', 'Usted no tiene permiso para ver empleados!');
+        }
+
         $employees = Employee::all();
         return view('staff.employee.index', ['employees' => $employees]);
     }
@@ -22,6 +31,12 @@ class EmployeeController extends Controller
      */
     public function create()
     {
+        $rol_names = array("administrator","operator","user");
+
+        if (!Gate::allows('has_role', [$rol_names])) {
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_index_employee'], '');
+            return redirect()->route('employee.index')->with('error', 'Usted no tiene permiso para crear empleados!');
+        }
         $occupations = Occupation::all();
         return view('staff.employee.create', ['occupations' => $occupations]);
     }
@@ -57,6 +72,12 @@ class EmployeeController extends Controller
      */
     public function show(string $id)
     {
+        $rol_names = array("administrator","operator");
+
+        if (!Gate::allows('has_role', [$rol_names])) {
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_index_employee'], '');
+            return redirect()->route('employee.index')->with('error', 'Usted no tiene permiso para mostrar empleados!');
+        }
         $employee = Employee::find($id);
         return view('staff.employee.show', ['employee' => $employee]);
     }
@@ -66,6 +87,12 @@ class EmployeeController extends Controller
      */
     public function edit(string $id)
     {
+        $rol_names = array("administrator","operator");
+
+        if (!Gate::allows('has_role', [$rol_names])) {
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_index_employee'], '');
+            return redirect()->route('employee.index')->with('error', 'Usted no tiene permiso para editar empleados!');
+        }
         $employee = Employee::find($id);
         $occupations = Occupation::all();
         return view('staff.employee.edit', ['employee' => $employee, 'occupations' => $occupations]);
@@ -102,6 +129,13 @@ class EmployeeController extends Controller
      */
     public function destroy(string $id)
     {
+        $rol_names = array("administrator");
+
+        if (!Gate::allows('has_role', [$rol_names])) {
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_index_employee'], '');
+            return redirect()->route('employee.index')->with('error', 'Usted no tiene permiso para eliminar empleados!');
+        }
+
         $employee = Employee::find($id);
         $relatedemployees = User::where('employee_id', $employee->id)->count();
         if ($relatedemployees > 0) {

@@ -42,14 +42,14 @@
                             </li>
                             <li>
                                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                    <x-nav-link :href="route('staff.occupation.index')" :active="request()->routeIs('index')">
+                                    <x-nav-link :href="route('occupation.index')" :active="request()->routeIs('index')">
                                         {{ __('Ocupaciones') }}
                                     </x-nav-link>
                                 </div>
                             </li>
                             <li>
                                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                    <x-nav-link :href="route('staff.occupation.index')" :active="request()->routeIs('index')">
+                                    <x-nav-link :href="route('occupation.index')" :active="request()->routeIs('index')">
                                         {{ __('Ocupaciones') }}
                                     </x-nav-link>
                                 </div>
@@ -61,7 +61,7 @@
                 @endif
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('staff.occupation.index')" :active="request()->routeIs('index')">
+                    <x-nav-link :href="route('occupation.index')" :active="request()->routeIs('index')">
                         {{ __('Ocupaciones') }}
                     </x-nav-link>
                 </div>

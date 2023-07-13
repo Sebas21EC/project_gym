@@ -5,25 +5,25 @@
         </h2>
 
     </x-slot>
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
+            @if (session('error'))
+            <div class="alert alert-danger">{{ session('error') }}</div>
+            @endif
+
+            @error('color')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+
+            @if (session('success'))
+            <h6 class="alert alert-success">{{ session('success') }}</h6>
+            @endif
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-
                     <div class="container">
                         <table class="table">
-
-                            @if (session('error'))
-                            <div class="alert alert-danger">{{ session('error') }}</div>
-                            @endif
-
-                            @error('color')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-
-                            @if (session('success'))
-                            <h6 class="alert alert-success">{{ session('success') }}</h6>
-                            @endif
                             <form action="{{ route('occupation.create') }}" method="GET">
                                 <button type="submit" class="btn btn-success text-black">Crear</button>
                             </form>
