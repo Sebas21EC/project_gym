@@ -34,7 +34,7 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                    <x-nav-link :href="route('security.role.index')" :active="request()->routeIs('index')">
+                                    <x-nav-link :href="route('role.index')" :active="request()->routeIs('index')">
                                         {{ __('Roles') }}
                                     </x-nav-link>
                                 </div>
