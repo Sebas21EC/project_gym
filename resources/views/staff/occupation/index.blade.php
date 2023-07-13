@@ -22,11 +22,12 @@
             @endif
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
+                    <form action="{{ route('occupation.create') }}" method="GET">
+                        <button type="submit" class="btn btn-outline-success ">Crear</button>
+                    </form>
                     <div class="container">
                         <table class="table table-hover display" id="table_id">
-                            <form action="{{ route('occupation.create') }}" method="GET">
-                                <button type="submit" class="btn btn-outline-success ">Crear</button>
-                            </form>
+
                             <thead class="thead-dark ">
                                 <tr>
                                     <th scope="col">#</th>

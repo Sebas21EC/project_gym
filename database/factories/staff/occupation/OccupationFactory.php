@@ -18,6 +18,8 @@ class OccupationFactory extends Factory
     {
         return [
             'name'=>$this->faker->unique()->jobTitle(),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

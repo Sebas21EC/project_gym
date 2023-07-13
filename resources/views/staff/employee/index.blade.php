@@ -20,7 +20,9 @@
             @endif
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-
+                    <form action="{{ route('employee.create') }}" method="GET">
+                        <button type="submit" class="btn btn-outline-success">Crear</button>
+                    </form>
                     <div class="container">
                         <table class="table table-hover display" id="table_id">
                             <!-- @if (session('error'))
@@ -31,9 +33,7 @@
                             @if (session('success'))
                             <h6 class="alert alert-success">{{ session('success') }}</h6>
                             @endif -->
-                            <form action="{{ route('employee.create') }}" method="GET">
-                                <button type="submit" class="btn btn-outline-success">Crear</button>
-                            </form>
+
 
                             <thead class="thead-dark">
                                 <tr>
@@ -97,4 +97,3 @@
                         </table>
                     </div>
 </x-app-layout>
-

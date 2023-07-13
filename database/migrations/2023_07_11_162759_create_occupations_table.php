@@ -25,15 +25,23 @@ return new class extends Migration
         DB::table('occupations')->insert([
             [
                 'name' => 'Secretario',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'name' => 'Tics',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'name' => 'Teacher',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'name' => 'Usuario',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             
         ]);
