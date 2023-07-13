@@ -52,10 +52,10 @@ class User extends Authenticatable
         // 'password' => 'hashed',
     ];
 
-    public function employee()
-    {
-        return $this->belongsTo(Employee::class);
-    }
+    // public function employee()
+    // {
+    //     return $this->belongsTo(Employee::class);
+    // }
 
     public function roles():BelongsToMany
     {
@@ -65,6 +65,11 @@ class User extends Authenticatable
     public function hasRole(string $role_name):bool
     {
         return $this->roles()->where('role_name', $role_name)->exists();
+    }
+
+    public function hasEmployee(string $firts_name):bool
+    {
+        return $this->employees()->where('first_name', $firts_name)->exists();
     }
    
 }

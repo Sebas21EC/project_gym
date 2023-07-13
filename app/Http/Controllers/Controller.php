@@ -19,7 +19,7 @@ class Controller extends BaseController
     protected $typeAudit = [
         // ***SECURYTY***
 
-      //role
+        //role
         'not_access_index_role' => 'SECURITY/ROLE/NOT-AUTHORIZED-INDEX',
         'access_index_role' => 'SECURITY/ROLE/AUTHORIZED-INDEX',
         'not_access_create_role' => 'SECURITY/ROLE/NOT-AUTHORIZED-CREATE-VIEW',
@@ -36,7 +36,7 @@ class Controller extends BaseController
         'access_show_role' => 'SECURITY/ROLE/AUTHORIZED-SHOW',
         'not_access_status_role' => 'SECURITY/ROLE/NOT-AUTHORIZED-CHANGE-STATUS',
         'access_status_role' => 'SECURITY/ROLE/CHANGE-STATUS',
-              
+
         //occupation
         'not_access_index_occupation' => 'SECURITY/OCCUPATION/NOT-AUTHORIZED-INDEX',
         'access_index_occupation' => 'SECURITY/OCCUPATION/AUTHORIZED-INDEX',
@@ -55,6 +55,27 @@ class Controller extends BaseController
         'not_access_status_occupation' => 'SECURITY/OCCUPATION/NOT-AUTHORIZED-CHANGE-STATUS',
         'access_status_occupation' => 'SECURITY/OCCUPATION/CHANGE-STATUS',
 
+
+        //user
+        'not_access_index_user' => 'SECURITY/USER/NOT-AUTHORIZED-INDEX',
+        'access_index_user' => 'SECURITY/USER/AUTHORIZED-INDEX',
+        'not_access_create_user' => 'SECURITY/USER/NOT-AUTHORIZED-CREATE-VIEW',
+        'access_create_user' => 'SECURITY/USER/AUTHORIZED-CREATE-VIEW',
+        'not_access_store_user' => 'SECURITY/USER/NOT-AUTHORIZED-STORE',
+        'access_store_user' => 'SECURITY/USER/AUTHORIZED-STORE',
+        'not_access_edit_user' => 'SECURITY/USER/NOT-AUTHORIZED-EDIT-VIEW',
+        'access_edit_user' => 'SECURITY/USER/AUTHORIZED-EDIT-VIEW',
+        'not_access_update_user' => 'SECURITY/USER/NOT-AUTHORIZED-UPDATE',
+        'access_update_user' => 'SECURITY/USER/AUTHORIZED-UPDATE',
+        'not_access_destroy_user' => 'SECURITY/USER/NOT-AUTHORIZED-DESTROY',
+        'access_destroy_user' => 'SECURITY/USER/AUTHORIZED-DESTROY',
+        'not_access_show_user' => 'SECURITY/USER/NOT-AUTHORIZED-SHOW',
+        'access_show_user' => 'SECURITY/USER/AUTHORIZED-SHOW',
+        'not_access_status_user' => 'SECURITY/USER/NOT-AUTHORIZED-CHANGE-STATUS',
+        'access_status_user' => 'SECURITY/USER/CHANGE-STATUS',
+
+
+
         //employee
         'not_access_index_employee' => 'SECURITY/EMPLOYEE/NOT-AUTHORIZED-INDEX',
         'access_index_employee' => 'SECURITY/EMPLOYEE/AUTHORIZED-INDEX',
@@ -72,6 +93,10 @@ class Controller extends BaseController
         'access_show_employee' => 'SECURITY/EMPLOYEE/AUTHORIZED-SHOW',
         'not_access_status_employee' => 'SECURITY/EMPLOYEE/NOT-AUTHORIZED-CHANGE-STATUS',
         'access_status_employee' => 'SECURITY/EMPLOYEE/CHANGE-STATUS',
+
+
+
+
 
 
 

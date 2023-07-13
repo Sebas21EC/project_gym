@@ -28,11 +28,12 @@ class RoleController extends Controller
     public function create()
     {
         $rol_names = array("administrator");
-
         if (!Gate::allows('has_role', [$rol_names])) {
-            $this->addAudit(Auth::user(), $this->typeAudit['not_access_index_role'], '');
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_create_role'], '');
             return redirect()->route('role.index')->with('error', 'Usted no tiene permiso para crear roles!');
         }
+
+        $this->addAudit(Auth::user(), $this->typeAudit['access_create_role'], '');
         return view('security.role.create');
     }
 
@@ -41,6 +42,13 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
+
+        // $role_names = array("administrator");
+        // if (!Gate::allows('has_role', [$role_names])) {
+        //     $this->addAudit(Auth::user(), $this->typeAudit['not_access_store_role'], '');
+        //     return redirect()->route('role.index')->with('error', 'Usted no tiene permiso para crear roles!');
+        // }
+
         $request->validate([
             'role_name' => 'required'
 
@@ -51,6 +59,7 @@ class RoleController extends Controller
         $role->is_active = $request->is_active == 1 ? true : false;
         $role->save();
 
+        $this->addAudit(Auth::user(), $this->typeAudit['store_role'], $role->toJson());
         return redirect()->route('role.index')->with('success', 'Rol creado con éxito');
     }
 
@@ -70,9 +79,11 @@ class RoleController extends Controller
         $rol_names = array("administrator");
 
         if (!Gate::allows('has_role', [$rol_names])) {
-            $this->addAudit(Auth::user(), $this->typeAudit['not_access_index_role'], '');
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_edit_role'], '');
             return redirect()->route('role.index')->with('error', 'Usted no tiene permiso para editar roles!');
         }
+
+        $this->addAudit(Auth::user(), $this->typeAudit['access_edit_role'], '');
         $role = Role::find($id);
         return view('security.role.edit', ['role' => $role]);
     }
@@ -101,7 +112,7 @@ class RoleController extends Controller
         $rol_names = array("administrator");
 
         if (!Gate::allows('has_role', [$rol_names])) {
-            $this->addAudit(Auth::user(), $this->typeAudit['not_access_index_role'], '');
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_destroy_role'], '');
             return redirect()->route('role.index')->with('error', 'Usted no tiene permiso para desactivar roles!');
         }
 
@@ -111,6 +122,8 @@ class RoleController extends Controller
         } else {
             $role->is_active = 0;
             $role->save();
+
+            $this->addAudit(Auth::user(), $this->typeAudit['access_destroy_role'], $role->toJson());
             return redirect()->route('role.index')->with('success', 'Rol desactivado con éxito');
         }
     }

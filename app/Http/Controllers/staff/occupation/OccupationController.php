@@ -30,7 +30,7 @@ class OccupationController extends Controller
         $rol_names = array("administrator");
 
         if (!Gate::allows('has_role', [$rol_names])) {
-            $this->addAudit(Auth::user(), $this->typeAudit['not_access_index_occupation'], '');
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_create_occupation'], '');
             return redirect()->route('occupation.index')->with('error', 'Usted no tiene permiso para crear ocupaciones!');
         }
         return view('staff.occupation.create');
@@ -67,7 +67,7 @@ class OccupationController extends Controller
         $rol_names = array("administrator","operator");
 
         if (!Gate::allows('has_role', [$rol_names])) {
-            $this->addAudit(Auth::user(), $this->typeAudit['not_access_index_occupation'], '');
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_edit_occupation'], '');
             return redirect()->route('occupation.index')->with('error', 'Usted no tiene permiso para editar ocupaciones!');
         }
         $occupation = Occupation::find($id);
@@ -98,7 +98,7 @@ class OccupationController extends Controller
         $rol_names = array("administrator");
 
         if (!Gate::allows('has_role', [$rol_names])) {
-            $this->addAudit(Auth::user(), $this->typeAudit['not_access_index_occupation'], '');
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_destroy_occupation'], '');
             return redirect()->route('occupation.index')->with('error', 'Usted no tiene permiso para eliminar ocupaciones!');
         }
 
