@@ -12,10 +12,14 @@
                 </div>
 
                 @php
-                $module_operator = ['operator'];
+                $module_operator = ['operator', 'administrator'];
                 $module_security = ['administrator'];
-                $module_customer = ['user'];
+                $module_store = ['user', 'administrator','operator'];
                 $module_audit = ['auditor'];
+                $module_admin = ['administrator'];
+                $module_employee = ['employee', 'administrator','operator'];
+        
+
                 @endphp
 
                 <!-- Navigation Links -->
@@ -25,11 +29,11 @@
                     </x-nav-link>
                 </div>
 
-                @if (Gate::allows('has_role', [$module_security,$module_audit]))
+                @if (Gate::allows('has_role', [$module_security]))
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <li class="nav-item dropdown list-unstyled">
                         <a href="#" class=" btn " style="margin-top:15px" data-toggle="dropdown">
-                            {{ __('Roles') }}
+                            {{ __('Usuarios') }}
                         </a>
 
                         <ul class="dropdown-menu">
@@ -43,14 +47,14 @@
                             <li>
                                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                     <x-nav-link :href="route('occupation.index')" :active="request()->routeIs('index')">
-                                        {{ __('Ocupaciones') }}
+                                        {{ __('Usuarios') }}
                                     </x-nav-link>
                                 </div>
                             </li>
                             <li>
                                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                    <x-nav-link :href="route('occupation.index')" :active="request()->routeIs('index')">
-                                        {{ __('Ocupaciones') }}
+                                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('index')">
+                                        {{ __('Reporte') }}
                                     </x-nav-link>
                                 </div>
                             </li>
@@ -60,17 +64,48 @@
 
                 @endif
 
+                
+                @if (Gate::allows('has_role', [$module_store]))
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('occupation.index')" :active="request()->routeIs('index')">
-                        {{ __('Ocupaciones') }}
-                    </x-nav-link>
-                </div>
+                    <li class="nav-item dropdown list-unstyled">
+                        <a href="#" class=" btn " style="margin-top:15px" data-toggle="dropdown">
+                            {{ __('Empleados') }}
+                        </a>
 
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('employee.index')" :active="request()->routeIs('index')">
-                        {{ __('Empleados') }}
-                    </x-nav-link>
+                        <ul class="dropdown-menu">
+
+                            <li>
+                                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                    <x-nav-link :href="route('employee.index')" :active="request()->routeIs('index')">
+                                        {{ __('Empleados') }}
+                                    </x-nav-link>
+                                </div>
+                            </li>
+                            @if (Gate::allows('has_role', [$module_employee]))
+                            <li>
+                                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                    <x-nav-link :href="route('occupation.index')" :active="request()->routeIs('index')">
+                                        {{ __('Ocupaciones') }}
+                                    </x-nav-link>
+                                </div>
+                            </li>
+                            @endif
+                           
+                            <li>
+                                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('index')">
+                                        {{ __('Reporte') }}
+                                    </x-nav-link>
+                                </div>
+                            </li>
+                           
+
+                        </ul>
+                    </li>
                 </div>
+                @endif
+
+
 
             </div>
 
