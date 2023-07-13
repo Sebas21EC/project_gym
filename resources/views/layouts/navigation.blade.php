@@ -18,6 +18,7 @@
                 $module_audit = ['auditor'];
                 $module_admin = ['administrator'];
                 $module_employee = ['employee', 'administrator','operator'];
+                $module_partner = ['partner', 'administrator'];
         
 
                 @endphp
@@ -104,6 +105,25 @@
                     </li>
                 </div>
                 @endif
+               <!-- Modulo CLientas -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <li class="nav-item dropdown list-unstyled">
+                        <a href="#" class=" btn " style="margin-top:15px" data-toggle="dropdown">
+                            {{ __('Clientas') }}
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                    <x-nav-link :href="route('partners.index')" :active="request()->routeIs('index')">
+                                        {{ __('Clientas') }}
+                                    </x-nav-link>
+                                </div>
+                            </li>                   
+                        </ul>
+                    </li>
+                </div>
+               
 
 
 
