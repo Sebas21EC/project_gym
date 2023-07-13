@@ -43,7 +43,7 @@
                                 @foreach ($roles as $role)
                                 <tr>
                                     <td>{{ $role->role_name }}</td>
-                                    <td>{{ $role->is_active==1?'SI':'NO' }}</td>
+                                    <td>{{ $role->is_active==1?'Activo':'Inactivo' }}</td>
                                     <td>{{ $role->created_at }}</td>
                                     <td>{{ $role->updated_at }}</td>
                                     <td>
