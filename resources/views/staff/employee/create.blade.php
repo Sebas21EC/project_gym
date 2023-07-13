@@ -35,7 +35,7 @@
                 <input type="text" class="form-control" id="address" name="address" placeholder="Ingresar la direccion" required>
             </div>
             <!-- Add other fields as needed -->
-            <button type="submit" class="btn btn-primary">Crear</button>
+            <button type="submit" class="btn btn-outline-success">Crear</button>
         </form>
     </div>
 </x-app-layout>

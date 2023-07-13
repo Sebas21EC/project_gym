@@ -22,7 +22,7 @@
                 <div class="p-6 text-gray-900">
 
                     <div class="container">
-                        <table class="table">
+                        <table class="table table-hover">
                             <!-- @if (session('error'))
                             <div class="alert alert-danger">
                                 {{ session('error') }}
@@ -32,7 +32,7 @@
                             <h6 class="alert alert-success">{{ session('success') }}</h6>
                             @endif -->
                             <form action="{{ route('employee.create') }}" method="GET">
-                                <button type="submit" class="btn btn-primary">Crear</button>
+                                <button type="submit" class="btn btn-outline-success">Crear</button>
                             </form>
 
                             <thead class="thead-dark">
@@ -63,7 +63,7 @@
                                     <td>
                                         <a href="{{ route('employee.edit', ['employee' => $employee->id]) }}" class="btn btn-primary">Editar</a>
 
-                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal{{ $employee->id }}">Eliminar</button>
+                                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal{{ $employee->id }}">Eliminar</button>
 
                                         <!-- Modal -->
                                         <div class="modal fade" id="modal{{ $employee->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -78,12 +78,12 @@
                                                         <strong>{{ $employee->name }}</strong>?
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No,
+                                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">No,
                                                             cancelar</button>
                                                         <form action="{{ route('employee.destroy', ['employee' => $employee->id]) }}" method="POST">
                                                             @method('DELETE')
                                                             @csrf
-                                                            <button type="submit" class="btn btn-primary">Sí, eliminar
+                                                            <button type="submit" class="btn btn-outline-primary">Sí, eliminar
                                                                 empleado</button>
                                                         </form>
                                                     </div>

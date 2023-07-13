@@ -21,11 +21,11 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div class="container">
-                        <table class="table table-">
+                        <table class="table table-hover">
 
 
                             <form action="{{ route('role.create') }}" method="GET">
-                                <button type="submit" class="btn btn-success text-black">Crear</button>
+                                <button type="submit" class="btn btn-outline-success">Crear</button>
                             </form>
 
                             <thead class="thead-dark ">

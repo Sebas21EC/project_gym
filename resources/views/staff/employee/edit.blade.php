@@ -34,7 +34,7 @@
                 <label for="address">Direccion:</label>
                 <input type="text" class="form-control" id="address" name="address" value="{{ $employee->address }}" required>
             </div>
-            <button type="submit" class="btn btn-primary">Actualizar</button>
+            <button type="submit" class="btn btn-outline-primary">Actualizar</button>
         </form>
     </div>
 

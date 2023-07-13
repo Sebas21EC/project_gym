@@ -23,11 +23,11 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div class="container">
-                        <table class="table">
+                        <table class="table table-hover">
                             <form action="{{ route('occupation.create') }}" method="GET">
-                                <button type="submit" class="btn btn-success text-black">Crear</button>
+                                <button type="submit" class="btn btn-outline-success ">Crear</button>
                             </form>
-                            <thead class="thead-dark">
+                            <thead class="thead-dark ">
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Nombre</th>
