@@ -25,7 +25,7 @@
 
 
                     <div class="container">
-                        <table class="table table-bordered">
+                        <table class="table table-hover display" id="table_id">
 
                             <form action="{{ route('user.create') }}" method="GET">
                                 <button type="submit" class="btn btn-outline-success">Crear</button>
@@ -53,12 +53,37 @@
                                         @endforeach
                                     </td>
                                     <td>
-                                        <form action="{{ route('user.edit', [$user->id]) }}" method="GET">
-                                            @csrf
-                                            @method('GET')
-                                            <button class="btn btn-outline-primary" type="submit">Editar</button>
-                                        </form>
+                                        <a href="{{ route('role.edit', ['role' => $role->id]) }}" class="btn btn-primary">Editar</a>
+
+                                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal{{ $role->id }}">Desactivar</button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="modal{{ $role->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Desactivar</h5>
+                                                        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        ¿Está seguro de que desea desactivar el rol?
+                                                        <strong>{{ $role->name }}</strong>?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button class="btn btn-secondary" data-bs-dismiss="modal">No,
+                                                            cancelar</button>
+                                                        <form action="{{ route('role.destroy', ['role' => $role->id]) }}" method="POST">
+                                                            @method('DELETE')
+                                                            @csrf
+                                                            <button type="submit" class="btn btn-primary text-black">Sí, desactivar
+                                                                rol</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
+
                                 </tr>
                                 @endforeach
                             </tbody>

@@ -46,7 +46,7 @@
                             </li>
                             <li>
                                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                    <x-nav-link :href="route('occupation.index')" :active="request()->routeIs('index')">
+                                    <x-nav-link :href="route('user.index')" :active="request()->routeIs('index')">
                                         {{ __('Usuarios') }}
                                     </x-nav-link>
                                 </div>

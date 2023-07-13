@@ -22,7 +22,7 @@
                 <div class="p-6 text-gray-900">
 
                     <div class="container">
-                        <table class="table table-hover">
+                        <table class="table table-hover display" id="table_id">
                             <!-- @if (session('error'))
                             <div class="alert alert-danger">
                                 {{ session('error') }}
@@ -97,3 +97,4 @@
                         </table>
                     </div>
 </x-app-layout>
+
