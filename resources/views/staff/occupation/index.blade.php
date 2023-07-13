@@ -54,11 +54,11 @@
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Eliminar categoría</h5>
+                                                        <h5 class="modal-title" id="exampleModalLabel">Eliminar ocupacion</h5>
                                                         <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        ¿Está seguro de que desea eliminar la categoría
+                                                        ¿Está seguro de que desea eliminar la ocupacion
                                                         <strong>{{ $occupation->name }}</strong>?
                                                     </div>
                                                     <div class="modal-footer">
@@ -68,7 +68,7 @@
                                                             @method('DELETE')
                                                             @csrf
                                                             <button type="submit" class="btn btn-primary text-black">Sí, eliminar
-                                                                categoría</button>
+                                                                ocupacion</button>
                                                         </form>
                                                     </div>
                                                 </div>

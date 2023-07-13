@@ -71,12 +71,11 @@ class RoleController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'role_name' => 'required',
-            'is_active'=>'required'
+            'role_name' => 'required'
         ]);
         $role = Role::find($id);
         $role->role_name = $request->role_name;
-        $role->is_active = $request->is_active;
+        $role->is_active = $request->is_active==1?true:false;
         $role->save();
 
         return redirect()->route('role.index')->with('success', 'Rol actualizado con éxito');
@@ -88,10 +87,15 @@ class RoleController extends Controller
     public function destroy(string $id)
     {
         $role = Role::find($id);
+        $role_user = Role_user::find($id);
         if ($role->id == 1) {
             return redirect()->back()->with('error', 'No puedes eliminar el rol principal');
         } else {
-            Role_user::where('role_id', $id)->delete();
+            
+            if($role_user->role_id == $id){
+                Role_user::where('role_id', $id)->delete();
+
+            }
             $role->delete();
 
             return redirect()->back()->with('success', 'Rol eliminado con éxito');

@@ -62,12 +62,12 @@
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Eliminar employeeo</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">Eliminar empleado</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            ¿Está seguro de que desea eliminar el employeeo
+                                            ¿Está seguro de que desea eliminar el empleado
                                             <strong>{{ $employee->name }}</strong>?
                                         </div>
                                         <div class="modal-footer">
@@ -78,7 +78,7 @@
                                                 @method('DELETE')
                                                 @csrf
                                                 <button type="submit" class="btn btn-primary">Sí, eliminar
-                                                    employeeo</button>
+                                                    empleado</button>
                                             </form>
                                         </div>
                                     </div>

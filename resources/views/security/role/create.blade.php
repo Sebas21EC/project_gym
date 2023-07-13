@@ -19,8 +19,10 @@
                 <label for="role_name">Nombre:</label>
                 <input type="text" class="form-control" id="role_name" name="role_name" placeholder="Ingresar el nombre del rol" required>
                 <label for="is_active">Estado:</label><br>
-                <input type="checkbox" class="form-check-input" id="is_active" name="is_active" value="1">
-                <label class="form-check-label" for="role_status">Activo</label>
+                <select name="is_active" id="is_active" class="form-control">
+                <option value="1">Activo</option>
+                <option value="0">Inactivo</option>
+            </select>
             </div>
             <!-- Add other fields as needed -->
             <button type="submit" class="btn btn-success text-black">Crear</button>
