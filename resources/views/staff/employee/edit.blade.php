@@ -16,11 +16,6 @@
         <form action="{{ route('employee.update', $employee->id) }}" method="POST">
             @method('PUT')
             @csrf
-            
-                        <td>{{ $employee->phone }}</td>
-                        <td>{{ $employee->address }}</td>
-                        <td>{{ $employee->created_at }}</td>
-                        <td>{{ $employee->updated_at }}</td>
             <div class="form-group">
             <label for="identify">Identificacion:</label>
                 <input type="text" class="form-control" id="identify" name="identify" value="{{ $employee->identify }}" required>
@@ -36,7 +31,7 @@
                 </select>
                 <label for="phone">Telefono:</label>
                 <input type="text" class="form-control" id="phone" name="phone" value="{{ $employee->phone }}" required>
-                <label for="address">Telefono:</label>
+                <label for="address">Direccion:</label>
                 <input type="text" class="form-control" id="address" name="address" value="{{ $employee->address }}" required>
             </div>
             <button type="submit" class="btn btn-primary">Actualizar</button>

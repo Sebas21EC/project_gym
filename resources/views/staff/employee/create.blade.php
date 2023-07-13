@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="container">
-        <h2>Create employeeo</h2>
+        <h2>Crear empleado</h2>
 
         @if ($errors->any())
         <div class="alert alert-danger">

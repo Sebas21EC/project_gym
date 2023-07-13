@@ -41,8 +41,8 @@ class RoleController extends Controller
         ]);
         $role = new Role();
         $role->role_name = $request->role_name;
-        
-        $role->is_active = $request->is_active==1?true:false;
+
+        $role->is_active = $request->is_active == 1 ? true : false;
         $role->save();
 
         return redirect()->route('role.index')->with('success', 'Rol creado con éxito');
@@ -75,7 +75,7 @@ class RoleController extends Controller
         ]);
         $role = Role::find($id);
         $role->role_name = $request->role_name;
-        $role->is_active = $request->is_active==1?true:false;
+        $role->is_active = $request->is_active == 1 ? true : false;
         $role->save();
 
         return redirect()->route('role.index')->with('success', 'Rol actualizado con éxito');
@@ -87,18 +87,12 @@ class RoleController extends Controller
     public function destroy(string $id)
     {
         $role = Role::find($id);
-        $role_user = Role_user::find($id);
         if ($role->id == 1) {
             return redirect()->back()->with('error', 'No puedes eliminar el rol principal');
         } else {
-            
-            if($role_user->role_id == $id){
-                Role_user::where('role_id', $id)->delete();
+            $role->is_active = 0;
 
-            }
-            $role->delete();
-
-            return redirect()->back()->with('success', 'Rol eliminado con éxito');
+            return redirect()->back()->with('success', 'Rol desactivado con éxito');
         }
     }
 }

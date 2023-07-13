@@ -17,7 +17,7 @@
             @csrf
             <div class="form-group">
                 <label for="name">Nombre:</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Enter occupation name" required>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Ingresar el nombre de la ocupaciona" required>
             </div>
             <!-- Add other fields as needed -->
             <button type="submit" class="btn btn-success text-black">Crear</button>
