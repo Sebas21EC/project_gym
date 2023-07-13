@@ -91,8 +91,8 @@ class RoleController extends Controller
             return redirect()->back()->with('error', 'No puedes eliminar el rol principal');
         } else {
             $role->is_active = 0;
-
-            return redirect()->back()->with('success', 'Rol desactivado con éxito');
+            $role->save();
+            return redirect()->route('role.index')->with('success', 'Rol desactivado con éxito');
         }
     }
 }
