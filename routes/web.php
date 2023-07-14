@@ -47,5 +47,6 @@ Route::resource('role',RoleController::class)->middleware('auth');
 //user
 Route::resource('user', UserController::class)->middleware('auth');
 
+Route::resource('partners', App\Http\Controllers\PartnerController::class);
 
 require __DIR__.'/auth.php';
