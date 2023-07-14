@@ -123,8 +123,24 @@
                         </ul>
                     </li>
                 </div>
-               
+               <!-- Modulo Tipos de Suscripcion -->
+               <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <li class="nav-item dropdown list-unstyled">
+                        <a href="#" class=" btn " style="margin-top:15px" data-toggle="dropdown">
+                            {{ __('Membresía') }}
+                        </a>
 
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                    <x-nav-link :href="route('subscriptionTypes.index')" :active="request()->routeIs('index')">
+                                        {{ __('Tipos') }}
+                                    </x-nav-link>
+                                </div>
+                            </li>                   
+                        </ul>
+                    </li>
+                </div>
 
 
             </div>

@@ -5,11 +5,11 @@
             <th scope="col">Nombre</th>
             <th scope="col">Teléfono</th>
             <th scope="col">Dirección</th>
-            <th scope="col">Fecha</th>
+            <th scope="col">Edad</th>
             <th scope="col">Ocupación</th>
             <th scope="col">Email</th>
             <th scope="col">Tipo</th>
-            <th scope="col">Creado</th>
+            <th scope="col">Fecha de Ingreso</th>
             <th scope="col">Actualizado</th>
             <th>Acciones</th>
         </tr>
@@ -21,11 +21,11 @@
                 <td>{{ $partner->name }}</td>
                 <td>{{ $partner->phone }}</td>
                 <td>{{ $partner->address }}</td>
-                <td>{{ $partner->birth_date }}</td>
+                <td>{{ $partner->birth_date->diffInYears(\Carbon\Carbon::now()) }} años</td>
                 <td>{{ $partner->occupation }}</td>
                 <td>{{ $partner->email }}</td>
                 <td>{{ $partner->type }}</td>
-                <td>{{ $partner->created_at }}</td>
+                <td>{{ \Carbon\Carbon::parse($partner->created_at)->format('Y-m-d')}}</td>
                 <td>{{ $partner->updated_at }}</td>
                 <td>
                 <a href="{{ route('partners.edit', ['partner' => $partner->id]) }}" class="btn btn-primary btn-sm">

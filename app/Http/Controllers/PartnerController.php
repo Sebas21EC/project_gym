@@ -30,7 +30,6 @@ class PartnerController extends AppBaseController
     public function index(Request $request)
     {
         $partners = $this->partnerRepository->all();
-
         return view('partners.index')
             ->with('partners', $partners);
     }
@@ -120,7 +119,7 @@ class PartnerController extends AppBaseController
 
         $partner = $this->partnerRepository->update($request->all(), $id);
 
-        return redirect()->route('partners.index')->with('success', 'Socio actualizado con éxito');
+        return redirect()->route('partners.index')->with('success', 'Clienta actualizado con éxito');
     }
 
     /**
