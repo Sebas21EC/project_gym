@@ -7,10 +7,9 @@ use App\Http\Requests\UpdatePartnerRequest;
 use App\Repositories\PartnerRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
-use Flash;
 use Response;
 
-class PartnerController extends AppBaseController
+class PartnerController extends Controller
 {
     /** @var PartnerRepository $partnerRepository*/
     private $partnerRepository;
@@ -71,7 +70,7 @@ class PartnerController extends AppBaseController
         $partner = $this->partnerRepository->find($id);
 
         if (empty($partner)) {
-            Flash::error('Partner not found');
+            // Flash::error('Partner not found');
 
             return redirect(route('partners.index'));
         }
@@ -91,7 +90,7 @@ class PartnerController extends AppBaseController
         $partner = $this->partnerRepository->find($id);
 
         if (empty($partner)) {
-            Flash::error('Partner not found');
+            // Flash::error('Partner not found');
 
             return redirect(route('partners.index'));
         }
@@ -112,7 +111,7 @@ class PartnerController extends AppBaseController
         $partner = $this->partnerRepository->find($id);
 
         if (empty($partner)) {
-            Flash::error('Partner not found');
+            // Flash::error('Partner not found');
 
             return redirect(route('partners.index'));
         }
@@ -136,14 +135,14 @@ class PartnerController extends AppBaseController
         $partner = $this->partnerRepository->find($id);
 
         if (empty($partner)) {
-            Flash::error('Partner not found');
+            // Flash::error('Partner not found');
 
             return redirect(route('partners.index'));
         }
 
         $this->partnerRepository->delete($id);
 
-        Flash::success('Partner deleted successfully.');
+        // Flash::success('Partner deleted successfully.');
 
         return redirect()->back()->with('success', 'Clienta eliminada con éxito');
     }

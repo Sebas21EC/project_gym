@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\security\role\RoleController;
 use App\Http\Controllers\security\user\UserController;
 use App\Http\Controllers\staff\occupation\OccupationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\staff\employee\EmployeeController;
+use App\Http\Controllers\SubscriptionTypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,7 +49,7 @@ Route::resource('role',RoleController::class)->middleware('auth');
 //user
 Route::resource('user', UserController::class)->middleware('auth');
 
-Route::resource('partners', App\Http\Controllers\PartnerController::class);
-Route::resource('subscriptionTypes', App\Http\Controllers\SubscriptionTypeController::class);
+Route::resource('partners',PartnerController::class);
+Route::resource('subscriptionTypes', SubscriptionTypeController::class);
 
 require __DIR__.'/auth.php';
