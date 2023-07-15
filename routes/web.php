@@ -49,5 +49,6 @@ Route::resource('user', UserController::class)->middleware('auth');
 
 Route::resource('partners', App\Http\Controllers\PartnerController::class);
 Route::resource('subscriptionTypes', App\Http\Controllers\SubscriptionTypeController::class);
+Route::resource('subscriptions', App\Http\Controllers\SubscriptionController::class);
 
 require __DIR__.'/auth.php';

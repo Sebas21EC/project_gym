@@ -60,7 +60,7 @@ class SubscriptionTypeController extends AppBaseController
 
         Flash::success('Subscription Type saved successfully.');
 
-        return redirect(route('subscriptionTypes.index'));
+        return redirect()->route('subscriptionTypes.index')->with('success', 'Tipo de membresía creada correctamente');
     }
 
     /**
@@ -95,9 +95,7 @@ class SubscriptionTypeController extends AppBaseController
         $subscriptionType = $this->subscriptionTypeRepository->find($id);
 
         if (empty($subscriptionType)) {
-            Flash::error('Subscription Type not found');
-
-            return redirect(route('subscriptionTypes.index'));
+            return redirect()->route('subscriptionTypes.index')->with('error', 'Tipo de membresía no encontrada');
         }
 
         return view('subscription_types.edit')->with('subscriptionType', $subscriptionType);

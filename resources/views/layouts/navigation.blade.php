@@ -129,7 +129,6 @@
                         <a href="#" class=" btn " style="margin-top:15px" data-toggle="dropdown">
                             {{ __('Membresía') }}
                         </a>
-
                         <ul class="dropdown-menu">
                             <li>
                                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
@@ -137,12 +136,17 @@
                                         {{ __('Tipos') }}
                                     </x-nav-link>
                                 </div>
-                            </li>                   
+                            </li>
+                            <li>
+                                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                    <x-nav-link :href="route('subscriptions.index')" :active="request()->routeIs('index')">
+                                        {{ __('Membresía') }}
+                                    </x-nav-link>
+                                </div>
+                            </li>                        
                         </ul>
                     </li>
                 </div>
-
-
             </div>
 
             <!-- Settings Dropdown -->

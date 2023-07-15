@@ -5,6 +5,7 @@ namespace App\Models;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Validation\Rules\Unique;
 
 /**
  * Class Partner
@@ -36,6 +37,7 @@ class Partner extends Model
 
 
     public $fillable = [
+        'id',
         'name',
         'phone',
         'address',
@@ -67,6 +69,7 @@ class Partner extends Model
      * @var array
      */
     public static $rules = [
+        'id', 'required'|'integer'|'unique:partners',
         'name' => 'required|string|max:255',
         'phone' => 'required|string|max:255',
         'address' => 'required|string|max:255',
