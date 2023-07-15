@@ -1,7 +1,7 @@
 <table class="table table-hover display my-custom-table" style="margin-top: 60px;" id="table_id">
     <thead class="thead-dark">
         <tr>
-            <th scope="col">Id</th>
+            <th scope="col">#</th>
             <th scope="col">Nombre</th>
             <th scope="col">Teléfono</th>
             <th scope="col">Dirección</th>

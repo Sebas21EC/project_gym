@@ -2,7 +2,7 @@
     <div class="container" style="margin-top: 3rem;">
         <div class="card">
             <div class="card-header">
-                <h2>Actualizar Clienta</h2>
+                <h2>Actualizar Tipo de Membresía</h2>
             </div>
             <div class="card-body">
                 @if ($errors->any())
