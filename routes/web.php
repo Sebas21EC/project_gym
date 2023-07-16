@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\security\role\RoleController;
 use App\Http\Controllers\security\user\UserController;
 use App\Http\Controllers\staff\occupation\OccupationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\staff\employee\EmployeeController;
+use App\Http\Controllers\SubscriptionTypeController;
 
 /*
 |--------------------------------------------------------------------------
