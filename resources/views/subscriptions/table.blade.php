@@ -7,6 +7,7 @@
             <th scope="col">Fecha de inicio</th>
             <th scope="col">Fecha de fin</th>
             <th scope="col">Estado</th>
+            <th scope="col">$Monto a pagar</th>
             <th scope="col">Creado</th>
             <th scope="col">Actualizado</th>
             <th>Acciones</th>
@@ -21,15 +22,27 @@
                 <td>{{ \Carbon\Carbon::parse($subscription->start_date)->format('Y-m-d')}}</td>
                 <td>{{ \Carbon\Carbon::parse($subscription->end_date)->format('Y-m-d')}}</td>
                 <td>{{ $subscription->state }}</td>
+                <td>{{ $subscription->total_amount }}</td>
                 <td>{{ $subscription->created_at }}</td>
                 <td>{{ $subscription->updated_at }}</td>
                 <td>
                 <a href="{{ route('subscriptions.edit', ['subscription' => $subscription->id]) }}" class="btn btn-primary btn-sm">
                     <i class="far fa-edit"></i>
                 </a>
+
                 <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modal{{ $subscription->id }}">
                     <i class="far fa-trash-alt"></i>
                 </button>
+
+                <div class="btn-group">
+                    <button type="button" class="btn btn-success btn-sm btn-solid dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-money-bill"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{{ route('payments.subscription', ['subscriptionId' => $subscription->id]) }}">Ver Pagos</a>
+                        <a class="dropdown-item" href="{{ route('payments.subscription.create', ['subscriptionId' => $subscription->id]) }}">Crear Pagos</a>
+                    </div>
+                </div>
 
                     <!-- Modal -->
                     <div class="modal fade" id="modal{{ $subscription->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

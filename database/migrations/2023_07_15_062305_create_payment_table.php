@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('subscriptions', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->decimal('total_amount', 8, 2);
-            $table->foreignId('partner_id')->constrained('partners')->onDelete('cascade');
-            $table->foreignId('subscription_type_id')->constrained('subscription_types');
-            $table->date('start_date');
-            $table->date('end_date');
-            $table->string('state')->default('pendiente');
+            $table->foreignId('subscription_id')->constrained('subscriptions')->onDelete('cascade');
+            $table->date('date_payment');
+            $table->decimal('amount', 8, 2);
+            $table->string('payment_method');
+            $table->string('description');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subscriptions');
+        Schema::dropIfExists('payments');
     }
 };

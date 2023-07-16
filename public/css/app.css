@@ -10,7 +10,7 @@
     background-color: #8f2d96;
     border-color: #4c4555;
 }
-  .btn-primary {
+.btn-primary {
     color: #fff;
     background-color: #bd90bb;
     border-color: #ffffff;
@@ -25,4 +25,14 @@
     margin-bottom: 0;
     background-color: rgba(129, 10, 172, 0.3);
     border-bottom: 1px solid rgba(196, 45, 45, 0.13);
+}
+.btn-success {
+    color: #fff;
+    background-color: #25c147;
+    border-color: #fff;
+}
+.btn-solid {
+    background-color: #28a745 !important;
+    border-color: #28a745 !important;
+    color: #fff !important;
 }
