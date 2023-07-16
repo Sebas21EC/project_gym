@@ -56,4 +56,6 @@ Route::get('payment_subscriptions/{subscriptionId}', 'App\Http\Controllers\Payme
 
 Route::get('payment_subscriptions_create/{subscriptionId}', 'App\Http\Controllers\PaymentController@createPaymentBySubscriptionId')->name('payments.subscription.create');
 
+Route::resource('inventories', App\Http\Controllers\InventoryController::class);
+
 require __DIR__.'/auth.php';
