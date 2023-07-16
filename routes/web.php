@@ -50,5 +50,10 @@ Route::resource('user', UserController::class)->middleware('auth');
 Route::resource('partners', App\Http\Controllers\PartnerController::class);
 Route::resource('subscriptionTypes', App\Http\Controllers\SubscriptionTypeController::class);
 Route::resource('subscriptions', App\Http\Controllers\SubscriptionController::class);
+Route::resource('payments', App\Http\Controllers\PaymentController::class);
+
+Route::get('payment_subscriptions/{subscriptionId}', 'App\Http\Controllers\PaymentController@getPaymentsBySubscriptionId')->name('payments.subscription');
+
+Route::get('payment_subscriptions_create/{subscriptionId}', 'App\Http\Controllers\PaymentController@createPaymentBySubscriptionId')->name('payments.subscription.create');
 
 require __DIR__.'/auth.php';

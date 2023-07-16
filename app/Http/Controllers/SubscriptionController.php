@@ -62,8 +62,10 @@ class SubscriptionController extends AppBaseController
         $request->validate([
             'partner_id' => ['required', Rule::exists('partners', 'id')],
         ]);
+        $totalAmount = SubscriptionType::find($input['subscription_type_id'])->price;
+        $input['total_amount'] = $totalAmount;
         $subscription = $this->subscriptionRepository->create($input);
-        return redirect()->route('subscriptions.index')->with('success', 'Subscription created successfully.');
+        return redirect()->route('subscriptions.index')->with('success', 'Suscripción creada exitosamente.');
     }
 
     /**
@@ -121,21 +123,22 @@ class SubscriptionController extends AppBaseController
     {
         
         $subscription = $this->subscriptionRepository->find($id);
-        $request->validate([
-            'partner_id' => ['required', Rule::exists('partners', 'id')],
-        ]);
-
         if (empty($subscription)) {
             Flash::error('Subscription not found');
 
             return redirect(route('subscriptions.index'));
         }
+        $request->validate([
+            'partner_id' => ['required', Rule::exists('partners', 'id')],
+        ]);
+        $totalAmount = SubscriptionType::find($request['subscription_type_id'])->price;
+        $request['total_amount'] = $totalAmount;
 
         $subscription = $this->subscriptionRepository->update($request->all(), $id);
 
         Flash::success('Subscription updated successfully.');
 
-        return redirect()->route('subscriptions.index')->with('success', 'Subscription updated successfully.');
+        return redirect()->route('subscriptions.index')->with('success', 'Suscripción actualizada exitosamente.');
     }
 
     /**

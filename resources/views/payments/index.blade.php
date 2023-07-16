@@ -1,10 +1,4 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Pagos') }}
-        </h2>
-    </x-slot>
-
     <div class="container" style="margin-top: 2rem; padding-bottom: 6rem;">
             
             @if (session('error'))
@@ -18,14 +12,13 @@
             @if (session('success'))
                 <h6 class="alert alert-success">{{ session('success') }}</h6>
             @endif
-
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <form action="{{ route('subscriptions.create') }}" method="GET">
-                        <button type="submit" class="btn btn-outline-success">Crear</button>
+                    <form action="{{ route('subscriptions.index') }}" method="GET">
+                            <button type="submit" class="btn btn-outline-primary">Volver</button>
                     </form>
                     <div class="container">
-                        @include('subscriptions.table')
+                        @include('payments.table')
                     </div>
                 </div>
             </div>

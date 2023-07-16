@@ -2,27 +2,26 @@
 
 namespace App\Repositories;
 
-use App\Models\Subscription;
+use App\Models\Payment;
 use App\Repositories\BaseRepository;
 
 /**
- * Class SubscriptionRepository
+ * Class PaymentRepository
  * @package App\Repositories
- * @version July 15, 2023, 12:36 am UTC
+ * @version July 15, 2023, 6:35 am UTC
 */
 
-class SubscriptionRepository extends BaseRepository
+class PaymentRepository extends BaseRepository
 {
     /**
      * @var array
      */
     protected $fieldSearchable = [
-        'partner_id',
-        'subscription_type_id',
-        'start_date',
-        'end_date',
-        'state',
-        'total_amount',
+        'subscription_id',
+        'date_payment',
+        'amount',
+        'payment_method',
+        'description'
     ];
 
     /**
@@ -40,6 +39,6 @@ class SubscriptionRepository extends BaseRepository
      **/
     public function model()
     {
-        return Subscription::class;
+        return Payment::class;
     }
 }

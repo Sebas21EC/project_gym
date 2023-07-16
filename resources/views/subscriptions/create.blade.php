@@ -55,7 +55,7 @@
                                 <input type="date" name="end_date" id="end_date" class="form-control" required>
                             </div>
                         </div>
-                    </div>
+                    </div>                    
                     <button type="submit" class="btn btn-outline-success">Crear</button>
                 </form>
             </div>

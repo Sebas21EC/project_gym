@@ -40,7 +40,8 @@ class Subscription extends Model
         'subscription_type_id',
         'start_date',
         'end_date',
-        'state'
+        'state',
+        'total_amount',
     ];
 
     /**
@@ -54,7 +55,8 @@ class Subscription extends Model
         'subscription_type_id' => 'integer',
         'start_date' => 'date',
         'end_date' => 'date',
-        'state' => 'string'
+        'state' => 'string',
+        'total_amount' => 'decimal:2',
     ];
 
     /**
@@ -91,4 +93,9 @@ class Subscription extends Model
     {
         return $this->belongsTo(\App\Models\SubscriptionType::class, 'subscription_type_id');
     }
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+
 }
