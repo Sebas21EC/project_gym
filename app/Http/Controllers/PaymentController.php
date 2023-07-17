@@ -97,7 +97,6 @@ class PaymentController extends Controller
         $payment = $this->paymentRepository->find($id);
 
         if (empty($payment)) {
-            Flash::error('Payment not found');
 
             return redirect(route('payments.index'));
         }
@@ -119,7 +118,6 @@ class PaymentController extends Controller
         $subscriptionId = $payment->subscription_id;
 
         if (empty($payment)) {
-            Flash::error('Payment not found');
 
             return redirect(route('payments.index'));
         }
@@ -141,7 +139,6 @@ class PaymentController extends Controller
         
 
         if (empty($payment)) {
-            Flash::error('Payment not found');
 
             return redirect(route('payments.index'));
         }
@@ -180,7 +177,6 @@ class PaymentController extends Controller
         $payment = $this->paymentRepository->find($id);
 
         if (empty($payment)) {
-            Flash::error('Payment not found');
 
             return redirect(route('payments.index'));
         }
