@@ -9,11 +9,12 @@ use App\Models\Subscription;
 use App\Repositories\PaymentRepository;
 use App\Repositories\SubscriptionRepository;
 use App\Http\Controllers\AppBaseController;
+
 use Illuminate\Http\Request;
 use Flash;
 use Response;
 
-class PaymentController extends AppBaseController
+class PaymentController extends Controller
 {
     /** @var PaymentRepository $paymentRepository*/
     private $paymentRepository;

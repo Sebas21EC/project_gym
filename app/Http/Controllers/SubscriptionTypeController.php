@@ -151,4 +151,7 @@ class SubscriptionTypeController extends Controller
 
         return redirect(route('subscriptionTypes.index'));
     }
+
+
+    
 }

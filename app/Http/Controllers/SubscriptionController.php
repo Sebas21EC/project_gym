@@ -12,7 +12,7 @@ use Flash;
 use Illuminate\Validation\Rule;
 use Response;
 
-class SubscriptionController extends AppBaseController
+class SubscriptionController extends Controller
 {
     /** @var SubscriptionRepository $subscriptionRepository*/
     private $subscriptionRepository;
