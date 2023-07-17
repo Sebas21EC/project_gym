@@ -30,6 +30,7 @@
                     </x-nav-link>
                 </div>
 
+                <!-- roles -->
                 @if (Gate::allows('has_role', [$module_security]))
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <li class="nav-item dropdown list-unstyled">
@@ -65,7 +66,7 @@
 
                 @endif
 
-                
+                <!-- empleados -->
                 @if (Gate::allows('has_role', [$module_store]))
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <li class="nav-item dropdown list-unstyled">
@@ -165,6 +166,30 @@
                 </div>
             </div>
             
+            <!-- audit_trail -->
+            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <li class="nav-item dropdown list-unstyled">
+                        <a href="#" class=" btn " style="margin-top:15px" data-toggle="dropdown">
+                            {{ __('Auditoria') }}
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                    <x-nav-link :href="route('audit_trail.index')" :active="request()->routeIs('index')">
+                                        {{ __('Registro de auditoria') }}
+                                    </x-nav-link>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                    <x-nav-link :href="route('audit_trail.index')" :active="request()->routeIs('index')">
+                                        {{ __('Escala Likert') }}
+                                    </x-nav-link>
+                                </div>
+                            </li>                        
+                        </ul>
+                    </li>
+                </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
