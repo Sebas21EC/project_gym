@@ -52,4 +52,7 @@ Route::resource('user', UserController::class)->middleware('auth');
 Route::resource('partners',PartnerController::class);
 Route::resource('subscriptionTypes', SubscriptionTypeController::class);
 
+//para adudit_trail
+Route::resource('audit_trail', \App\Http\Controllers\audit_trail\AuditTrailController::class)->middleware('auth');
+
 require __DIR__.'/auth.php';

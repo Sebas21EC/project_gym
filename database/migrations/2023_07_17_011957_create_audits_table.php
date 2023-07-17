@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateAuditsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('audit_trails', function (Blueprint $table) {
-            // // $table->id();
-            // $table->timestamps();
-            // $table->string('type');
-            // $table->string('data');
-            // $table->foreignId('user_id')->constrained('users')
-            //     ->onUpdate('cascade')
-            //     ->onDelete('cascade');
+        $connection = config('audit.drivers.database.connection', config('database.default'));
+        $table = config('audit.drivers.database.table', 'audits');
 
+        Schema::connection($connection)->create($table, function (Blueprint $table) {
 
             $morphPrefix = config('audit.user.morph_prefix', 'user');
 
@@ -36,11 +31,9 @@ return new class extends Migration
             $table->ipAddress('ip_address')->nullable();
             $table->string('user_agent', 1023)->nullable();
             $table->string('tags')->nullable();
-
             $table->timestamps();
 
             $table->index([$morphPrefix . '_id', $morphPrefix . '_type']);
-            
         });
     }
 
@@ -51,6 +44,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('audit_trails');
+        $connection = config('audit.drivers.database.connection', config('database.default'));
+        $table = config('audit.drivers.database.table', 'audits');
+
+        Schema::connection($connection)->drop($table);
     }
-};
+}

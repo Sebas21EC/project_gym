@@ -13,6 +13,7 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     use AuthorizesRequests, ValidatesRequests;
 
+    protected $id;
     /*
         Data must be: alias => module/controller/name-action
     */
@@ -109,12 +110,47 @@ class Controller extends BaseController
     ];
 
 
-    protected function addAudit($user, $type, $data = null)
+    protected function addAudit($user, $type, $data_old = null,$data_new=null)
     {
+        // Es te es mi modelo de auditoria
+        // $morphPrefix = config('audit.user.morph_prefix', 'user');
+
+        // $table->bigIncrements('id');
+        // $table->string($morphPrefix . '_type')->nullable();
+        // $table->unsignedBigInteger($morphPrefix . '_id')->nullable();
+        // $table->string('event');
+        // $table->morphs('auditable');
+        // $table->text('old_values')->nullable();
+        // $table->text('new_values')->nullable();
+        // $table->text('url')->nullable();
+        // $table->ipAddress('ip_address')->nullable();
+        // $table->string('user_agent', 1023)->nullable();
+        // $table->string('tags')->nullable();
+
+        // $table->timestamps();
+
+        // $table->index([$morphPrefix . '_id', $morphPrefix . '_type']);
+
         $audit = new AuditTrail();
-        $audit->user()->associate($user);
-        $audit->type = $type;
-        $audit->data = $data;
+        $audit->user_id = $user->id;
+        $audit->user_type = get_class($user);
+        $audit->event = $type;
+        $audit->auditable_type = get_class($this);
+        if ($this->id !== null) {
+            $audit->auditable_id = $this->id;
+        } else {
+            // Set a default value for auditable_id if $this->id is null
+            $audit->auditable_id = 0;
+        }
+        //este valor es agarrado del data
+        $audit-> old_values = $data_old;
+        $audit->new_values = $data_new;
+        $audit->url = request()->fullUrl();
+        $audit->ip_address = request()->ip();
+        $audit->user_agent = request()->userAgent();
+        //$audit->tags = implode(',', $this->auditTags ?? []);
         $audit->save();
+        
+        
     }
 }
