@@ -49,8 +49,16 @@ Route::resource('role',RoleController::class)->middleware('auth');
 //user
 Route::resource('user', UserController::class)->middleware('auth');
 
-Route::resource('partners',PartnerController::class);
-Route::resource('subscriptionTypes', SubscriptionTypeController::class);
+Route::resource('partners', App\Http\Controllers\PartnerController::class);
+Route::resource('subscriptionTypes', App\Http\Controllers\SubscriptionTypeController::class);
+Route::resource('subscriptions', App\Http\Controllers\SubscriptionController::class);
+Route::resource('payments', App\Http\Controllers\PaymentController::class);
+
+Route::get('payment_subscriptions/{subscriptionId}', 'App\Http\Controllers\PaymentController@getPaymentsBySubscriptionId')->name('payments.subscription');
+
+Route::get('payment_subscriptions_create/{subscriptionId}', 'App\Http\Controllers\PaymentController@createPaymentBySubscriptionId')->name('payments.subscription.create');
+
+Route::resource('inventories', App\Http\Controllers\InventoryController::class);
 
 //para adudit_trail
 Route::resource('audit_trail', \App\Http\Controllers\audit_trail\AuditTrailController::class)->middleware('auth');

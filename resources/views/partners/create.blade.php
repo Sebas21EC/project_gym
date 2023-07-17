@@ -26,14 +26,14 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label for="name">Nombre:</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Ingresar el nombre del partner" required>
+                        <label for="id">Identificación:</label>
+                        <input type="text" class="form-control" id="id" name="id" placeholder="Ingresar identificación del cliente" required>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label for="phone">Teléfono:</label>
-                        <input type="text" class="form-control" id="phone" name="phone" placeholder="Ingresar el número de teléfono" required>
+                        <label for="name">Nombre:</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Ingresar el nombre del cliente" required>
                     </div>
                 </div>
             </div>
@@ -72,8 +72,13 @@
                         <input type="text" class="form-control" id="type" name="type" placeholder="Ingresar el tipo" required>
                     </div>
                 </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="phone">Teléfono:</label>
+                        <input type="text" class="form-control" id="phone" name="phone" placeholder="Ingresar el número de teléfono" required>
+                    </div>
+                </div>
             </div>
-            <!-- Add other fields as needed -->
             <button type="submit" class="btn btn-outline-success">Crear</button>
         </form>
     </div>

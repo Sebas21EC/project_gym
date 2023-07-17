@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Tipo de Membresía') }}
+            {{ __('Pagos') }}
         </h2>
     </x-slot>
 
@@ -21,11 +21,11 @@
 
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <form action="{{ route('subscriptionTypes.create') }}" method="GET">
+                    <form action="{{ route('subscriptions.create') }}" method="GET">
                         <button type="submit" class="btn btn-outline-success">Crear</button>
                     </form>
                     <div class="container">
-                        @include('subscription_types.table')
+                        @include('subscriptions.table')
                     </div>
                 </div>
             </div>
