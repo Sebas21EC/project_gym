@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreatePartnerRequest;
 use App\Http\Requests\UpdatePartnerRequest;
 use App\Repositories\PartnerRepository;
-use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Response;
 
@@ -40,6 +39,7 @@ class PartnerController extends Controller
      */
     public function create()
     {
+
         return view('partners.create');
     }
 
