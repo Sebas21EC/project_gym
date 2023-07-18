@@ -5,29 +5,37 @@
                 <h1>Estadisticas</h1>
                 <br>
                 <h2>Escala de Likert</h2>
-                <table class="table table-bordered" style="text-align: center">
+                <table class="table table-hover table-hover " style="text-align: center" >
                     <thead>
                         <tr>
-                            <th>20%</th>
-                            <th>40%</th>
-                            <th>60%</th>
-                            <th>80%</th>
-                            <th>100%</th>
+                            <!-- color desde azul a rojo,  -->
+                            <th style="background-color: #1E90FF; color: white">20%</th>
+                            <!-- color amarillo -->
+                            <th style="background-color: #FFFF00">40%</th>
+                            <!-- color verde -->
+                            <th style="background-color: #00FF00">60%</th>
+                            <!-- color naranja -->
+                            <th style="background-color: #FFA500">80%</th>
+                            <!-- color rojo -->
+                            <th style="background-color: #FF0000; color: white">100%</th>
+
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Muy Inactivo</td>
-                            <td>Inactivo</td>
-                            <td>Moderado</td>
-                            <td>Activo</td>
-                            <td>Muy Activo</td>
+                            <!-- el mismo de arriba pero mas transparente -->
+                            <td style="background-color: #1E90FF; color: black; opacity: 0.4">Muy Inactivo</td>
+                            <td style="background-color: #FFFF00; opacity: 0.5">Inactivo</td>
+                            <td style="background-color: #00FF00; opacity: 0.5">Moderado</td>
+                            <td style="background-color: #FFA500; opacity: 0.5">Activo</td>
+                            <td style="background-color: #FF0000; color: black; opacity: 0.5">Muy Activo</td>
+                            
                         </tr>
                     </tbody>
                 </table>
                 <br>
-                <table class="table table-bordered">
-                    <thead>
+                <table class="table table-bordered table-hover display" id="table_id">
+                    <thead class="thead-dark">
                         <tr>
                             <th>Identificaci&oacute;n Usuario</th>
                             <th>Nombre Usuario</th>
@@ -39,20 +47,19 @@
                     <tbody>
                         @foreach ($audits as $audit)
                             <tr>
-                                <td>{{ $audit->identification }}</td>
+                                <td>{{ $audit->id }}</td>
                                 <td>{{ $audit->name }}
-                                    {{ $audit->last_name }}
                                 </td>
                                 <td>{{ $audit->number_actions }}</td>
-                                <td>{{ $likertLevelsUser[$audit->id] }}</td>
-                            </tr>
+                                <td style="background-color: {{ $likertColors[$likertLevelsUser[$audit->id]] }}">{{ $likertLevelsUser[$audit->id] }}</td>
+                                </tr>
                         @endforeach
                     </tbody>
 
                 </table>
             </div>
         </div>
-    </div>
+
 
 
 </x-app-layout>

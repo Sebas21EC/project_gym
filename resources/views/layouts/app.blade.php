@@ -34,6 +34,14 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
     </script>
 
+    <!-- Coloca este enlace en tu archivo app.blade.php o el archivo de plantilla principal -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+
+<!-- Coloca este enlace en tu archivo app.blade.php o el archivo de plantilla principal -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+
 </head>
 
 <body class="font-sans antialiased">

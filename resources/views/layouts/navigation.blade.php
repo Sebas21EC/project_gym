@@ -182,7 +182,7 @@
                             </li>
                             <li>
                                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                    <x-nav-link :href="route('audit_trail.index')" :active="request()->routeIs('index')">
+                                    <x-nav-link :href="route('audit_trail.user_actions')" :active="request()->routeIs('user_actions')">
                                         {{ __('Escala Likert') }}
                                     </x-nav-link>
                                 </div>
