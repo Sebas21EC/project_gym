@@ -197,4 +197,5 @@ class PaymentController extends Controller
     {
         return view('payments.create', ['subscriptionId' => $subscriptionId]);
     }
+    
 }

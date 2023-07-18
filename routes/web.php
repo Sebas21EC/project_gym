@@ -60,8 +60,12 @@ Route::get('payment_subscriptions_create/{subscriptionId}', 'App\Http\Controller
 
 Route::resource('inventories', App\Http\Controllers\InventoryController::class);
 
-//para adudit_trail
 Route::resource('audit_trail', \App\Http\Controllers\audit_trail\AuditTrailController::class)->middleware('auth');
 Route::get('audit_trail_user_actions', [\App\Http\Controllers\audit_trail\AuditStatisticsController::class, 'userActions'])->name('audit_trail.user_actions')->middleware('auth');
+
+
+
+
+Route::resource('healthCards', App\Http\Controllers\HealthCardController::class);
 
 require __DIR__.'/auth.php';
