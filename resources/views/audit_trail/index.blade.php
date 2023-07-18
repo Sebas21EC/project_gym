@@ -32,7 +32,6 @@
                                             <th scope="col">Tipo</th>
                                             <th scope="col">Fecha</th>
                                             <th scope="col">Ver más detalles </th>
-
                                         </tr>
                                     </thead>
 
@@ -59,31 +58,10 @@
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
-                                                                <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                <button class="btn btn-close btn-overline-danger" data-bs-dismiss="modal" aria-label="Close"> Cerrar</button>
                                                             </div>
                                                             <div class="modal-body">
                                                                 <!-- mostar detalles de la tabla audit -->
-
-
-                                                                <!-- $morphPrefix = config('audit.user.morph_prefix', 'user');
-
-$table->bigIncrements('id');
-$table->string($morphPrefix . '_type')->nullable();
-$table->unsignedBigInteger($morphPrefix . '_id')->nullable();
-$table->string('event');
-$table->morphs('auditable');
-$table->text('old_values')->nullable();
-$table->text('new_values')->nullable();
-$table->text('url')->nullable();
-$table->ipAddress('ip_address')->nullable();
-$table->string('user_agent', 1023)->nullable();
-$table->string('tags')->nullable();
-
-$table->timestamps();
-
-$table->index([$morphPrefix . '_id', $morphPrefix . '_type']); -->
-
-                                                                <!-- genera un labe label y un input-->
 
                                                                 <label for="user">Usuario:</label>
                                                                 <input type="text" class="form-control" id="user" name="user" value="{{ $audit->user->name }}" required>
