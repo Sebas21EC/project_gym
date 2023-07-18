@@ -3,14 +3,11 @@
 namespace App\Http\Controllers\security\role;
 
 use App\Http\Controllers\Controller;
-use App\Models\audit_trail\AuditTrail;
 use App\Models\staff\role\Role;
-use App\Models\staff\role_user\Role_user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
-use OwenIt\Auditing\Contracts\Auditable;
 
 
 
