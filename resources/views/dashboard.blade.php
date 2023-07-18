@@ -18,8 +18,19 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     {{ __("Hola!!. Bienvenido al sistema UNIKA.") }}
+
+                    <!-- generar un dashboar con informacion de la empresa tomando datos de las tablas de la base de datos -->
+
+                    <!--  CANTIDAD DE USUSARIO REGISTRADOS, LOS NOMBRE DE MODULOS, EL USUSARIO INGRESADO, UN FDIAGRAMA DE BARRAS, ETC-->
+
+                    <!-- cantidad de ususairos registrados, no me des auditoria -->
+
+                   
+
+
+
+
                 </div>
             </div>
         </div>
-    </div>
 </x-app-layout>
