@@ -32,7 +32,6 @@
                                             <th scope="col">Tipo</th>
                                             <th scope="col">Fecha</th>
                                             <th scope="col">Ver más detalles </th>
-
                                         </tr>
                                     </thead>
 
