@@ -200,4 +200,5 @@ class PaymentController extends AppBaseController
     {
         return view('payments.create', ['subscriptionId' => $subscriptionId]);
     }
+    
 }

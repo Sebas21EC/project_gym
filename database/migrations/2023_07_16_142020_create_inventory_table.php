@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('machine');
             $table->string('detail');
-            $table->integer('quantity', 8, 2);
+            $table->integer('quantity');
             $table->decimal('unit_price', 8, 2);
             $table->decimal('total_price', 8, 2);
             $table->string('state');

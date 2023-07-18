@@ -58,4 +58,6 @@ Route::get('payment_subscriptions_create/{subscriptionId}', 'App\Http\Controller
 
 Route::resource('inventories', App\Http\Controllers\InventoryController::class);
 
+Route::resource('healthCards', App\Http\Controllers\HealthCardController::class);
+
 require __DIR__.'/auth.php';

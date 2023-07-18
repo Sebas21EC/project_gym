@@ -119,7 +119,14 @@
                                         {{ __('Clientas') }}
                                     </x-nav-link>
                                 </div>
-                            </li>                   
+                            </li>   
+                            <li>
+                                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                    <x-nav-link :href="route('healthCards.index')" :active="request()->routeIs('index')">
+                                        {{ __('Ficha de Salud') }}
+                                    </x-nav-link>
+                                </div>
+                            </li>                  
                         </ul>
                     </li>
                 </div>
