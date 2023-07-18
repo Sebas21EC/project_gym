@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Response;
 
-class SubscriptionTypeController extends AppBaseController
+class SubscriptionTypeController extends Controller
 {
     /** @var SubscriptionTypeRepository $subscriptionTypeRepository*/
     private $subscriptionTypeRepository;
@@ -58,7 +58,7 @@ class SubscriptionTypeController extends AppBaseController
 
         $subscriptionType = $this->subscriptionTypeRepository->create($input);
 
-        Flash::success('Subscription Type saved successfully.');
+        // Flash::success('Subscription Type saved successfully.');
 
         return redirect()->route('subscriptionTypes.index')->with('success', 'Tipo de membresía creada correctamente');
     }
@@ -75,7 +75,7 @@ class SubscriptionTypeController extends AppBaseController
         $subscriptionType = $this->subscriptionTypeRepository->find($id);
 
         if (empty($subscriptionType)) {
-            Flash::error('Subscription Type not found');
+            // Flash::error('Subscription Type not found');
 
             return redirect(route('subscriptionTypes.index'));
         }
@@ -114,14 +114,14 @@ class SubscriptionTypeController extends AppBaseController
         $subscriptionType = $this->subscriptionTypeRepository->find($id);
 
         if (empty($subscriptionType)) {
-            Flash::error('Subscription Type not found');
+            // Flash::error('Subscription Type not found');
 
             return redirect(route('subscriptionTypes.index'));
         }
 
         $subscriptionType = $this->subscriptionTypeRepository->update($request->all(), $id);
 
-        Flash::success('Subscription Type updated successfully.');
+        // Flash::success('Subscription Type updated successfully.');
 
         return redirect(route('subscriptionTypes.index'));
     }
@@ -140,15 +140,18 @@ class SubscriptionTypeController extends AppBaseController
         $subscriptionType = $this->subscriptionTypeRepository->find($id);
 
         if (empty($subscriptionType)) {
-            Flash::error('Subscription Type not found');
+            // Flash::error('Subscription Type not found');
 
             return redirect(route('subscriptionTypes.index'));
         }
 
         $this->subscriptionTypeRepository->delete($id);
 
-        Flash::success('Subscription Type deleted successfully.');
+        // Flash::success('Subscription Type deleted successfully.');
 
         return redirect(route('subscriptionTypes.index'));
     }
+
+
+    
 }

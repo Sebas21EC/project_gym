@@ -5,6 +5,8 @@ namespace App\Models\staff\role;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use OwenIt\Auditing\Contracts\Auditable;
+
 class Role extends Model
 {
     use HasFactory;

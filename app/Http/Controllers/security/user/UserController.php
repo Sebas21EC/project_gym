@@ -74,6 +74,7 @@ class UserController extends Controller
             
         ]);
 
+
         $user = new User($userValidated);
         $user->save();
 
@@ -84,7 +85,8 @@ class UserController extends Controller
             }
         }
 
-        $this->addAudit(Auth::user(), $this->typeAudit['access_store_user'], 'user_id: ' . $user->id);
+        $data_new = $user->toJson();
+        $this->addAudit(Auth::user(), $this->typeAudit['access_store_user'], $data_new);
         return redirect()->route('user.index')->with('success', 'Usuario creado con exitosamente.');
     }
 
