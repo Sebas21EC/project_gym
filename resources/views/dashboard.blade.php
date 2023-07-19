@@ -166,7 +166,7 @@
             <div class="bienvenida">
                 <div class="jumbotron jumbotron-fluid" style="background-color: #b45fa8;">
 
-                    <h1 class="display-4 text-white" style="font-family: 'Arial', sans-serif; font-weight: bold; font-size: 60px; text-align:center">¡Bienvenida al Gimnasio UNIKA!</h1>
+                    <h1 class="display-4 text-white" style="font-family: 'Arial', sans-serif; font-weight: bold; font-size: 60px; text-align:center">¡Bienvenida al Gimnasio UNYKA!</h1>
                     <br>
                     <p class="lead text-white" style="font-family: 'Arial', sans-serif;font-size: 30px; text-align:center">Aquí encontrarás información relevante y funciones importantes para lograr tus objetivos de fitness y bienestar.</p>
 
