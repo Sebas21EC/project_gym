@@ -18,7 +18,7 @@
             @csrf
             <div class="form-group">
 <<<<<<< HEAD
-                <label for="identify">Identificacion:</label>
+            
 =======
             <label for="identify">Identificación:</label>
 >>>>>>> 875624f5dbd69b1edd3126930ebe96606a06bbe3
@@ -45,7 +45,7 @@
                 </select>
 <<<<<<< HEAD
 
-                <label for="phone">Telefono:</label>
+            
 =======
                 <label for="phone">Teléfono:</label>
 >>>>>>> 875624f5dbd69b1edd3126930ebe96606a06bbe3
