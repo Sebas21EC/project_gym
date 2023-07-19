@@ -120,7 +120,6 @@ class UserController extends Controller
             }
         }
         $user->roles = $active_roles;
-
         $id_active_roles = array();
         foreach ($user->roles as $role) {
             array_push($id_active_roles, $role->id);
