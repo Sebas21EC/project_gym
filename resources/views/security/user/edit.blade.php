@@ -44,7 +44,7 @@
             </select>
 
 
-            <label for="available_roles">Roles Disponibles</label>
+            <label for="available_roles">Roles disponibles</label>
             <select name="available_roles[]" id="available_roles" multiple class="form-control">
                 @foreach ($available_roles as $role)
                 <option value="{{ $role->id }}">{{ $role->role_name }}</option>
@@ -61,7 +61,7 @@
             </div>
 
             <br>
-            <label for="selected_roles">Roles Asignados</label>
+            <label for="selected_roles">Roles asignados</label>
             <select name="selected_roles[]" id="selected_roles" multiple class="form-control" readonly>
                 @foreach ($user->roles as $role)
                 <option value="{{ $role->id }}" selected>{{ $role->role_name }}</option>

@@ -167,6 +167,6 @@ class EmployeeController extends Controller
         }
         $employee->delete();
         $this->addAudit(Auth::user(), $this->typeAudit['access_destroy_employee'], $employee->toJson(), '');
-        return redirect()->back()->with('success', 'employeeo eliminado con éxito');
+        return redirect()->back()->with('success', 'Empleado eliminado con éxito');
     }
 }
