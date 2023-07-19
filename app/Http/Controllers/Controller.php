@@ -13,6 +13,7 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     use AuthorizesRequests, ValidatesRequests;
 
+    protected $id;
     /*
         Data must be: alias => module/controller/name-action
     */
@@ -95,6 +96,79 @@ class Controller extends BaseController
         'access_status_employee' => 'SECURITY/EMPLOYEE/CHANGE-STATUS',
 
 
+        //Inventory
+        'not_access_index_inventory' => 'INVENTORY/INVENTORY/NOT-AUTHORIZED-INDEX',
+        'access_index_inventory' => 'INVENTORY/INVENTORY/AUTHORIZED-INDEX',
+        'not_access_create_inventory' => 'INVENTORY/INVENTORY/NOT-AUTHORIZED-CREATE-VIEW',
+        'access_create_inventory' => 'INVENTORY/INVENTORY/AUTHORIZED-CREATE-VIEW',
+        'not_access_store_inventory' => 'INVENTORY/INVENTORY/NOT-AUTHORIZED-STORE',
+        'access_store_inventory' => 'INVENTORY/INVENTORY/AUTHORIZED-STORE',
+        'not_access_edit_inventory' => 'INVENTORY/INVENTORY/NOT-AUTHORIZED-EDIT-VIEW',
+        'access_edit_inventory' => 'INVENTORY/INVENTORY/AUTHORIZED-EDIT-VIEW',
+        'not_access_update_inventory' => 'INVENTORY/INVENTORY/NOT-AUTHORIZED-UPDATE',
+        'access_update_inventory' => 'INVENTORY/INVENTORY/AUTHORIZED-UPDATE',
+        'not_access_destroy_inventory' => 'INVENTORY/INVENTORY/NOT-AUTHORIZED-DESTROY',
+        'access_destroy_inventory' => 'INVENTORY/INVENTORY/AUTHORIZED-DESTROY',
+        'not_access_show_inventory' => 'INVENTORY/INVENTORY/NOT-AUTHORIZED-SHOW',
+        'access_show_inventory' => 'INVENTORY/INVENTORY/AUTHORIZED-SHOW',
+        'not_access_status_inventory' => 'INVENTORY/INVENTORY/NOT-AUTHORIZED-CHANGE-STATUS',
+        'access_status_inventory' => 'INVENTORY/INVENTORY/CHANGE-STATUS',
+
+        //Suscription
+        'not_access_index_suscription' => 'INVENTORY/SUSCRIPTION/NOT-AUTHORIZED-INDEX',
+        'access_index_suscription' => 'INVENTORY/SUSCRIPTION/AUTHORIZED-INDEX',
+        'not_access_create_suscription' => 'INVENTORY/SUSCRIPTION/NOT-AUTHORIZED-CREATE-VIEW',
+        'access_create_suscription' => 'INVENTORY/SUSCRIPTION/AUTHORIZED-CREATE-VIEW',
+        'not_access_store_suscription' => 'INVENTORY/SUSCRIPTION/NOT-AUTHORIZED-STORE',
+        'access_store_suscription' => 'INVENTORY/SUSCRIPTION/AUTHORIZED-STORE',
+        'not_access_edit_suscription' => 'INVENTORY/SUSCRIPTION/NOT-AUTHORIZED-EDIT-VIEW',
+        'access_edit_suscription' => 'INVENTORY/SUSCRIPTION/AUTHORIZED-EDIT-VIEW',
+        'not_access_update_suscription' => 'INVENTORY/SUSCRIPTION/NOT-AUTHORIZED-UPDATE',
+        'access_update_suscription' => 'INVENTORY/SUSCRIPTION/AUTHORIZED-UPDATE',
+        'not_access_destroy_suscription' => 'INVENTORY/SUSCRIPTION/NOT-AUTHORIZED-DESTROY',
+        'access_destroy_suscription' => 'INVENTORY/SUSCRIPTION/AUTHORIZED-DESTROY',
+        'not_access_show_suscription' => 'INVENTORY/SUSCRIPTION/NOT-AUTHORIZED-SHOW',
+        'access_show_suscription' => 'INVENTORY/SUSCRIPTION/AUTHORIZED-SHOW',
+        'not_access_status_suscription' => 'INVENTORY/SUSCRIPTION/NOT-AUTHORIZED-CHANGE-STATUS',
+        'access_status_suscription' => 'INVENTORY/SUSCRIPTION/CHANGE-STATUS',
+
+
+        //Payment
+        'not_access_index_payment' => 'INVENTORY/PAYMENT/NOT-AUTHORIZED-INDEX',
+        'access_index_payment' => 'INVENTORY/PAYMENT/AUTHORIZED-INDEX',
+        'not_access_create_payment' => 'INVENTORY/PAYMENT/NOT-AUTHORIZED-CREATE-VIEW',
+        'access_create_payment' => 'INVENTORY/PAYMENT/AUTHORIZED-CREATE-VIEW',
+        'not_access_store_payment' => 'INVENTORY/PAYMENT/NOT-AUTHORIZED-STORE',
+        'access_store_payment' => 'INVENTORY/PAYMENT/AUTHORIZED-STORE',
+        'not_access_edit_payment' => 'INVENTORY/PAYMENT/NOT-AUTHORIZED-EDIT-VIEW',
+        'access_edit_payment' => 'INVENTORY/PAYMENT/AUTHORIZED-EDIT-VIEW',
+        'not_access_update_payment' => 'INVENTORY/PAYMENT/NOT-AUTHORIZED-UPDATE',
+        'access_update_payment' => 'INVENTORY/PAYMENT/AUTHORIZED-UPDATE',
+        'not_access_destroy_payment' => 'INVENTORY/PAYMENT/NOT-AUTHORIZED-DESTROY',
+        'access_destroy_payment' => 'INVENTORY/PAYMENT/AUTHORIZED-DESTROY',
+        'not_access_show_payment' => 'INVENTORY/PAYMENT/NOT-AUTHORIZED-SHOW',
+        'access_show_payment' => 'INVENTORY/PAYMENT/AUTHORIZED-SHOW',
+        'not_access_status_payment' => 'INVENTORY/PAYMENT/NOT-AUTHORIZED-CHANGE-STATUS',
+        'access_status_payment' => 'INVENTORY/PAYMENT/CHANGE-STATUS',
+
+        //Partner
+        'not_access_index_partner' => 'INVENTORY/PARTNER/NOT-AUTHORIZED-INDEX',
+        'access_index_partner' => 'INVENTORY/PARTNER/AUTHORIZED-INDEX',
+        'not_access_create_partner' => 'INVENTORY/PARTNER/NOT-AUTHORIZED-CREATE-VIEW',
+        'access_create_partner' => 'INVENTORY/PARTNER/AUTHORIZED-CREATE-VIEW',
+        'not_access_store_partner' => 'INVENTORY/PARTNER/NOT-AUTHORIZED-STORE',
+        'access_store_partner' => 'INVENTORY/PARTNER/AUTHORIZED-STORE',
+        'not_access_edit_partner' => 'INVENTORY/PARTNER/NOT-AUTHORIZED-EDIT-VIEW',
+        'access_edit_partner' => 'INVENTORY/PARTNER/AUTHORIZED-EDIT-VIEW',
+        'not_access_update_partner' => 'INVENTORY/PARTNER/NOT-AUTHORIZED-UPDATE',
+        'access_update_partner' => 'INVENTORY/PARTNER/AUTHORIZED-UPDATE',
+        'not_access_destroy_partner' => 'INVENTORY/PARTNER/NOT-AUTHORIZED-DESTROY',
+        'access_destroy_partner' => 'INVENTORY/PARTNER/AUTHORIZED-DESTROY',
+        'not_access_show_partner' => 'INVENTORY/PARTNER/NOT-AUTHORIZED-SHOW',
+        'access_show_partner' => 'INVENTORY/PARTNER/AUTHORIZED-SHOW',
+        'not_access_status_partner' => 'INVENTORY/PARTNER/NOT-AUTHORIZED-CHANGE-STATUS',
+        'access_status_partner' => 'INVENTORY/PARTNER/CHANGE-STATUS',
+        
 
 
 
@@ -109,12 +183,47 @@ class Controller extends BaseController
     ];
 
 
-    protected function addAudit($user, $type, $data = null)
+    protected function addAudit($user, $type, $data_old = null,$data_new=null)
     {
+        // Es te es mi modelo de auditoria
+        // $morphPrefix = config('audit.user.morph_prefix', 'user');
+
+        // $table->bigIncrements('id');
+        // $table->string($morphPrefix . '_type')->nullable();
+        // $table->unsignedBigInteger($morphPrefix . '_id')->nullable();
+        // $table->string('event');
+        // $table->morphs('auditable');
+        // $table->text('old_values')->nullable();
+        // $table->text('new_values')->nullable();
+        // $table->text('url')->nullable();
+        // $table->ipAddress('ip_address')->nullable();
+        // $table->string('user_agent', 1023)->nullable();
+        // $table->string('tags')->nullable();
+
+        // $table->timestamps();
+
+        // $table->index([$morphPrefix . '_id', $morphPrefix . '_type']);
+
         $audit = new AuditTrail();
-        $audit->user()->associate($user);
-        $audit->type = $type;
-        $audit->data = $data;
+        $audit->user_id = $user->id;
+        $audit->user_type = get_class($user);
+        $audit->event = $type;
+        $audit->auditable_type = get_class($this);
+        if ($this->id !== null) {
+            $audit->auditable_id = $this->id;
+        } else {
+            // Set a default value for auditable_id if $this->id is null
+            $audit->auditable_id = 0;
+        }
+        //este valor es agarrado del data
+        $audit-> old_values = $data_old;
+        $audit->new_values = $data_new;
+        $audit->url = request()->fullUrl();
+        $audit->ip_address = request()->ip();
+        $audit->user_agent = request()->userAgent();
+        //$audit->tags = implode(',', $this->auditTags ?? []);
         $audit->save();
+        
+        
     }
 }

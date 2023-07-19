@@ -9,11 +9,12 @@ use App\Models\Subscription;
 use App\Repositories\PaymentRepository;
 use App\Repositories\SubscriptionRepository;
 use App\Http\Controllers\AppBaseController;
+
 use Illuminate\Http\Request;
 use Flash;
 use Response;
 
-class PaymentController extends AppBaseController
+class PaymentController extends Controller
 {
     /** @var PaymentRepository $paymentRepository*/
     private $paymentRepository;
@@ -96,7 +97,6 @@ class PaymentController extends AppBaseController
         $payment = $this->paymentRepository->find($id);
 
         if (empty($payment)) {
-            Flash::error('Payment not found');
 
             return redirect(route('payments.index'));
         }
@@ -118,7 +118,6 @@ class PaymentController extends AppBaseController
         $subscriptionId = $payment->subscription_id;
 
         if (empty($payment)) {
-            Flash::error('Payment not found');
 
             return redirect(route('payments.index'));
         }
@@ -140,7 +139,6 @@ class PaymentController extends AppBaseController
         
 
         if (empty($payment)) {
-            Flash::error('Payment not found');
 
             return redirect(route('payments.index'));
         }
@@ -179,7 +177,6 @@ class PaymentController extends AppBaseController
         $payment = $this->paymentRepository->find($id);
 
         if (empty($payment)) {
-            Flash::error('Payment not found');
 
             return redirect(route('payments.index'));
         }

@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Response;
 
-class InventoryController extends AppBaseController
+class InventoryController extends Controller
 {
     /** @var InventoryRepository $inventoryRepository*/
     private $inventoryRepository;
@@ -58,7 +58,6 @@ class InventoryController extends AppBaseController
 
         $inventory = $this->inventoryRepository->create($input);
 
-        Flash::success('Inventory saved successfully.');
 
         return redirect()->route('inventories.index')->with('success', 'Máquina registrada correctamente');
     }
@@ -75,7 +74,6 @@ class InventoryController extends AppBaseController
         $inventory = $this->inventoryRepository->find($id);
 
         if (empty($inventory)) {
-            Flash::error('Inventory not found');
 
             return redirect(route('inventories.index'));
         }
@@ -95,7 +93,6 @@ class InventoryController extends AppBaseController
         $inventory = $this->inventoryRepository->find($id);
 
         if (empty($inventory)) {
-            Flash::error('Inventory not found');
 
             return redirect(route('inventories.index'));
         }
@@ -116,14 +113,12 @@ class InventoryController extends AppBaseController
         $inventory = $this->inventoryRepository->find($id);
 
         if (empty($inventory)) {
-            Flash::error('Inventory not found');
 
             return redirect(route('inventories.index'));
         }
 
         $inventory = $this->inventoryRepository->update($request->all(), $id);
 
-        Flash::success('Inventory updated successfully.');
 
         return redirect()->route('inventories.index')->with('success', 'Máquina actualizada correctamente');
     }
@@ -142,14 +137,12 @@ class InventoryController extends AppBaseController
         $inventory = $this->inventoryRepository->find($id);
 
         if (empty($inventory)) {
-            Flash::error('Inventory not found');
 
             return redirect(route('inventories.index'));
         }
 
         $this->inventoryRepository->delete($id);
 
-        Flash::success('Inventory deleted successfully.');
 
         return redirect(route('inventories.index'));
     }

@@ -70,7 +70,10 @@ return [
     */
 
     'timezone' => 'America/Guayaquil',
+<<<<<<< HEAD
 
+=======
+>>>>>>> cf9a7969b5445e8c423ea0e01c574e3d8a0eb87d
 
     /*
     |--------------------------------------------------------------------------
@@ -182,6 +185,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+
+        OwenIt\Auditing\AuditingServiceProvider::class,
 
         /*
          * Package Service Providers...

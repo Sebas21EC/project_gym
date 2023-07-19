@@ -15,18 +15,26 @@ class AuditStatisticsController extends Controller
     public function userActions()
     {
 
-        $roleNames = array("AUDITOR");
-        if (!Gate::allows('has-rol', [$roleNames])) {
-            $this->addAudit(Auth::user(), $this->typeAudit['not_access_user_actions'], '');
-            return redirect()->route('dashboard')->with('error', 'No tiene permisos para acceder a esta página');
-        }
+        // $roleNames = array("auditor");
+        // if (!Gate::allows('has_role', [$roleNames])) {
+        //     $this->addAudit(Auth::user(), $this->typeAudit['not_access_user_actions'], '');
+        //     return redirect()->route('dashboard')->with('error', 'No tiene permisos para acceder a esta página');
+        // }
 
         //Count the number of actions per user
-        $audit_trails = User::selectRaw('users.id, users.identification, users.name, users.last_name, count(audit_trails.id) as number_actions')
+        $audit_trails = User::selectRaw('users.id, users.name, count(audit_trails.id) as number_actions')
             ->leftjoin('audit_trails', 'users.id', '=', 'audit_trails.user_id')
-            ->groupBy('users.id')->groupBy('users.identification')->groupBy('users.name')->groupBy('users.last_name')
+            ->groupBy('users.id')->groupBy('users.name')
             ->orderBy('number_actions', 'desc')
             ->get();
+
+     $likertColors = [
+                'Muy Inactivo' => '#1E90FF',
+                'Inactivo' => '#FFFF00',
+                'Moderado' => '#00FF00',
+                'Activo' => '#FFA500',
+                'Muy Activo' => '#FF0000',
+            ];
 
         //Get level of activity per user
         $actionsUser = [];
@@ -55,7 +63,8 @@ class AuditStatisticsController extends Controller
         $this->addAudit(Auth::user(), $this->typeAudit['acces_user_actions'], '');
         return view('audit_trail.user_actions', [
             'audits' => $audit_trails,
-            'likertLevelsUser' => $likertLevelsUser
+            'likertLevelsUser' => $likertLevelsUser,
+            'likertColors' => $likertColors,
         ]);
     }
 }

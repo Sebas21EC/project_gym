@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\security\role\RoleController;
 use App\Http\Controllers\security\user\UserController;
 use App\Http\Controllers\staff\occupation\OccupationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\staff\employee\EmployeeController;
+use App\Http\Controllers\SubscriptionTypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +21,7 @@ use App\Http\Controllers\staff\employee\EmployeeController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/dashboard', function () {
@@ -57,6 +59,12 @@ Route::get('payment_subscriptions/{subscriptionId}', 'App\Http\Controllers\Payme
 Route::get('payment_subscriptions_create/{subscriptionId}', 'App\Http\Controllers\PaymentController@createPaymentBySubscriptionId')->name('payments.subscription.create');
 
 Route::resource('inventories', App\Http\Controllers\InventoryController::class);
+
+Route::resource('audit_trail', \App\Http\Controllers\audit_trail\AuditTrailController::class)->middleware('auth');
+Route::get('audit_trail_user_actions', [\App\Http\Controllers\audit_trail\AuditStatisticsController::class, 'userActions'])->name('audit_trail.user_actions')->middleware('auth');
+
+
+
 
 Route::resource('healthCards', App\Http\Controllers\HealthCardController::class);
 
