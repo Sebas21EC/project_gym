@@ -15,13 +15,13 @@
         <form action="{{ route('employee.store') }}" method="POST">
             @csrf
             <div class="form-group">
-                <label for="name">Identificacion:</label>
+                <label for="name">Identificación:</label>
                 <input type="text" class="form-control" id="identify" name="identify" placeholder="Ingresar la identificacion del empleado" required>
                 <label for="name">Nombre:</label>
                 <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Ingresar los nombres" required>
                 <label for="name">Apellido:</label>
                 <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Ingresar los apellidos" required>
-                <label for="occupation">Ocupacion:</label>
+                <label for="occupation">Ocupación:</label>
                 <select name="occupation" id="occupation" class="form-control" required>
                     @foreach ($occupations as $occupation)
                     
@@ -29,9 +29,9 @@
                     
                     @endforeach
                 </select>
-                <label for="name">Telefono:</label>
+                <label for="name">Telófono:</label>
                 <input type="text" class="form-control" id="phone" name="phone" placeholder="Ingresar el numero de telefono" required>
-                <label for="name">Direccion:</label>
+                <label for="name">Dirección:</label>
                 <input type="text" class="form-control" id="address" name="address" placeholder="Ingresar la direccion" required>
             </div>
             <!-- Add other fields as needed -->

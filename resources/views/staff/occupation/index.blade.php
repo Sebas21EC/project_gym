@@ -32,8 +32,8 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Nombre</th>
-                                    <th scope="col">Created At</th>
-                                    <th scope="col">Updated At</th>
+                                    <th scope="col">Creado el</th>
+                                    <th scope="col">Actualizado el</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -55,11 +55,11 @@
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Eliminar ocupacion</h5>
+                                                        <h5 class="modal-title" id="exampleModalLabel">Eliminar ocupación</h5>
                                                         <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        ¿Está seguro de que desea eliminar la ocupacion
+                                                        ¿Está seguro de que desea eliminar la ocupación
                                                         <strong>{{ $occupation->name }}</strong>?
                                                     </div>
                                                     <div class="modal-footer">
@@ -69,7 +69,7 @@
                                                             @method('DELETE')
                                                             @csrf
                                                             <button type="submit" class="btn btn-primary text-black">Sí, eliminar
-                                                                ocupacion</button>
+                                                                ocupación</button>
                                                         </form>
                                                     </div>
                                                 </div>

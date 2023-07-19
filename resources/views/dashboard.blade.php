@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Home') }}
         </h2>
 
     </x-slot>
@@ -128,7 +128,7 @@
                             <h3>Peso </h3>
                             <img src="{{ asset('img/icon1.png') }}" alt="logo">
                             <br>
-                            <h4>Clases con entrenadores capacitados que permitan poner en practica y demostrar la fuerza femenina.</h4>
+                            <h4>Clases con entrenadoras capacitadas que permitan poner en práctica y mejorar la resistencia.</h4>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -144,7 +144,7 @@
 
                             <h3>Figura ideal </h3>
                             <img src="{{ asset('img/icon3.png') }}" alt="logo">
-                            <h4>Programas que buscan garantizar llegar al peso y estado fisico que cada clienta busca</h4>
+                            <h4>Programas que buscan garantizar llegar al peso y estado físico que cada clienta busca</h4>
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -154,7 +154,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card Our_box">
-                            <h3>Salon de Bienvenida </h3>
+                            <h3>Salón de Bienvenida </h3>
                             <img src="{{ asset('img/instalacion2.jpeg') }}" alt="logo">
 
                         </div>
