@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Validation\Rule;
 use Response;
 
 class HealthCardController extends Controller
@@ -73,6 +74,9 @@ class HealthCardController extends Controller
     public function store(CreateHealthCardRequest $request)
     {
         $rol_names = array( "operator", "user");
+        $request->validate([
+            'partner_id' => ['required', Rule::exists('partners', 'id')],
+        ]);
         if (!Gate::allows('has_role', [$rol_names])) {
             $this->addAudit(Auth::user(), $this->typeAudit['not_access_store_healthcard'], '');
             return redirect()->route('healthCards.index')->with('error', 'Usted no tiene permiso!');
