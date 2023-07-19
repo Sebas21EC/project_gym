@@ -21,13 +21,20 @@ class SubscriptionTypeFactory extends Factory
      */
     public function definition()
     {
+
+        // $table->id();
+        //     $table->string('name');
+        //     $table->integer('n_months');
+        //     $table->double('price', 8, 2);
+        //     $table->softDeletes();
+        //     $table->timestamps();
         return [
-            'name' => $this->faker->word,
+        'name' => $this->faker->word,
         'n_months' => $this->faker->randomDigitNotNull,
-        'price' => $this->faker->randomDigitNotNull,
-        'deleted_at' => $this->faker->date('Y-m-d H:i:s'),
+        'price' => $this->faker->randomFloat(2, 0, 999999.99),
         'created_at' => $this->faker->date('Y-m-d H:i:s'),
         'updated_at' => $this->faker->date('Y-m-d H:i:s')
+        
         ];
     }
 }

@@ -28,6 +28,12 @@ class DatabaseSeeder extends Seeder
             EmployeeSeeder::class,
             UserSeeder::class,
             Role_userSeeder::class,
+            PartnerSeeder::class,
+            HealthCardSeeder::class,
+            InventorySeeder::class,
+            SubscriptionTypeSeeder::class,
+            SubscriptionSeeder::class,
+            PaymentSeeder::class,
         ]);
 
     }

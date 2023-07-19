@@ -21,17 +21,28 @@ class PartnerFactory extends Factory
      */
     public function definition()
     {
+
+        // $table->id();
+        // $table->string('name');
+        // $table->string('phone');
+        // $table->string('address');
+        // $table->date('birth_date');
+        // $table->string('occupation');
+        // $table->string('email');
+        // $table->string('type');
+        // $table->softDeletes();
+        // $table->timestamps();
         return [
-            'name' => $this->faker->word,
-        'phone' => $this->faker->word,
-        'address' => $this->faker->word,
-        'birth_date' => $this->faker->word,
-        'occupation' => $this->faker->word,
-        'email' => $this->faker->word,
-        'type' => $this->faker->word,
-        'deleted_at' => $this->faker->date('Y-m-d H:i:s'),
-        'created_at' => $this->faker->date('Y-m-d H:i:s'),
-        'updated_at' => $this->faker->date('Y-m-d H:i:s')
+            'name' => $this->faker->name,
+            'phone' => $this->faker->phoneNumber,
+            'address' => $this->faker->address,
+            'birth_date' => $this->faker->date('Y-m-d'),
+            'occupation' => $this->faker->jobTitle,
+            'email' => $this->faker->email,
+            'type' => $this->faker->randomElement(['student', 'teacher', 'admin']),
+            'created_at' => $this->faker->date('Y-m-d H:i:s'),
+            'updated_at' => $this->faker->date('Y-m-d H:i:s')
+            
         ];
     }
 }
