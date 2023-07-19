@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Response;
 
-class HealthCardController extends AppBaseController
+class HealthCardController extends Controller
 {
     /** @var HealthCardRepository $healthCardRepository*/
     private $healthCardRepository;
@@ -58,7 +58,6 @@ class HealthCardController extends AppBaseController
 
         $healthCard = $this->healthCardRepository->create($input);
 
-        Flash::success('Health Card saved successfully.');
 
         return redirect(route('healthCards.index'));
     }
@@ -75,7 +74,7 @@ class HealthCardController extends AppBaseController
         $healthCard = $this->healthCardRepository->find($id);
 
         if (empty($healthCard)) {
-            Flash::error('Health Card not found');
+          
 
             return redirect(route('healthCards.index'));
         }
@@ -95,7 +94,7 @@ class HealthCardController extends AppBaseController
         $healthCard = $this->healthCardRepository->find($id);
 
         if (empty($healthCard)) {
-            Flash::error('Health Card not found');
+           
 
             return redirect(route('healthCards.index'));
         }
@@ -116,15 +115,14 @@ class HealthCardController extends AppBaseController
         $healthCard = $this->healthCardRepository->find($id);
 
         if (empty($healthCard)) {
-            Flash::error('Health Card not found');
+          
 
             return redirect(route('healthCards.index'));
         }
 
         $healthCard = $this->healthCardRepository->update($request->all(), $id);
 
-        Flash::success('Health Card updated successfully.');
-
+       
         return redirect(route('healthCards.index'));
     }
 
@@ -142,14 +140,13 @@ class HealthCardController extends AppBaseController
         $healthCard = $this->healthCardRepository->find($id);
 
         if (empty($healthCard)) {
-            Flash::error('Health Card not found');
-
+           
             return redirect(route('healthCards.index'));
         }
 
         $this->healthCardRepository->delete($id);
 
-        Flash::success('Health Card deleted successfully.');
+       
 
         return redirect(route('healthCards.index'));
     }
