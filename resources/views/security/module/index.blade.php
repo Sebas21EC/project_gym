@@ -33,9 +33,9 @@
 
                             <thead class="thead-dark">
                                 <tr>
-                                    <th scope="col">Module</th>
-                                    <th scope="col">Descripcion</th>
-                                    <th scope="col">Activo</th>
+                                    <th scope="col">Módulo</th>
+                                    <th scope="col">Descripción</th>
+                                    <th scope="col">Estado</th>
                                     <th scope="col">Roles</th>
                                     <!-- <th scope="col">Acciones</th> -->
                                 </tr>

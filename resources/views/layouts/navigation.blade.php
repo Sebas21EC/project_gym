@@ -56,7 +56,7 @@
                             <li>
                                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                     <x-nav-link :href="route('module.index')" :active="request()->routeIs('index')">
-                                        {{ __('Modulos') }}
+                                        {{ __('Módulos') }}
                                     </x-nav-link>
                                 </div>
                             </li>
@@ -92,13 +92,6 @@
                             </li>
                             <!-- @endif -->
                            
-                            <li>
-                                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('index')">
-                                        {{ __('Reporte') }}
-                                    </x-nav-link>
-                                </div>
-                            </li>
                            
 
                         </ul>
@@ -176,13 +169,13 @@
             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <li class="nav-item dropdown list-unstyled">
                         <a href="#" class=" btn " style="margin-top:15px" data-toggle="dropdown">
-                            {{ __('Auditoria') }}
+                            {{ __('Auditoría') }}
                         </a>
                         <ul class="dropdown-menu">
                             <li>
                                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                     <x-nav-link :href="route('audit_trail.index')" :active="request()->routeIs('index')">
-                                        {{ __('Registro de auditoria') }}
+                                        {{ __('Registro de auditoría') }}
                                     </x-nav-link>
                                 </div>
                             </li>
@@ -223,7 +216,7 @@
 
                             <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Cerrar Sesion') }}
+                                {{ __('Cerrar Sesión') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
@@ -268,7 +261,7 @@
 
                     <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Cerrar Sesion') }}
+                        {{ __('Cerrar Sesión') }}
                     </x-responsive-nav-link>
                 </form>
             </div>
