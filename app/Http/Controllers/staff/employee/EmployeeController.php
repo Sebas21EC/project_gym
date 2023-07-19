@@ -110,10 +110,11 @@ class EmployeeController extends Controller
         }
         $employee = Employee::find($id);
         $occupations = Occupation::all();
+        $available_occupations = Occupation::all();
 
         $this->addAudit(Auth::user(), $this->typeAudit['access_edit_employee'], '');
 
-        return view('staff.employee.edit', ['employee' => $employee, 'occupations' => $occupations]);
+        return view('staff.employee.edit', ['employee' => $employee, 'occupations' => $occupations,'available_occupations'=>$available_occupations]);
     }
 
     /**
@@ -127,7 +128,7 @@ class EmployeeController extends Controller
             'identify' => 'required',
             'phone' => 'required',
             'address' => 'required',
-            'occupation' => 'required|exists:occupations,id',
+            'occupation' => 'required',
         ]);
 
         $data_old = Employee::find($id);
