@@ -28,6 +28,14 @@
             .col-md-12 {
             text-align: center;
         }
+        .login-btn {
+            margin-right: 20px;
+        }
+
+        .logo-img {
+            width: 50%;
+            max-width: 300px;
+        }
         </style>
     </head>
     <body class="antialiased">
@@ -35,12 +43,12 @@
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                 @auth
-                    <a href="{{ url('/home') }}" class="text-sm text-white underline">Home</a>
+                    <a href="{{ url('/') }}" class="btn btn-primary btn-lg">Home</a>
                 @else
-                    <a href="{{ route('login') }}" class="text-sm text-white underline">Iniciar Sesion</a>
-                    @if (Route::has('register'))
+                    <a href="{{ route('login') }}" class="btn btn-primary btn-lg">Iniciar Sesion</a>
+                    <!-- @if (Route::has('register'))
                         <a href="{{ route('register') }}" class="ml-4 text-sm text-white underline">Registrarse</a>
-                    @endif
+                    @endif -->
                 @endauth
                 </div>
             @endif
