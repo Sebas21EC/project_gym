@@ -63,6 +63,9 @@ class Partner extends Model
         'email' => 'string',
         'type' => 'string'
     ];
+    protected $attributes = [
+        'type' => 'grupoA',
+    ];
 
     /**
      * Validation rules
@@ -77,11 +80,12 @@ class Partner extends Model
         'birth_date' => 'required',
         'occupation' => 'required|string|max:255',
         'email' => 'required|string|max:255',
-        'type' => 'required|string|max:255',
+        // 'type' => 'nullable',
         'deleted_at' => 'nullable',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
     ];
+    
 
     
 }

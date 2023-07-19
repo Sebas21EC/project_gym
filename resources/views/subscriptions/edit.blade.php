@@ -47,17 +47,18 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="start_date">Fecha de inicio:</label>
-                                <input type="date" class="form-control" id="start_date" name="start_date" value="{{ $subscription->start_date }}" required>
+                                <input type="date" class="form-control" id="start_date" name="start_date" value="{{\Carbon\Carbon::parse($subscription->start_date)->format('Y-m-d')}}" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="end_date">Fecha de fin:</label>
-                                <input type="date" class="form-control" id="end_date" name="end_date" value="{{ $subscription->end_date }}" required>
+                                <input type="date" class="form-control" id="end_date" name="end_date" value="{{\Carbon\Carbon::parse($subscription->end_date)->format('Y-m-d')}}" required>
                             </div>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-outline-primary">Actualizar</button>
+                    <a href="{{ route('subscriptions.index') }}" class="btn btn-outline-secondary">Cancelar</a>
                 </form>
             </div>
         </div>

@@ -57,6 +57,7 @@
                         </div>
                     </div>                    
                     <button type="submit" class="btn btn-outline-success">Crear</button>
+                    <a href="{{ route('subscriptions.index') }}" class="btn btn-outline-secondary">Cancelar</a>
                 </form>
             </div>
         </div>

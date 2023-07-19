@@ -49,7 +49,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="birth_date">Fecha de Nacimiento:</label>
-                            <input type="date" class="form-control" id="birth_date" name="birth_date" value="{{ $partner->birth_date }}" required>
+                            <input type="date" class="form-control" id="birth_date" name="birth_date" value="{{\Carbon\Carbon::parse($partner->birth_date)->format('Y-m-d')}}" required>
                         </div>
                     </div>
                 </div>
@@ -67,15 +67,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="type">Tipo:</label>
-                            <input type="text" class="form-control" id="type" name="type" value="{{ $partner->type }}" required>
-                        </div>
-                    </div>
-                </div>
                 <button type="submit" class="btn btn-outline-primary">Actualizar</button>
+                <a href="{{ route('partners.index') }}" class="btn btn-outline-secondary">Regresar</a>
             </form>
         </div>
     </div>

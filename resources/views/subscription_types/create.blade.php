@@ -45,8 +45,8 @@
                     </div>
                 </div>
             </div>
-            <!-- Add other fields as needed -->
             <button type="submit" class="btn btn-outline-success">Crear</button>
+            <a href="{{ route('subscriptionTypes.index') }}" class="btn btn-outline-secondary">Cancelar</a>
         </form>
     </div>
 </x-app-layout>

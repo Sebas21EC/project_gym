@@ -61,6 +61,7 @@
                         </div>
                     </div>
                     <button type="submit" class="btn btn-outline-primary">Actualizar</button>
+                    <a href="{{ route('subscriptions.show', $subscriptionId) }}" class="btn btn-outline-secondary">Cancelar</a>
                 </form>
             </div>
         </div>

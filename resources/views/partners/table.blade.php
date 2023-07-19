@@ -8,7 +8,6 @@
             <th scope="col">Edad</th>
             <th scope="col">Ocupación</th>
             <th scope="col">Email</th>
-            <th scope="col">Tipo</th>
             <th scope="col">Fecha de Ingreso</th>
             <th scope="col">Actualizado</th>
             <th>Acciones</th>
@@ -24,7 +23,6 @@
                 <td>{{ $partner->birth_date->diffInYears(\Carbon\Carbon::now()) }} años</td>
                 <td>{{ $partner->occupation }}</td>
                 <td>{{ $partner->email }}</td>
-                <td>{{ $partner->type }}</td>
                 <td>{{ \Carbon\Carbon::parse($partner->created_at)->format('Y-m-d')}}</td>
                 <td>{{ $partner->updated_at }}</td>
                 <td>

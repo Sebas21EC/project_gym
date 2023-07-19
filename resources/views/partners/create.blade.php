@@ -68,18 +68,13 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label for="type">Tipo:</label>
-                        <input type="text" class="form-control" id="type" name="type" placeholder="Ingresar el tipo" required>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="form-group">
                         <label for="phone">Teléfono:</label>
                         <input type="text" class="form-control" id="phone" name="phone" placeholder="Ingresar el número de teléfono" required>
                     </div>
                 </div>
             </div>
             <button type="submit" class="btn btn-outline-success">Crear</button>
+            <a href="{{ route('partners.index') }}" class="btn btn-outline-secondary">Regresar</a>
         </form>
     </div>
 </x-app-layout>
