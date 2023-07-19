@@ -34,6 +34,7 @@
                             <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">Usuario</th>
+                                    <th scope="col">Nombre</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Estado</th>
                                     <th scope="col">Roles</th>
@@ -45,6 +46,9 @@
                                 @foreach ($users as $user)
                                 <tr>
                                     <td>{{ $user->name }}</td>
+                                    
+                                    <!-- se trae el nombre desde tabla employee -->
+                                    <td>{{ $user->employee->first_name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->is_active == 1 ? 'Activo' : 'Inactivo' }}</td>
                                     <td>
@@ -58,7 +62,7 @@
                                         <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal{{ $user->id }}">Desactivar</button>
 
                                         <!-- Modal -->
-                                        <div class="modal fade" id="modal{{ $role->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="modal{{ $user->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -66,13 +70,13 @@
                                                         <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        ¿Está seguro de que desea desactivar el rol?
-                                                        <strong>{{ $role->name }}</strong>?
+                                                        ¿Está seguro de que desea desactivar el usuario?
+                                                        <strong>{{ $user->name }}</strong>?
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button class="btn btn-secondary" data-bs-dismiss="modal">No,
                                                             cancelar</button>
-                                                        <form action="{{ route('role.destroy', ['role' => $role->id]) }}" method="POST">
+                                                        <form action="{{ route('user.destroy', ['user' => $user->id]) }}" method="POST">
                                                             @method('DELETE')
                                                             @csrf
                                                             <button type="submit" class="btn btn-primary text-black">Sí, desactivar

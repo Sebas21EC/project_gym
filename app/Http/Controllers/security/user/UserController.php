@@ -130,9 +130,10 @@ class UserController extends Controller
 
         // Get only available roles
         $available_roles = Role::all()->where('is_active', 1)->whereNotIn('id', $id_active_roles);
+        $available_employees = Employee::all();
 
         $this->addAudit(Auth::user(), $this->typeAudit['access_edit_user'], 'user_id: ' . $id);
-        return view('security.user.edit', ['user' => $user, 'available_roles' => $available_roles]);
+        return view('security.user.edit', ['user' => $user, 'available_roles' => $available_roles, 'available_employees' => $available_employees]);
     }
 
     /**
@@ -149,7 +150,7 @@ class UserController extends Controller
         $userValidated = $request->validate([
             'name' => ['required', 'string', 'min:3', 'max:255'],
             'email' => ['required', 'email', 'min:3', 'max:255', Rule::unique('users')->ignore($id),],
-            'is_actvive' => ['required'],
+            'is_active' => ['required'],
             'selected_roles' => ['array'],
         ]);
 
@@ -186,6 +187,24 @@ class UserController extends Controller
 
         $this->addAudit(Auth::user(), $this->typeAudit['access_update_user'], 'user_id: ' . $id);
         return redirect()->route('user.index')->with('success', 'Usuario actualizado con exitosamente.');
+    }
+
+    public function destroy(string $id)
+    {
+        // $rol_names = array("administrator");
+
+        // if (!Gate::allows('has_role', [$rol_names])) {
+        //     $this->addAudit(Auth::user(), $this->typeAudit['not_access_destroy_role'], '');
+        //     return redirect()->route('role.index')->with('error', 'Usted no tiene permiso para desactivar roles!');
+        // }
+
+        $user = User::find($id);
+        
+            $user->is_active = 0;
+            $user->save();
+
+            $this->addAudit(Auth::user(), $this->typeAudit['access_destroy_role'], $user->toJson());
+            return redirect()->route('user.index')->with('success', 'Usuario desactivado con éxito');
     }
 
     

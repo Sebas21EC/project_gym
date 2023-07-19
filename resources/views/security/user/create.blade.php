@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h1>Crear Usuario</h1>
-                <a class="btn btn-success" href="{{ route('user.index') }}">Volver</a>
+                <a class="btn btn-primary" href="{{ route('user.index') }}">Volver</a>
             </div>
         </div>
 
@@ -49,20 +49,23 @@
                 @endforeach
             </select>
 
+            <br>    
             <div class="col-md-2 d-flex align-items-center">
                 <div class="text-center">
-                    <button type="button" id="add_role" class="btn btn-primary">&gt;</button>
+                    <button type="button" id="add_role" class="btn btn-outline-success">&gt;</button>
                     <br><br>
-                    <button type="button" id="remove_role" class="btn btn-primary">&lt;</button>
+                    <button type="button" id="remove_role" class="btn btn-outline-success">&lt;</button>
                 </div>
             </div>
+            <br>
             <label for="available_roles">Roles Asignados</label>
             <select name="selected_roles[]" id="selected_roles" multiple class="form-control">
 
             </select>
 
+            <br>
 
-            <input type="submit" class="btn btn-primary" value="Guardar" />
+            <input type="submit" class="btn btn-outline-success" value="Guardar" />
 
 
         </form>

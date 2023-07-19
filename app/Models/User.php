@@ -4,9 +4,11 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Models\staff\employee\Employee;
 use App\Models\staff\role\Role;
 use App\Models\staff\role_user\Role_user;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -61,6 +63,12 @@ class User extends Authenticatable
     public function roles():BelongsToMany
     {
         return $this->belongsToMany(Role::class)->withTimestamps()->withPivot('is_active')->wherePivot('is_active', 1);
+    }
+
+    ##emplyes es una tabla superiro a esta, es decir user tiene a employee_id, has la relacion
+    public function employee():BelongsTo
+    {
+        return $this->belongsTo(Employee::class);
     }
 
     public function hasRole(string $role_name):bool
