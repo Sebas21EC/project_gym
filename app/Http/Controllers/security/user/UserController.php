@@ -54,7 +54,7 @@ class UserController extends Controller
         $available_roles = Role::all()->where('is_active', 1);
         $available_employees = Employee::all();
         $this->addAudit(Auth::user(), $this->typeAudit['access_create_user'], '');
-        return view('security.user.create', ['available_roles' => $available_roles, 'available_employee' => $available_employee]);
+        return view('security.user.create', ['available_roles' => $available_roles, 'available_employees' => $available_employees]);
     }
 
     /**
