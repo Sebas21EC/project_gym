@@ -27,9 +27,11 @@
                     <a href="{{ route('payments.edit', ['payment' => $payment->id]) }}" class="btn btn-primary btn-sm">
                         <i class="far fa-edit"></i>
                     </a>
+                    
                     <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modal{{ $payment->id }}">
                     <i class="far fa-trash-alt"></i>
                     </button>
+                
 
                     <!-- Modal -->
                     <div class="modal fade" id="modal{{ $payment->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

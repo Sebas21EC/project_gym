@@ -29,7 +29,7 @@
                 <a href="{{ route('subscriptions.edit', ['subscription' => $subscription->id]) }}" class="btn btn-primary btn-sm">
                     <i class="far fa-edit"></i>
                 </a>
-
+                
                 <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modal{{ $subscription->id }}">
                     <i class="far fa-trash-alt"></i>
                 </button>

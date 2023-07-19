@@ -1,7 +1,7 @@
 <table class="table table-hover display my-custom-table" style="margin-top: 60px;" id="table_id">
     <thead class="thead-dark">
         <tr>
-            <th scope="col">#</th>
+            <th scope="col">DNI</th>
             <th scope="col">Nombre</th>
             <th scope="col">Teléfono</th>
             <th scope="col">Dirección</th>
@@ -28,12 +28,19 @@
                 <td>{{ \Carbon\Carbon::parse($partner->created_at)->format('Y-m-d')}}</td>
                 <td>{{ $partner->updated_at }}</td>
                 <td>
+                <div class="btn-group">
+                    
                 <a href="{{ route('partners.edit', ['partner' => $partner->id]) }}" class="btn btn-primary btn-sm">
                     <i class="far fa-edit"></i>
                 </a>
                 <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modal{{ $partner->id }}">
                     <i class="far fa-trash-alt"></i>
                 </button>
+
+                
+                <a href="{{ route('partners.edit', ['partner' => $partner->id]) }}" class="btn btn-primary btn-sm">
+                    <i class="fas fa-chart-bar"></i>
+                </a>
 
                     <!-- Modal -->
                     <div class="modal fade" id="modal{{ $partner->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
