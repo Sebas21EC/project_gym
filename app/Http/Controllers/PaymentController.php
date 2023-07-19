@@ -197,5 +197,19 @@ class PaymentController extends Controller
     {
         return view('payments.create', ['subscriptionId' => $subscriptionId]);
     }
+
+    public function getMasterDetail($id) {
+        $response = [];
+        $payment = $this->paymentRepository->find($id);
+    
+        // Obtener datos relacionados con la suscripción
+        $response['payment'] = $payment;
+        $response['subscription'] = $payment->subscription;
+        $response['subscriptionType'] = $payment->subscription->subscriptionType;
+        $response['user'] = $payment->subscription->user;
+        return view('payments.master_detail', $response);
+    }
+    
+
     
 }

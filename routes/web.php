@@ -70,6 +70,12 @@ Route::get('audit_trail_user_actions', [\App\Http\Controllers\audit_trail\AuditS
 
 
 
+<<<<<<< Updated upstream
 Route::resource('healthCards', App\Http\Controllers\HealthCardController::class)->middleware('auth');
+=======
+Route::resource('healthCards', App\Http\Controllers\HealthCardController::class);
+Route::get('payment_master_detail{id}', 'App\Http\Controllers\PaymentController@getMasterDetail')->name('payments.master_detail');
+
+>>>>>>> Stashed changes
 
 require __DIR__.'/auth.php';

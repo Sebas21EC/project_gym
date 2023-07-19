@@ -27,6 +27,10 @@
                     <a href="{{ route('payments.edit', ['payment' => $payment->id]) }}" class="btn btn-primary btn-sm">
                         <i class="far fa-edit"></i>
                     </a>
+                    <a href="{{ route('payments.master_detail', ['id' => $payment->id]) }}" class="btn btn-primary btn-sm">
+                        <i class="far fa-file-alt"></i>
+                    </a>
+
                     <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modal{{ $payment->id }}">
                     <i class="far fa-trash-alt"></i>
                     </button>

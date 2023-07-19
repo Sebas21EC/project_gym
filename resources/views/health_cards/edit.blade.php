@@ -20,7 +20,7 @@
                 @csrf
 
                 <div class="text-center mb-3">
-                    <label for="name">Información de la ficha de Salud</label>
+                    <label for="name">Información de la clienta</label>
                 </div>
                 <div>
                     <label for="name">Complete los datos</label>

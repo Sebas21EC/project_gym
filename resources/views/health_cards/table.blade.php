@@ -49,7 +49,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    ¿Está seguro de que desea eliminar la máquina
+                                    ¿Está seguro de que desea eliminar la ficha de salud
                                     <strong>{{ $healthCard->name }}</strong>?
                                 </div>
                                 <div class="modal-footer">
@@ -57,7 +57,7 @@
                                     <form action="{{ route('healthCards.destroy', ['healthCard' => $healthCard->id]) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
-                                        <button type="submit" class="btn btn-outline-primary">Sí, eliminar máquina</button>
+                                        <button type="submit" class="btn btn-outline-primary">Sí, eliminar ficha de salud</button>
                                     </form>
                                 </div>
                             </div>

@@ -25,12 +25,6 @@
                 <div>
                     <label for="name">Complete los datos</label>
                 </div>
-                <!-- * @property string $machine
- * @property string $detail
- * @property integer $quantity
- * @property number $unit_price
- * @property number $total_price
- * @property string $state -->
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
