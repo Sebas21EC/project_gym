@@ -52,7 +52,7 @@ class UserController extends Controller
 
 
         $available_roles = Role::all()->where('is_active', 1);
-        $available_employee = Employee::all();
+        $available_employees = Employee::all();
         $this->addAudit(Auth::user(), $this->typeAudit['access_create_user'], '');
         return view('security.user.create', ['available_roles' => $available_roles, 'available_employee' => $available_employee]);
     }
@@ -73,6 +73,7 @@ class UserController extends Controller
             'email' => ['required', 'email', 'min:3', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:3', 'max:255'],
             'selected_roles' => ['array'],
+            'employee_id' => ['required', 'string', 'min:3', 'max:255', 'unique:users'],
             
         ]);
 
