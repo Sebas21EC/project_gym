@@ -50,7 +50,7 @@ class UserController extends Controller
         // }
 
 
-        $available_roles = Role::all()->where('status', 1);
+        $available_roles = Role::all()->where('is_active', 1);
         $this->addAudit(Auth::user(), $this->typeAudit['access_create_user'], '');
         return view('security.user.create', ['available_roles' => $available_roles]);
     }
@@ -115,7 +115,7 @@ class UserController extends Controller
         // Get only asignation and roles that are activated
         $active_roles = array();
         foreach ($user->roles as $role) {
-            if ($role->pivot->is_active == 1 && $role->status == 1) {
+            if ($role->pivot->is_active == 1 && $role->is_active == 1) {
                 array_push($active_roles, $role);
             }
         }
@@ -127,7 +127,7 @@ class UserController extends Controller
         }
 
         // Get only available roles
-        $available_roles = Role::all()->where('status', 1)->whereNotIn('id', $id_active_roles);
+        $available_roles = Role::all()->where('is_active', 1)->whereNotIn('id', $id_active_roles);
 
         $this->addAudit(Auth::user(), $this->typeAudit['access_edit_user'], 'user_id: ' . $id);
         return view('security.user.edit', ['user' => $user, 'available_roles' => $available_roles]);

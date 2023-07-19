@@ -53,9 +53,9 @@
                                         @endforeach
                                     </td>
                                     <td>
-                                        <a href="{{ route('role.edit', ['role' => $role->id]) }}" class="btn btn-primary">Editar</a>
+                                        <a href="{{ route('user.edit', ['user' => $user->id]) }}" class="btn btn-primary">Editar</a>
 
-                                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal{{ $role->id }}">Desactivar</button>
+                                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal{{ $user->id }}">Desactivar</button>
 
                                         <!-- Modal -->
                                         <div class="modal fade" id="modal{{ $role->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
