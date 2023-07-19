@@ -55,8 +55,8 @@
                             </li>
                             <li>
                                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('index')">
-                                        {{ __('Reporte') }}
+                                    <x-nav-link :href="route('module.index')" :active="request()->routeIs('index')">
+                                        {{ __('Modulos') }}
                                     </x-nav-link>
                                 </div>
                             </li>
