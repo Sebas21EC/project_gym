@@ -22,9 +22,9 @@
                 <div class="p-6 text-gray-900">
 
 
-                    <form action="{{ route('module.create') }}" method="GET">
+                    <!-- <form action="{{ route('module.create') }}" method="GET">
                         <button type="submit" class="btn btn-outline-success">Crear</button>
-                    </form>
+                    </form> -->
 
                     <div class="container">
                         <table class="table table-hover display" id="table_id">
@@ -37,7 +37,7 @@
                                     <th scope="col">Descripcion</th>
                                     <th scope="col">Activo</th>
                                     <th scope="col">Roles</th>
-                                    <th scope="col">Acciones</th>
+                                    <!-- <th scope="col">Acciones</th> -->
                                 </tr>
                             </thead>
 
@@ -52,12 +52,12 @@
                                         {{ $role->role_name }}
                                         @endforeach
                                     </td>
-                                    <td>
+                                    <!-- <td>
                                         <a href="{{ route('module.edit', ['module' => $module->id]) }}" class="btn btn-primary">Editar</a>
 
                                         <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal{{ $module->id }}">Desactivar</button>
 
-                                        <!-- Modal -->
+                                       
                                         <div class="modal fade" id="modal{{ $module->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -82,7 +82,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </td>
+                                    </td> -->
 
                                 </tr>
                                 @endforeach

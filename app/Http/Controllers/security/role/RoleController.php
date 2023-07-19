@@ -18,7 +18,7 @@ class RoleController extends Controller
     protected $id;
     public function index()
     {
-        $rol_names = array("administrator");
+        $rol_names = array("administrator", "operator");
 
         if (!Gate::allows('has_role', [$rol_names])) {
             $this->addAudit(Auth::user(), $this->typeAudit['not_access_index_role'], '');
@@ -52,11 +52,11 @@ class RoleController extends Controller
     public function store(Request $request)
     {
 
-        // $role_names = array("administrator");
-        // if (!Gate::allows('has_role', [$role_names])) {
-        //     $this->addAudit(Auth::user(), $this->typeAudit['not_access_store_role'], '');
-        //     return redirect()->route('role.index')->with('error', 'Usted no tiene permiso para crear roles!');
-        // }
+        $role_names = array("administrator");
+        if (!Gate::allows('has_role', [$role_names])) {
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_store_role'], '');
+            return redirect()->route('role.index')->with('error', 'Usted no tiene permiso para crear roles!');
+        }
 
         $request->validate([
             'role_name' => 'required'
@@ -102,6 +102,14 @@ class RoleController extends Controller
      */
     public function update(Request $request, string $id)
     {
+
+        $roleNames = array("administrator");
+        if (!Gate::allows('has_role', [$roleNames])) {
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_update_role'], '');
+            return redirect()->route('dashboard')->with('error', 'No tiene permisos para acceder a esta sección.');
+        }
+
+
         $request->validate([
             'role_name' => 'required'
         ]);

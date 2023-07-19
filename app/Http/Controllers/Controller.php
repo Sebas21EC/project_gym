@@ -170,6 +170,24 @@ class Controller extends BaseController
         'access_status_partner' => 'INVENTORY/PARTNER/CHANGE-STATUS',
         
 
+        //Module
+        'not_access_index_module' => 'SECURITY/MODULE/NOT-AUTHORIZED-INDEX',
+        'access_index_module' => 'SECURITY/MODULE/AUTHORIZED-INDEX',
+        'not_access_create_module' => 'SECURITY/MODULE/NOT-AUTHORIZED-CREATE-VIEW',
+        'access_create_module' => 'SECURITY/MODULE/AUTHORIZED-CREATE-VIEW',
+        'not_access_store_module' => 'SECURITY/MODULE/NOT-AUTHORIZED-STORE',
+        'access_store_module' => 'SECURITY/MODULE/AUTHORIZED-STORE',
+        'not_access_edit_module' => 'SECURITY/MODULE/NOT-AUTHORIZED-EDIT-VIEW',
+        'access_edit_module' => 'SECURITY/MODULE/AUTHORIZED-EDIT-VIEW',
+        'not_access_update_module' => 'SECURITY/MODULE/NOT-AUTHORIZED-UPDATE',
+        'access_update_module' => 'SECURITY/MODULE/AUTHORIZED-UPDATE',
+        'not_access_destroy_module' => 'SECURITY/MODULE/NOT-AUTHORIZED-DESTROY',
+        'access_destroy_module' => 'SECURITY/MODULE/AUTHORIZED-DESTROY',
+        'not_access_show_module' => 'SECURITY/MODULE/NOT-AUTHORIZED-SHOW',
+        'access_show_module' => 'SECURITY/MODULE/AUTHORIZED-SHOW',
+        'not_access_status_module' => 'SECURITY/MODULE/NOT-AUTHORIZED-CHANGE-STATUS',
+        'access_status_module' => 'SECURITY/MODULE/CHANGE-STATUS',
+        
 
 
 

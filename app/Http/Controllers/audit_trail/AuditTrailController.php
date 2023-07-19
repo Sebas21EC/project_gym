@@ -13,11 +13,11 @@ class AuditTrailController extends Controller
     //
     public function index()
     {
-        // $roleNames = array("AUDITOR");
-        // if (!Gate::allows('has_role', [$roleNames])) {
-        //     $this->addAudit(Auth::user(), $this->typeAudit['not_access_index_audit'], '');
-        //     return redirect()->route('dashboard')->with('error', 'No tiene permisos para acceder a esta página');
-        // }
+        $roleNames = array("auditor", "administrator");
+        if (!Gate::allows('has_role', [$roleNames])) {
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_index_audit'], '');
+            return redirect()->route('dashboard')->with('error', 'No tiene permisos para acceder a esta página');
+        }
 
         $audit_trails = AuditTrail::all()->sortByDesc('created_at');
 

@@ -31,7 +31,7 @@
                 </div>
 
                 <!-- roles -->
-                @if (Gate::allows('has_role', [$module_security]))
+                
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <li class="nav-item dropdown list-unstyled">
                         <a href="#" class=" btn " style="margin-top:15px" data-toggle="dropdown">
@@ -64,10 +64,9 @@
                     </li>
                 </div>
 
-                @endif
-
+               
                 <!-- empleados -->
-                @if (Gate::allows('has_role', [$module_store]))
+                <!-- @if (Gate::allows('has_role', [$module_store])) -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <li class="nav-item dropdown list-unstyled">
                         <a href="#" class=" btn " style="margin-top:15px" data-toggle="dropdown">
@@ -83,7 +82,7 @@
                                     </x-nav-link>
                                 </div>
                             </li>
-                            @if (Gate::allows('has_role', [$module_employee]))
+                            <!-- @if (Gate::allows('has_role', [$module_employee])) -->
                             <li>
                                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                     <x-nav-link :href="route('occupation.index')" :active="request()->routeIs('index')">
@@ -91,7 +90,7 @@
                                     </x-nav-link>
                                 </div>
                             </li>
-                            @endif
+                            <!-- @endif -->
                            
                             <li>
                                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
@@ -105,7 +104,7 @@
                         </ul>
                     </li>
                 </div>
-                @endif
+                <!-- @endif -->
                <!-- Modulo CLientas -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <li class="nav-item dropdown list-unstyled">

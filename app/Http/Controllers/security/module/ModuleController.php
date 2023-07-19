@@ -7,6 +7,7 @@ use App\Models\staff\module\Module;
 use App\Models\staff\role\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\Rule;
 
 
@@ -15,6 +16,12 @@ class ModuleController extends Controller
     public function index()
     {
        
+         $roleNames = array("administrator","operator");
+        if (!Gate::allows('has_role', [$roleNames])) {
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_index_module'], '');
+            return redirect()->route('dashboard')->with('error', 'No tiene permisos para acceder a esta sección.');
+        }
+
 
         $modules = Module::all();
 
@@ -29,7 +36,7 @@ class ModuleController extends Controller
         }
 
 
-        $this->addAudit(Auth::user(), $this->typeAudit['access_index_user'], '');
+        $this->addAudit(Auth::user(), $this->typeAudit['access_index_module'], '');
         return view('security.module.index', [
             'modules' => $modules,
         ]);
@@ -40,11 +47,11 @@ class ModuleController extends Controller
      */
     public function create()
     {
-        // $roleNames = array("ADMINSTRADOR_DE_SISTEMA");
-        // if (!Gate::allows('has-rol', [$roleNames])) {
-        //     $this->addAudit(Auth::user(), $this->typeAudit['not_access_create_user'], '');
-        //     return redirect()->route('dashboard')->with('error', 'No tiene permisos para acceder a esta sección.');
-        // }
+        $roleNames = array("administrator");
+        if (!Gate::allows('has_role', [$roleNames])) {
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_create_user'], '');
+            return redirect()->route('module.index')->with('error', 'No tiene permisos para acceder a esta sección.');
+        }
 
 
         $available_roles = Role::all()->where('status', 1);
@@ -57,11 +64,11 @@ class ModuleController extends Controller
      */
     public function store(Request $request)
     {
-        // $roleNames = array("ADMINSTRADOR_DE_SISTEMA");
-        // if (!Gate::allows('has-rol', [$roleNames])) {
-        //     $this->addAudit(Auth::user(), $this->typeAudit['not_access_store_user'], '');
-        //     return redirect()->route('dashboard')->with('error', 'No tiene permisos para acceder a esta sección.');
-        // }
+        $roleNames = array("administrator");
+        if (!Gate::allows('has_role', [$roleNames])) {
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_store_user'], '');
+            return redirect()->route('module.index')->with('error', 'No tiene permisos para acceder a esta sección.');
+        }
 
         // Schema::create('modules', function (Blueprint $table) {
         //     $table->id();
@@ -90,7 +97,7 @@ class ModuleController extends Controller
         }
 
         $data_new = $module->toJson();
-        $this->addAudit(Auth::user(), $this->typeAudit['access_store_module'], $data_new);
+        $this->addAudit(Auth::user(), $this->typeAudit['access_store_module'], '',$data_new);
         return redirect()->route('module.index')->with('success', 'Modulo creado con exitosamente.');
     }
 
@@ -106,11 +113,11 @@ class ModuleController extends Controller
      */
     public function edit(string $id)
     {
-        // $roleNames = array("ADMINSTRADOR_DE_SISTEMA");
-        // if (!Gate::allows('has-rol', [$roleNames])) {
-        //     $this->addAudit(Auth::user(), $this->typeAudit['not_access_edit_user'], 'user_id: ' . $id);
-        //     return redirect()->route('dashboard')->with('error', 'No tiene permisos para acceder a esta sección.');
-        // }
+        $roleNames = array("administrator");
+        if (!Gate::allows('has_role', [$roleNames])) {
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_edit_user'], '');
+            return redirect()->route('module.index')->with('error', 'No tiene permisos para acceder a esta sección.');
+        }
 
 
         $module = Module::findOrFail($id);
@@ -132,7 +139,7 @@ class ModuleController extends Controller
         // Get only available roles
         $available_roles = Role::all()->where('status', 1)->whereNotIn('id', $id_active_roles);
 
-        $this->addAudit(Auth::user(), $this->typeAudit['access_edit_module'], 'module_id: ' . $id);
+        $this->addAudit(Auth::user(), $this->typeAudit['access_edit_module'],'');
         return view('security.module.edit', ['module' => $module, 'available_roles' => $available_roles]);
     }
 
@@ -141,23 +148,27 @@ class ModuleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        // $roleNames = array("ADMINSTRADOR_DE_SISTEMA");
-        // if (!Gate::allows('has-rol', [$roleNames])) {
-        //     $this->addAudit(Auth::user(), $this->typeAudit['not_access_update_user'], 'user_id: ' . $id);
-        //     return redirect()->route('dashboard')->with('error', 'No tiene permisos para acceder a esta sección.');
-        // }
+        $roleNames = array("administrator");
+        if (!Gate::allows('has_role', [$roleNames])) {
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_update_user'], 'user_id: ' . $id);
+            return redirect()->route('module.index')->with('error', 'No tiene permisos para acceder a esta sección.');
+        }
 
         $moduleValidated = $request->validate([
         
             'name' => ['required', 'string', 'min:3', 'max:255', Rule::unique('modules')->ignore($id)],
             'description' => ['required', 'string', 'min:3', 'max:255'],
             'is_active' => ['required'],
-            'selected_roles' => ['array'],           
+            'selected_roles' => ['array'],  
+
         ]);
 
         if (!isset($moduleValidated['selected_roles'])) {
             $moduleValidated['selected_roles'] = array();
         }
+
+        $data_old = Module::find($id);
+        $data_old = $data_old->toJson();
 
         $module = Module::findOrFail($id);
         $module->fill($moduleValidated);
@@ -185,8 +196,9 @@ class ModuleController extends Controller
         }
 
         $module->save();
+        $data_new = $module->toJson();
 
-        $this->addAudit(Auth::user(), $this->typeAudit['access_update_module'], 'user_id: ' . $id);
-        return redirect()->route('Module.index')->with('success', 'Module actualizado con exitosamente.');
+        $this->addAudit(Auth::user(), $this->typeAudit['access_update_module'], $data_old, $data_new);
+        return redirect()->route('module.index')->with('success', 'Module actualizado con exitosamente.');
     }
 }
