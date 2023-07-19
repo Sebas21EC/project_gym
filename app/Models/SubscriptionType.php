@@ -5,6 +5,7 @@ namespace App\Models;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model as EloquentModel;
 
 /**
  * Class SubscriptionType
@@ -15,7 +16,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property integer $n_months
  * @property number $price
  */
-class SubscriptionType extends Model
+class SubscriptionType extends EloquentModel
 {
     use SoftDeletes;
 

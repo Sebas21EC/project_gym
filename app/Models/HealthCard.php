@@ -5,6 +5,7 @@ namespace App\Models;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model as EloquentModel;
 
 /**
  * Class HealthCard
@@ -22,7 +23,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property string $medication
  * @property integer $partner_id
  */
-class HealthCard extends Model
+class HealthCard extends EloquentModel
 {
     use SoftDeletes;
 
