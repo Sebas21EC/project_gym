@@ -53,7 +53,7 @@ Route::resource('user', UserController::class)->middleware('auth');
 //module
 Route::resource('module',ModuleController::class)->middleware('auth');
 
-Route::resource('partners', App\Http\Controllers\PartnerController::class);
+Route::resource('partners', App\Http\Controllers\PartnerController::class)-> middleware('auth');
 Route::resource('subscriptionTypes', App\Http\Controllers\SubscriptionTypeController::class);
 Route::resource('subscriptions', App\Http\Controllers\SubscriptionController::class);
 Route::resource('payments', App\Http\Controllers\PaymentController::class);
