@@ -34,6 +34,8 @@ class DatabaseSeeder extends Seeder
             SubscriptionTypeSeeder::class,
             SubscriptionSeeder::class,
             PaymentSeeder::class,
+            ModuleSeeder::class,
+            RoleModuleSeeder::class,
         ]);
 
     }
