@@ -28,6 +28,8 @@
 
         .Our_box img {
             max-width: 150px;
+            align-items: center;
+            align-content: center;
         }
 
         .Our_box h4 {
@@ -52,7 +54,8 @@
         }
 
         .p-6 {
-            background-color: #9925be;
+            background-color: #CBA2C7;
+            
         }
 
         /* Estilos personalizados para el footer */
@@ -109,42 +112,39 @@
             <div class="bienvenida">
                 <div class="jumbotron jumbotron-fluid" style="background-color: #b45fa8;">
                     <div class="container">
-                        <h1 class="display-4 text-white" style="font-family: 'Arial', sans-serif; font-weight: bold;">¡Bienvenida al Gimnasio UNIKA!</h1>
-                        <p class="lead text-white" style="font-family: 'Arial', sans-serif;">Aquí encontrarás información relevante y funciones importantes para lograr tus objetivos de fitness y bienestar.</p>
+                        <h1 class="display-4 text-white" style="font-family: 'Arial', sans-serif; font-weight: bold; font-size: 60px; text-align:center">¡Bienvenida al Gimnasio UNIKA!</h1>
+                        <br>
+                        <p class="lead text-white" style="font-family: 'Arial', sans-serif;font-size: 30px; text-align:center">Aquí encontrarás información relevante y funciones importantes para lograr tus objetivos de fitness y bienestar.</p>
                     </div>
                 </div>
         </div>
 
         <div class="p-6 text-gray-900">
 
-
-            <!-- generar un dashboar con informacion de la empresa tomando datos de las tablas de la base de datos -->
-
-            <!--  CANTIDAD DE USUSARIO REGISTRADOS, LOS NOMBRE DE MODULOS, EL USUSARIO INGRESADO, UN FDIAGRAMA DE BARRAS, ETC-->
-
-            <!-- cantidad de ususairos registrados, no me des auditoria -->
-
             <div class="row">
                 <div class="col-md-4">
                     <div class="card Our_box">
-                        <img src="{{ asset('img/icon1.png') }}" alt="logo">
+                        
                         <h3>Peso </h3>
+                        <img src="{{ asset('img/icon1.png') }}" alt="logo">
                         <br>
                         <h4>Clases con entrenadores capacitados que permitan poner en practica y demostrar la fuerza femenina.</h4>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card Our_box">
-                        <img src="{{ asset('img/icon2.png') }}" alt="logo">
+                        
                         <h3>Cardio </h3>
+                        <img src="{{ asset('img/icon2.png') }}" alt="logo">
                         <h4>Clases orientadas al objetivo ideal para cada clienta.</h4>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card Our_box">
-                        <img src="{{ asset('img/icon3.png') }}" alt="logo">
+                        
                         <h3>Figura ideal </h3>
-                        <h4>Perdida de peso <br>Programas que buscan garantizar llegar al peso y estado fisico que cada clienta busca</h4>
+                        <img src="{{ asset('img/icon3.png') }}" alt="logo">
+                        <h4>Programas que buscan garantizar llegar al peso y estado fisico que cada clienta busca</h4>
                     </div>
                 </div>
                 <div class="col-md-12">
