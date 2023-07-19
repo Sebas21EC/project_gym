@@ -9,6 +9,8 @@ use App\Repositories\SubscriptionRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\Rule;
 use Response;
 
@@ -31,8 +33,14 @@ class SubscriptionController extends Controller
      */
     public function index(Request $request)
     {
+        $rol_names = array("administrator", "operator", "user");
+        if (!Gate::allows('has_role', [$rol_names])) {
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_index_subscription'], '');
+            return redirect()->route('dashboard')->with('error', 'Usted no tiene permiso!');
+        }
         $subscriptions = $this->subscriptionRepository->all();
 
+        $this->addAudit(Auth::user(), $this->typeAudit['access_index_subscription'], '');
         return view('subscriptions.index')
             ->with('subscriptions', $subscriptions);
     }
@@ -80,7 +88,6 @@ class SubscriptionController extends Controller
         $subscription = $this->subscriptionRepository->find($id);
 
         if (empty($subscription)) {
-            Flash::error('Subscription not found');
 
             return redirect(route('subscriptions.index'));
         }
@@ -102,7 +109,6 @@ class SubscriptionController extends Controller
         $nMonths = SubscriptionType::pluck('n_months', 'id'); 
 
         if (empty($subscription)) {
-            Flash::error('Subscription not found');
 
             return redirect(route('subscriptions.index'));
         }
@@ -124,7 +130,6 @@ class SubscriptionController extends Controller
         
         $subscription = $this->subscriptionRepository->find($id);
         if (empty($subscription)) {
-            Flash::error('Subscription not found');
 
             return redirect(route('subscriptions.index'));
         }
@@ -136,7 +141,6 @@ class SubscriptionController extends Controller
 
         $subscription = $this->subscriptionRepository->update($request->all(), $id);
 
-        Flash::success('Subscription updated successfully.');
 
         return redirect()->route('subscriptions.index')->with('success', 'Suscripción actualizada exitosamente.');
     }
@@ -155,14 +159,12 @@ class SubscriptionController extends Controller
         $subscription = $this->subscriptionRepository->find($id);
 
         if (empty($subscription)) {
-            Flash::error('Subscription not found');
 
             return redirect(route('subscriptions.index'));
         }
 
         $this->subscriptionRepository->delete($id);
 
-        Flash::success('Subscription deleted successfully.');
 
         return redirect(route('subscriptions.index'));
     }

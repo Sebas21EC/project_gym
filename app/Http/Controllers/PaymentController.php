@@ -12,6 +12,8 @@ use App\Http\Controllers\AppBaseController;
 
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Response;
 
 class PaymentController extends Controller
@@ -36,8 +38,14 @@ class PaymentController extends Controller
      */
     public function index(Request $request)
     {
+        $rol_names = array("administrator", "operator", "user");
+        if (!Gate::allows('has_role', [$rol_names])) {
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_index_payment'], '');
+            return redirect()->route('dashboard')->with('error', 'Usted no tiene permiso!');
+        }
         $payments = $this->paymentRepository->all();
 
+        $this->addAudit(Auth::user(), $this->typeAudit['access_index_payment'], '');
         return view('payments.index')
             ->with('payments', $payments);
     }
@@ -49,6 +57,13 @@ class PaymentController extends Controller
      */
     public function create()
     {
+        $rol_names = array( "operator", "user");
+        if (!Gate::allows('has_role', [$rol_names])) {
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_create_payment'], '');
+            return redirect()->route('payments.index')->with('error', 'Usted no tiene permiso!');
+        }
+
+        $this->addAudit(Auth::user(), $this->typeAudit['access_create_payment'], '');
         return view('payments.create');
     }
 
@@ -61,6 +76,12 @@ class PaymentController extends Controller
      */
     public function store(CreatePaymentRequest $request)
     {
+        $rol_names = array( "operator", "user");
+        if (!Gate::allows('has_role', [$rol_names])) {
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_store_payment'], '');
+            return redirect()->route('payments.index')->with('error', 'Usted no tiene permiso!');
+        }
+
         $input = $request->all();
         $subscriptionId = $request['subscription_id'];
         $totalPrice = Subscription::find($subscriptionId)->total_amount;
@@ -80,7 +101,9 @@ class PaymentController extends Controller
         $subscriptionId = $payment->subscription_id;
         $payments = Payment::where('subscription_id', $subscriptionId)->get();
        
-   
+        $data_new = json_encode($payment);
+
+        $this->addAudit(Auth::user(), $this->typeAudit['access_store_payment'],'', $data_new);   
 
         return view('payments.index', ['payments' => $payments, 'subscriptionId' => $subscriptionId]);
     }
@@ -94,6 +117,12 @@ class PaymentController extends Controller
      */
     public function show($id)
     {
+        $rol_names = array("administrator", "operator", "user");
+        if (!Gate::allows('has_role', [$rol_names])) {
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_show_payment'], '');
+            return redirect()->route('payments.index')->with('error', 'Usted no tiene permiso!');
+        }
+
         $payment = $this->paymentRepository->find($id);
 
         if (empty($payment)) {
@@ -101,7 +130,7 @@ class PaymentController extends Controller
             return redirect(route('payments.index'));
         }
         
-
+        $this->addAudit(Auth::user(), $this->typeAudit['access_show_payment'], '');
         return view('payments.show')->with('payment', $payment);
     }
 
@@ -114,6 +143,11 @@ class PaymentController extends Controller
      */
     public function edit($id)
     {
+        $rol_names = array( "operator", "user");
+        if (!Gate::allows('has_role', [$rol_names])) {
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_edit_payment'], '');
+            return redirect()->route('payments.index')->with('error', 'Usted no tiene permiso!');
+        }
         $payment = $this->paymentRepository->find($id);
         $subscriptionId = $payment->subscription_id;
 
@@ -121,6 +155,8 @@ class PaymentController extends Controller
 
             return redirect(route('payments.index'));
         }
+
+        $this->addAudit(Auth::user(), $this->typeAudit['access_edit_payment'], '');
 
         return view('payments.edit')->with('payment', $payment)->with('subscriptionId', $subscriptionId);
     }
@@ -135,6 +171,15 @@ class PaymentController extends Controller
      */
     public function update($id, UpdatePaymentRequest $request)
     {
+        $rol_names = array( "operator", "user");
+        if (!Gate::allows('has_role', [$rol_names])) {
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_update_payment'], '');
+            return redirect()->route('payments.index')->with('error', 'Usted no tiene permiso!');
+        }
+
+        $data_old = Payment::find($id);
+        $data_old = $data_old->toJson();
+
         $payment = $this->paymentRepository->find($id);
         
 
@@ -159,6 +204,10 @@ class PaymentController extends Controller
 
         $subscriptionId = $payment->subscription_id;
         $payments = Payment::where('subscription_id', $subscriptionId)->get();
+
+        $data_new = json_encode($payment);
+
+        $this->addAudit(Auth::user(), $this->typeAudit['access_update_payment'], $data_old, $data_new);    
        
         return view('payments.index', ['payments' => $payments, 'subscriptionId' => $subscriptionId]);
     }
@@ -174,6 +223,11 @@ class PaymentController extends Controller
      */
     public function destroy($id)
     {
+        $rol_names = array( "operator");
+        if (!Gate::allows('has_role', [$rol_names])) {
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_destroy_payment'], '');
+            return redirect()->route('payments.index')->with('error', 'Usted no tiene permiso!');
+        }
         $payment = $this->paymentRepository->find($id);
 
         if (empty($payment)) {
@@ -185,6 +239,9 @@ class PaymentController extends Controller
 
         $subscriptionId = $payment->subscription_id;
         $payments = Payment::where('subscription_id', $subscriptionId)->get();
+
+        $data_old = json_encode($payment);
+        $this->addAudit(Auth::user(), $this->typeAudit['access_destroy_payment'], $data_old, '');
         return view('payments.index', ['payments' => $payments, 'subscriptionId' => $subscriptionId]);
     }
 

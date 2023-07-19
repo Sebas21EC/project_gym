@@ -8,6 +8,8 @@ use App\Repositories\SubscriptionTypeRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Response;
 
 class SubscriptionTypeController extends Controller
@@ -29,6 +31,13 @@ class SubscriptionTypeController extends Controller
      */
     public function index(Request $request)
     {
+        $roles = array("administrator", "operator", "user");
+
+        if (!Gate::allows('has_role', [$roles])) {
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_index_subscriptiontype'], '');
+            return redirect()->route('dashboard')->with('error', 'Usted no tiene permiso!');
+        }
+
         $subscriptionTypes = $this->subscriptionTypeRepository->all();
 
         return view('subscription_types.index')
