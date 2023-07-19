@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\security\module\ModuleController;
 use App\Http\Controllers\security\role\RoleController;
 use App\Http\Controllers\security\user\UserController;
 use App\Http\Controllers\staff\occupation\OccupationController;
@@ -48,6 +49,9 @@ Route::resource('role',RoleController::class)->middleware('auth');
 
 //user
 Route::resource('user', UserController::class)->middleware('auth');
+
+//module
+Route::resource('module',ModuleController::class)->middleware('auth');
 
 Route::resource('partners', App\Http\Controllers\PartnerController::class);
 Route::resource('subscriptionTypes', App\Http\Controllers\SubscriptionTypeController::class);

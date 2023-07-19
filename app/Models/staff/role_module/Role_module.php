@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role_module extends Model
 {
-    use HasFactory;
-    protected $table = 'role_module';
+     use HasFactory;
+    // protected $table = 'role_module';
 }

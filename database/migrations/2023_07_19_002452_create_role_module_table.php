@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('role_module', function (Blueprint $table) {
+        Schema::create('module_role', function (Blueprint $table) {
             $table->id();
             $table->foreignId('role_id')->constrained('roles')
                 ->onUpdate('cascade')
@@ -25,6 +25,7 @@ return new class extends Migration
             $table->boolean('read')->default(false);
             $table->boolean('update')->default(false);
             $table->boolean('delete')->default(false);
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

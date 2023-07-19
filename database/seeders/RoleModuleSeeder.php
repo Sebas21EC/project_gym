@@ -115,7 +115,7 @@ class RoleModuleSeeder extends Seeder
         // $module_13->save();
 
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 1,
             'module_id' => 1,
             'create' => true,
@@ -127,7 +127,7 @@ class RoleModuleSeeder extends Seeder
 
         ]);
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 1,
             'module_id' => 2,
             'create' => true,
@@ -139,7 +139,7 @@ class RoleModuleSeeder extends Seeder
             
         ]);
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 1,
             'module_id' => 3,
             'create' => true,
@@ -151,7 +151,7 @@ class RoleModuleSeeder extends Seeder
             
         ]);
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 1,
             'module_id' => 4,
             'create' => true,
@@ -163,7 +163,7 @@ class RoleModuleSeeder extends Seeder
             
         ]);
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 1,
             'module_id' => 5,
             'create' => true,
@@ -175,7 +175,7 @@ class RoleModuleSeeder extends Seeder
             
         ]);
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 1,
             'module_id' => 6,
             'create' => true,
@@ -187,7 +187,7 @@ class RoleModuleSeeder extends Seeder
             
         ]);
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 1,
             'module_id' => 7,
             'create' => true,
@@ -199,7 +199,7 @@ class RoleModuleSeeder extends Seeder
             
         ]);
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 1,
             'module_id' => 8,
             'create' => true,
@@ -211,7 +211,7 @@ class RoleModuleSeeder extends Seeder
             
         ]);
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 1,
             'module_id' => 9,
             'create' => true,
@@ -223,7 +223,7 @@ class RoleModuleSeeder extends Seeder
             
         ]);
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 1,
             'module_id' => 10,
             'create' => true,
@@ -235,7 +235,7 @@ class RoleModuleSeeder extends Seeder
             
         ]);
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 1,
             'module_id' => 11,
             'create' => false,
@@ -247,7 +247,7 @@ class RoleModuleSeeder extends Seeder
             
         ]);
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 1,
             'module_id' => 12,
             'create' => false,
@@ -259,7 +259,7 @@ class RoleModuleSeeder extends Seeder
             
         ]);
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 1,
             'module_id' => 13,
             'create' => false,
@@ -273,7 +273,7 @@ class RoleModuleSeeder extends Seeder
 
        //EL AUDITOR SOLO AL MODULO AUDIT TRAILR
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 2,
             'module_id' => 11,
             'create' => false,
@@ -287,7 +287,7 @@ class RoleModuleSeeder extends Seeder
 
         //EL user a todos los modules excepto a los modulos de role, user, audit trail, role user, role module, module,employee, occupation
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 3,
             'module_id' => 1,
             'create' => false,
@@ -299,7 +299,7 @@ class RoleModuleSeeder extends Seeder
             
         ]);
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 3,
             'module_id' => 2,
             'create' => false,
@@ -311,7 +311,7 @@ class RoleModuleSeeder extends Seeder
             
         ]);
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 3,
             'module_id' => 3,
             'create' => false,
@@ -323,7 +323,7 @@ class RoleModuleSeeder extends Seeder
 
         ]);
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 3,
             'module_id' => 4,
             'create' => false,
@@ -335,7 +335,7 @@ class RoleModuleSeeder extends Seeder
 
         ]);
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 3,
             'module_id' => 5,
             'create' => false,
@@ -347,7 +347,7 @@ class RoleModuleSeeder extends Seeder
 
         ]);
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 3,
             'module_id' => 6,
             'create' => false,
@@ -359,7 +359,7 @@ class RoleModuleSeeder extends Seeder
 
         ]);
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 3,
             'module_id' => 7,
             'create' => false,
@@ -371,7 +371,7 @@ class RoleModuleSeeder extends Seeder
 
         ]);
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 3,
             'module_id' => 8,
             'create' => false,
@@ -383,7 +383,7 @@ class RoleModuleSeeder extends Seeder
 
         ]);
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 3,
             'module_id' => 9,
             'create' => false,
@@ -395,7 +395,7 @@ class RoleModuleSeeder extends Seeder
 
         ]);
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 3,
             'module_id' => 10,
             'create' => false,
@@ -407,7 +407,7 @@ class RoleModuleSeeder extends Seeder
 
         ]);
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 3,
             'module_id' => 11,
             'create' => false,
@@ -419,7 +419,7 @@ class RoleModuleSeeder extends Seeder
 
         ]);
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 3,
             'module_id' => 12,
             'create' => false,
@@ -431,7 +431,7 @@ class RoleModuleSeeder extends Seeder
 
         ]);
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 3,
             'module_id' => 13,
             'create' => false,
@@ -445,7 +445,7 @@ class RoleModuleSeeder extends Seeder
 
         //EL OPERATOR A TODOS LOS MODULES EXCEPTO A LOS MODULOS DE ROLE, USER, AUDIT TRAIL, ROLE USER, ROLE MODULE, MODULE, EMPLOYEE, OCCUPATION, PEROE ESTE PUEDE CREAR Y ACTUALIZAR
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 4,
             'module_id' => 1,
             'create' => true,
@@ -457,7 +457,7 @@ class RoleModuleSeeder extends Seeder
 
         ]);
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 4,
             'module_id' => 2,
             'create' => true,
@@ -469,7 +469,7 @@ class RoleModuleSeeder extends Seeder
 
         ]);
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 4,
             'module_id' => 3,
             'create' => true,
@@ -481,7 +481,7 @@ class RoleModuleSeeder extends Seeder
 
         ]);
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 4,
             'module_id' => 4,
             'create' => true,
@@ -493,7 +493,7 @@ class RoleModuleSeeder extends Seeder
 
         ]);
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 4,
             'module_id' => 5,
             'create' => true,
@@ -505,7 +505,7 @@ class RoleModuleSeeder extends Seeder
 
         ]);
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 4,
             'module_id' => 6,
             'create' => false,
@@ -517,7 +517,7 @@ class RoleModuleSeeder extends Seeder
 
         ]);
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 4,
             'module_id' => 7,
             'create' => false,
@@ -529,7 +529,7 @@ class RoleModuleSeeder extends Seeder
 
         ]);
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 4,
             'module_id' => 8,
             'create' => false,
@@ -541,7 +541,7 @@ class RoleModuleSeeder extends Seeder
 
         ]);
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 4,
             'module_id' => 9,
             'create' => false,
@@ -553,7 +553,7 @@ class RoleModuleSeeder extends Seeder
 
         ]);
 
-        DB::table('role_module')->insert([
+        DB::table('module_role')->insert([
             'role_id' => 4,
             'module_id' => 10,
             'create' => false,
