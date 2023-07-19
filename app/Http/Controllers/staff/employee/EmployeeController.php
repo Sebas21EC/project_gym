@@ -32,7 +32,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        $rol_names = array("administrator","operator","user");
+        $rol_names = array("administrator","user");
 
         if (!Gate::allows('has_role', [$rol_names])) {
             $this->addAudit(Auth::user(), $this->typeAudit['not_access_create_employee'], '');
@@ -49,6 +49,13 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
+        $rol_names = array("administrator","user");
+
+        if (!Gate::allows('has_role', [$rol_names])) {
+            $this->addAudit(Auth::user(), $this->typeAudit['not_access_store_employee'], '');
+            return redirect()->route('employee.index')->with('error', 'Usted no tiene permiso para crear empleados!');
+        }
+
         $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
@@ -66,6 +73,9 @@ class EmployeeController extends Controller
         $employee->address = $request->address;
         $employee->occupation_id = $request->occupation;
         $employee->save();
+        $data_new=$employee->toJson();
+
+        $this->addAudit(Auth::user(), $this->typeAudit['access_store_employee'],'', $data_new);
 
         return redirect()->route('employee.index')->with('success', 'Empleado creado con éxito');
     }
@@ -75,7 +85,7 @@ class EmployeeController extends Controller
      */
     public function show(string $id)
     {
-        $rol_names = array("administrator","operator");
+        $rol_names = array("administrator","operator","user");
 
         if (!Gate::allows('has_role', [$rol_names])) {
             $this->addAudit(Auth::user(), $this->typeAudit['not_access_show_employee'], '');
@@ -100,6 +110,9 @@ class EmployeeController extends Controller
         }
         $employee = Employee::find($id);
         $occupations = Occupation::all();
+
+        $this->addAudit(Auth::user(), $this->typeAudit['access_edit_employee'], '');
+
         return view('staff.employee.edit', ['employee' => $employee, 'occupations' => $occupations]);
     }
 
@@ -117,6 +130,9 @@ class EmployeeController extends Controller
             'occupation' => 'required|exists:occupations,id',
         ]);
 
+        $data_old = Employee::find($id);
+        $data_old = $data_old->toJson();
+
         $employee = Employee::find($id);
         $employee->first_name = $request->first_name;
         $employee->last_name = $request->last_name;
@@ -126,7 +142,8 @@ class EmployeeController extends Controller
         $employee->occupation_id = $request->occupation;
         $employee->save();
 
-        $this->addAudit(Auth::user(), $this->typeAudit['access_update_employee'], '');
+        $data_new = $employee->toJson();
+        $this->addAudit(Auth::user(), $this->typeAudit['access_update_employee'], $data_old, $data_new);
         return redirect()->route('employee.index')->with('success', 'Empleado actualizado con éxito');
     }
 
@@ -135,7 +152,7 @@ class EmployeeController extends Controller
      */
     public function destroy(string $id)
     {
-        $rol_names = array("administrator");
+        $rol_names = array("administrator","operator");
 
         if (!Gate::allows('has_role', [$rol_names])) {
             $this->addAudit(Auth::user(), $this->typeAudit['not_access_destroy_employee'], '');
@@ -146,10 +163,10 @@ class EmployeeController extends Controller
         $relatedemployees = User::where('employee_id', $employee->id)->count();
         if ($relatedemployees > 0) {
             $this->addAudit(Auth::user(), $this->typeAudit['not_access_destroy_employee'], '');
-            return redirect()->back()->with('error', 'No se puede eliminar el employeeo porque tiene employeeos relacionados en bodega');
+            return redirect()->back()->with('error', 'No se puede eliminar el empleado porque tiene usuarios relacionados');
         }
         $employee->delete();
-        $this->addAudit(Auth::user(), $this->typeAudit['access_destroy_employee'], '');
+        $this->addAudit(Auth::user(), $this->typeAudit['access_destroy_employee'], $employee->toJson(), '');
         return redirect()->back()->with('success', 'employeeo eliminado con éxito');
     }
 }
