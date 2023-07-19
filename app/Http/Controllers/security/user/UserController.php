@@ -73,7 +73,7 @@ class UserController extends Controller
             'email' => ['required', 'email', 'min:3', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:3', 'max:255'],
             'selected_roles' => ['array'],
-            'employee_id' => ['required', 'string', 'min:3', 'max:255', 'unique:users'],
+            'employee_id' => ['required'],
             
         ]);
 
