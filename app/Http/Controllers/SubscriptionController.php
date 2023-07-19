@@ -40,7 +40,7 @@ class SubscriptionController extends Controller
         }
         $subscriptions = $this->subscriptionRepository->all();
 
-        $this->addAudit(Auth::user(), $this->typeAudit['access_index_subscription'], '');
+        //$this->addAudit(Auth::user(), $this->typeAudit['access_index_subscription'], '');
         return view('subscriptions.index')
             ->with('subscriptions', $subscriptions);
     }
