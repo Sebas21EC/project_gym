@@ -30,11 +30,6 @@
                 value="{{ $user->email }}">
 
             
-            <label for="identification">Identificaci&oacute;n</label>
-            <input type="text" name="identification" id="identification" class="form-control"
-                placeholder="Identificaci&oacute;n" value="{{ $user->identification }}">
-
-            
             <label for="is_active">Activado</label>
             <select name="is_active" id="is_active" class="form-control">
                 <option value="1" {{ $user->is_active == 1 ? 'selected' : '' }}>SI</option>

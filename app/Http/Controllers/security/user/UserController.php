@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\security\user;
 
 use App\Http\Controllers\Controller;
+use App\Models\staff\employee\Employee;
 use App\Models\staff\role\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -51,8 +52,9 @@ class UserController extends Controller
 
 
         $available_roles = Role::all()->where('is_active', 1);
+        $available_employee = Employee::all();
         $this->addAudit(Auth::user(), $this->typeAudit['access_create_user'], '');
-        return view('security.user.create', ['available_roles' => $available_roles]);
+        return view('security.user.create', ['available_roles' => $available_roles, 'available_employee' => $available_employee]);
     }
 
     /**
@@ -144,10 +146,8 @@ class UserController extends Controller
         // }
 
         $userValidated = $request->validate([
-            'first_name' => ['required', 'string', 'min:3', 'max:255'],
-            'last_name' => ['required', 'string', 'min:3', 'max:255'],
+            'name' => ['required', 'string', 'min:3', 'max:255'],
             'email' => ['required', 'email', 'min:3', 'max:255', Rule::unique('users')->ignore($id),],
-            'identify' => ['required', 'string', 'min:3', 'max:255', Rule::unique('users')->ignore($id)],
             'is_actvive' => ['required'],
             'selected_roles' => ['array'],
         ]);
