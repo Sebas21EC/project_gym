@@ -11,12 +11,12 @@ use Illuminate\Support\Facades\Gate;
 
 
 
-class RoleController extends Controller 
+class RoleController extends Controller
 {
-   // use OwenIt\Auditing\Auditable;
+    // use OwenIt\Auditing\Auditable;
 
-   protected $id;
-       public function index()
+    protected $id;
+    public function index()
     {
         $rol_names = array("administrator");
 
@@ -24,15 +24,13 @@ class RoleController extends Controller
             $this->addAudit(Auth::user(), $this->typeAudit['not_access_index_role'], '');
             return redirect()->route('dashboard')->with('error', 'Usted no tiene permiso para ver roles!');
         }
-       
 
-
-    $this->addAudit(Auth::user(), $this->typeAudit['access_index_role'], '');
+        $this->addAudit(Auth::user(), $this->typeAudit['access_index_role'], '');
         return view('security.role.index', ['roles' => Role::all()]);
     }
 
     //get atributos
-  
+
 
     public function create()
     {
@@ -42,9 +40,9 @@ class RoleController extends Controller
             return redirect()->route('role.index')->with('error', 'Usted no tiene permiso para crear roles!');
         }
 
-        $this->addAudit(Auth::user(), $this->typeAudit['access_create_role'],'');
+        $this->addAudit(Auth::user(), $this->typeAudit['access_create_role'], '');
 
-       
+
         return view('security.role.create');
     }
 
@@ -70,7 +68,7 @@ class RoleController extends Controller
         $role->is_active = $request->is_active == 1 ? true : false;
         $role->save();
 
-        $this->addAudit(Auth::user(), $this->typeAudit['access_store_role'],'', $role->toJson());
+        $this->addAudit(Auth::user(), $this->typeAudit['access_store_role'], '', $role->toJson());
         return redirect()->route('role.index')->with('success', 'Rol creado con éxito');
     }
 
@@ -109,7 +107,7 @@ class RoleController extends Controller
         ]);
         //recolectar los datos antes de ser actualizados en un jason para enviarselos al audit
         $data_old = Role::find($id);
-        $data_old=$data_old->toJson();
+        $data_old = $data_old->toJson();
 
         $role = Role::find($id);
         $role->role_name = $request->role_name;
@@ -144,6 +142,4 @@ class RoleController extends Controller
             return redirect()->route('role.index')->with('success', 'Rol desactivado con éxito');
         }
     }
-
-
 }
