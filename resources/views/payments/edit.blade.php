@@ -29,7 +29,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="date_payment">Fecha de pago:</label>
-                                <input type="date" name="date_payment" id="date_payment" class="form-control" value="{{ $payment->date_payment }}" required>
+                                <input type="date" name="date_payment" id="date_payment" class="form-control" value="{{\Carbon\Carbon::parse($payment->date_payment)->format('Y-m-d')}}" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
