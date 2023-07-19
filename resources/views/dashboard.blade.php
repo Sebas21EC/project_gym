@@ -25,10 +25,64 @@
             text-align: center;
             margin-top: 30px;
         }
+        
+    
+
+    .contact-info {
+        margin-bottom: 20px;
+    }
+
+    .contact-item {
+        margin-bottom: 10px;
+        font-size: 18px;
+        color: #333333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .contact-item i {
+        font-size: 24px;
+        margin-right: 10px;
+        color: #b45fa8;
+    }
+
+    .social-links {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0;
+    }
+
+    .social-links li {
+       display: inline-block;
+        margin-right: 10px;
+    }
+
+    .social-links li:last-child {
+        margin-right: 0;
+    }
+
+    .social-links a {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        background-color: #b45fa8;
+        color: #ffffff;
+        font-size: 24px;
+        line-height: 50px;
+        text-align: center;
+        border-radius: 50%;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    .social-links a:hover {
+        background-color: #8a4a87;
+    }
 
         .Our_box img {
             max-width: 150px;
-            margin: 0 auto; /* Centra la imagen horizontalmente */
+            margin: 0 auto;
+            /* Centra la imagen horizontalmente */
         }
 
 
@@ -111,11 +165,11 @@
             </div>
             <div class="bienvenida">
                 <div class="jumbotron jumbotron-fluid" style="background-color: #b45fa8;">
-                    
-                        <h1 class="display-4 text-white" style="font-family: 'Arial', sans-serif; font-weight: bold; font-size: 60px; text-align:center">¡Bienvenida al Gimnasio UNIKA!</h1>
-                        <br>
-                        <p class="lead text-white" style="font-family: 'Arial', sans-serif;font-size: 30px; text-align:center">Aquí encontrarás información relevante y funciones importantes para lograr tus objetivos de fitness y bienestar.</p>
-                   
+
+                    <h1 class="display-4 text-white" style="font-family: 'Arial', sans-serif; font-weight: bold; font-size: 60px; text-align:center">¡Bienvenida al Gimnasio UNIKA!</h1>
+                    <br>
+                    <p class="lead text-white" style="font-family: 'Arial', sans-serif;font-size: 30px; text-align:center">Aquí encontrarás información relevante y funciones importantes para lograr tus objetivos de fitness y bienestar.</p>
+
                 </div>
             </div>
 
@@ -184,48 +238,63 @@
 
                             <h3>Contacto </h3>
                             <br>
-                            <h4>0985214930</h4>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>Email: gimnasio_unyka@hotmail.com</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>Teléfono: 098 108 9934</span>
+                            </div>
+                            <ul class="social-links">
+                            <li><a href="https://www.facebook.com/unik.ramirez" target="_blank"><i class="fab fa-facebook fa-2x"></i></a></li>
+                            <li><a href="https://www.instagram.com/unyka_gymnasio/" target="_blank"><i class="fab fa-instagram fa-2x"></i></a></li>
+                            <!-- Agrega más enlaces a otras redes sociales aquí si es necesario -->
+                        </ul>
                         </div>
+                        
                     </div>
                     <div class="col-md-4">
-                        <div class="card Our_box">
+                    <div class="card Our_box">
 
-                            <h3>Ubicaci&oacute;n </h3>
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7419438576226!2d-78.12043038255617!3d0.35452069999999875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e2a3dc4bfd674cb%3A0xf6ae0b2ecdd2d927!2sUNYKA!5e0!3m2!1ses!2sec!4v1689754285194!5m2!1ses!2sec" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                            </iframe>
-                        </div>
+                        <h3>Ubicaci&oacute;n </h3>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7419438576226!2d-78.12043038255617!3d0.35452069999999875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e2a3dc4bfd674cb%3A0xf6ae0b2ecdd2d927!2sUNYKA!5e0!3m2!1ses!2sec!4v1689754285194!5m2!1ses!2sec" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </iframe>
                     </div>
                 </div>
+                </div>
+                
             </div>
-
-
         </div>
-        <br>
-        <footer>
-            <div class="footer">
-                <div class="row">
-                    <div class="col-md-8 offset-md-2">
-                        <div class="cont">
-                            <h3> <span class="multi" style="color:white; font-size: 30px;" >Unyka Fitness</span> </h3>
-                            <br>
-                            <p>“Ámate lo suficiente para vivir un estilo de vida saludable.” </p>
-                        </div>
 
+
+    </div>
+    <br>
+    <footer>
+        <div class="footer">
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <div class="cont">
+                        <h3> <span class="multi" style="color:white; font-size: 30px;">Unyka Fitness</span> </h3>
+                        <br>
+                        <p>“Ámate lo suficiente para vivir un estilo de vida saludable.” </p>
                     </div>
-                </div>
 
-                <div class="copyright">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p>© 2023 All Rights Reserved. Design by Universidad Tecnica del Norte</a></p>
-                            </div>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>© 2023 All Rights Reserved. Design by Universidad Tecnica del Norte</a></p>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-        </footer>
+    </footer>
     </div>
 
 </x-app-layout>
