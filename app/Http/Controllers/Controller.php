@@ -190,6 +190,25 @@ class Controller extends BaseController
         
 
 
+        //Healthcard
+        'not_access_index_healthcard' => 'SECURITY/HEALTH-CARD/NOT-AUTHORIZED-INDEX',
+        'access_index_healthcard' => 'SECURITY/HEALTH-CARD/AUTHORIZED-INDEX',
+        'not_access_create_healthcard' => 'SECURITY/HEALTH-CARD/NOT-AUTHORIZED-CREATE-VIEW',
+        'access_create_healthcard' => 'SECURITY/HEALTH-CARD/AUTHORIZED-CREATE-VIEW',
+        'not_access_store_healthcard' => 'SECURITY/HEALTH-CARD/NOT-AUTHORIZED-STORE',
+        'access_store_healthcard' => 'SECURITY/HEALTH-CARD/AUTHORIZED-STORE',
+        'not_access_edit_healthcard' => 'SECURITY/HEALTH-CARD/NOT-AUTHORIZED-EDIT-VIEW',
+        'access_edit_healthcard' => 'SECURITY/HEALTH-CARD/AUTHORIZED-EDIT-VIEW',
+        'not_access_update_healthcard' => 'SECURITY/HEALTH-CARD/NOT-AUTHORIZED-UPDATE',
+        'access_update_healthcard' => 'SECURITY/HEALTH-CARD/AUTHORIZED-UPDATE',
+        'not_access_destroy_healthcard' => 'SECURITY/HEALTH-CARD/NOT-AUTHORIZED-DESTROY',
+        'access_destroy_healthcard' => 'SECURITY/HEALTH-CARD/AUTHORIZED-DESTROY',
+        'not_access_show_healthcard' => 'SECURITY/HEALTH-CARD/NOT-AUTHORIZED-SHOW',
+        'access_show_healthcard' => 'SECURITY/HEALTH-CARD/AUTHORIZED-SHOW',
+        'not_access_status_healthcard' => 'SECURITY/HEALTH-CARD/NOT-AUTHORIZED-CHANGE-STATUS',
+        'access_status_healthcard' => 'SECURITY/HEALTH-CARD/CHANGE-STATUS',
+
+
 
 
         // Audit Trail

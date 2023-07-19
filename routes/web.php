@@ -70,6 +70,6 @@ Route::get('audit_trail_user_actions', [\App\Http\Controllers\audit_trail\AuditS
 
 
 
-Route::resource('healthCards', App\Http\Controllers\HealthCardController::class);
+Route::resource('healthCards', App\Http\Controllers\HealthCardController::class)->middleware('auth');
 
 require __DIR__.'/auth.php';
