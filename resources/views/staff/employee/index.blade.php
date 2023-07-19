@@ -40,11 +40,11 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Nombres</th>
                                     <th scope="col">Apellidos</th>
-                                    <th scope="col">Ocupacion</th>
-                                    <th scope="col">Telefono</th>
-                                    <th scope="col">Direccion</th>
-                                    <th scope="col">Created At</th>
-                                    <th scope="col">Updated At</th>
+                                    <th scope="col">Ocupación</th>
+                                    <th scope="col">Teléfono</th>
+                                    <th scope="col">Dirección</th>
+                                    <th scope="col">Creado el</th>
+                                    <th scope="col">Actualizado el</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>

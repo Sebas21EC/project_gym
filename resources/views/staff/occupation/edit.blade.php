@@ -1,6 +1,6 @@
 <x-app-layout>
 <div class="container">
-        <h2>Editar Categoria</h2>
+        <h2>Editar Categoría</h2>
 
         @if ($errors->any())
             <div class="alert alert-danger">

@@ -17,7 +17,11 @@
             @method('PUT')
             @csrf
             <div class="form-group">
+<<<<<<< HEAD
                 <label for="identify">Identificacion:</label>
+=======
+            <label for="identify">Identificación:</label>
+>>>>>>> 875624f5dbd69b1edd3126930ebe96606a06bbe3
                 <input type="text" class="form-control" id="identify" name="identify" value="{{ $employee->identify }}" required>
                 <label for="first_name">Nombre:</label>
                 <input type="text" class="form-control" id="first_name" name="first_name" value="{{ $employee->first_name }}" required>
@@ -39,10 +43,14 @@
                     </option>
                     @endforeach
                 </select>
+<<<<<<< HEAD
 
                 <label for="phone">Telefono:</label>
+=======
+                <label for="phone">Teléfono:</label>
+>>>>>>> 875624f5dbd69b1edd3126930ebe96606a06bbe3
                 <input type="text" class="form-control" id="phone" name="phone" value="{{ $employee->phone }}" required>
-                <label for="address">Direccion:</label>
+                <label for="address">Dirección:</label>
                 <input type="text" class="form-control" id="address" name="address" value="{{ $employee->address }}" required>
             </div>
             <button type="submit" class="btn btn-outline-primary">Actualizar</button>
